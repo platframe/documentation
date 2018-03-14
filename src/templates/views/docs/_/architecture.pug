@@ -1,0 +1,38 @@
+section(id="architecture" class="architecture")
+
+    h2 Architecture
+
+    p.
+        The platform aims to scale seamlessly with consistent patterns for each part of the frontend 
+        stack. The following is a diagram of the basic architecture (fig. 2.1).
+
+    figure
+        figcaption architecture #[strong 2.1]
+        img(src="/assets/images/linked/architecture.svg" alt="diagram of Platframe's architecture")
+
+    h4 root
+
+    p.
+        The #[span.dir root] directory contains your project. It is the parent of the 
+        #[span.dir src], #[span.dir dev] and #[span.dir prod] directories (explained below). It also 
+        contains files not present on the above schematic, such as configuration, tooling and 
+        metadata. Be sure to change "root" to something more descriptive, as you see fit for your 
+        project.
+
+    h4 src
+
+    p.
+        The source directory is home to the project's source code. Descending one level down the 
+        tree reveals 6 sub-directories that separates the different asset groups.
+
+    h4 dev
+
+    p.
+        This is where the build system deploys and serves the project during development. Where 
+        applicable, assets are optimized for developmental purposes.
+
+    h4 prod
+
+    p.
+        The production build is located here. As illustrated by the schematic, directory layout is 
+        similar to the #[span.dir dev] folder (fig. 2.1).

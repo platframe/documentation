@@ -1,0 +1,22 @@
+&.footers main
+    [id="1"]
+        .preview
+            max-height: inherit // reset max-height to avoid footer overflow
+            +footer-1(light)
+                width: 100%
+                z-index: 1
+                anchors(target: footer) // inherits footer scheme [light]
+                > div
+                    +min(3)
+                        width: 88%
+                        min-width: auto
+    [id="2"]
+        .preview
+            max-height: inherit
+            +footer-2(light)
+                width: 100%
+                anchors(target: footer) // inherits footer scheme [light]
+                > div
+                    +min(3)
+                        width: 88%
+                        min-width: auto

@@ -1,0 +1,34 @@
+extends ../root
+
+block body
+
+    body(id=bodyId class=bodyClass)
+
+        block header
+            +header-1("/#front", "logo", "Platframe", [
+                { 
+                    href: "/#gist",
+                    name: "Gist"
+                },
+                { 
+                    href: "/#features",
+                    name: "Features"
+                },
+                { 
+                    href: "/#stack",
+                    name: "Stack"
+                },
+                { 
+                    href: "/docs/",
+                    name: "Docs"
+                }
+            ])
+
+        block main
+
+        block footer 
+
+            include ../../components/footers/1/_
+
+        //- compatibility
+        noscript Please enable JavaScript

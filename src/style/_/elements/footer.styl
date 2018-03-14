@@ -1,0 +1,21 @@
+// adaptation of footer-1 for platframe.com
++footer-1()
+    border-top: none
+    > div div
+        &:first-of-type
+            +max(2)
+                ul
+                    margin-bottom: 0
+        &:last-of-type
+            +max(2)
+                order: 2
+                ul
+                    margin-top: rem(10px)
+                    margin-bottom: 25px
+                    li
+                        display: inline-block
+                        margin: 5px 8px
+            +min(3)
+                ul li
+                    margin: 0
+                    padding: 0 0 8px

@@ -1,0 +1,114 @@
+section(class="component" id="1")
+
+    header
+
+        h3: span 1
+        dl.inline
+            div
+                dt Type
+                dd corner (diagonal)
+            div.comma
+                dt Tags
+                dd promotion
+                dd button
+                dd highlight
+
+    h4 Preview
+
+    section.preview
+
+        +banner-1()
+
+    h4 Implementation
+
+    section.implement
+
+        .explain
+
+            .routine
+
+                h5 Markup
+
+                table
+                    caption
+                        | banner-1(
+                        i url
+                        |,
+                        i text
+                        |,
+                        i [hook]
+                        |)
+
+                    thead
+                        tr
+                            th Parameter
+                            th Definition
+                            th Type
+                    tbody
+                        tr
+                            td.parameter url
+                            td.definition attribute: href
+                            td.type string
+                        tr
+                            td.parameter text
+                            td.definition SVG: fragment
+                            td.type string
+                        tr
+                            td.parameter hook
+                            td.definition attribute: class
+                            td.type string
+
+            .brief
+
+                h5 Brief
+                p.
+                    Page corner banner for use as a button. Place as a direct child of an element
+                    with relative positioning.
+
+        .explain
+
+            .paths
+
+                h5 Paths
+
+                ul
+                    li location:&nbsp; #[code components/banners/1]
+                    li activate:&nbsp; #[code templates/_/mixins.pug]
+
+            .dependencies
+
+                h5 Dependencies
+
+                ul
+                    li.pug
+                        svg: use(xlink:href="/assets/images/sprite/symbols.svg#html")
+                        span _.pug
+                    li.styl
+                        svg: use(xlink:href="/assets/images/sprite/symbols.svg#css")
+                        span index.styl
+
+        h5 Examples
+
+        .explain.code
+
+            .pug
+
+                pre
+                    code.language-pug.
+
+                        section.canvas
+                            +banner-1("http://example.com/", "Lorum ipsum dolor")
+
+                aside .pug
+
+        .explain.code
+
+            .styl
+
+                pre
+
+                    code.language-stylus.
+
+                        banner-1()
+
+                aside .styl

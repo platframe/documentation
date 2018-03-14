@@ -1,0 +1,36 @@
+# avoid duplicate builds
+if: tag NOT present
+
+# safelist
+branches:
+  only:
+    - master
+
+# context
+language: node_js
+node_js:
+  - '8'
+
+#install
+install: yarn
+script:
+  - npm run deploy
+  - ls -a $TRAVIS_BUILD_DIR
+
+# deployment
+deploy:
+  provider: pages
+  target-branch: gh-pages
+  local-dir: docs
+  fqdn: platframe.com
+  github-token: $GITHUB_TOKEN # TODO: travis-ci/dpl/pull/695
+  verbose: true
+  skip-cleanup: true
+  keep-history: false
+  on:
+    branch: master
+
+#variables
+env:
+  global:
+    secure: Qcr5uOLEQT3YAnWy2r+r1fDqVWOm85wtmJNQRv4CA7hMRQJt4XqeR8SLHQNTQnkcDlEWQQ12H04BDJoAp33/J2V51AGrs1+oiziPMuPHyt8TRIqWXfAsWg6+7PNG8Z/MnBzAufYtMcFYQKgLWZGrGLHopQi1k0uri63tYlkFXuQtF5+VIBIrqBoq5eMQcfceCWnYGKpUomw7Qq0J5dmCMoc6okR0Sfz3IlgYduqRtqP7wVDx/QRzUd+UWCalqc8YK+zM6Yj3vqLVA01oVo1H9YDUW0odJAGQGaeP5Oi4Siff8AdRpw5egadrGLYuqdVIRH+nFJXiKoxiJ2X8AF6JPCLg7Amhs1PAtQutlaqZKEnYZuT4ymMpSF1cO9qMaOmYGeTrdH/VPgRI1kgAtKzAqY+PZLmFf+ul4fGf9dFjDV/xpW3pCx95+cM33qmgw0/0VeOPGm0SVOim/GdnGkVk88FHiSF/rwVP0TbkiL9HIrS41mfrYLMSPaCXt1LcCgoj/W7QpviVGOK6DV7Jj3xaIcXHn0J9SlUjRHxjRMQ6O09KN8UmVI8sOv7571gNt2Li8NUyeb7zNOLO1wbUZFXurkhfjxJcyvPCk1CwZFrFuPiq9oHDhtAJEht9B5kYojljA0mb05c8+tRl00GA+EYm0WRh/p8N1grfCzt1/ptWEqE=

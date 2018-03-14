@@ -1,0 +1,41 @@
+head
+
+    meta(charset="utf-8")
+
+    block description
+        meta(name="description" content="A frontend framework that offers a scalable architecture, template and tooling, as well as pluggable components for rapid development.")
+
+    block keywords
+        meta(name="keywords" content="platform, pug, stylus, javascript")
+
+    meta(name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2, minimum-scale=0.5")
+    meta(name="generator" content="Platframe")
+
+    title= pageTitle || "Platframe | Frontend Framework"
+
+    block links
+        - if (env === 'prod')
+            link(rel="preload" href="http://fonts.gstatic.com/s/titilliumweb/v6/r9OmwyQxrgzUAhaLET_KO86gOKNGPbHY3c2d_06TbvM.woff2" as="font" crossorigin)
+            link(rel="preload" href="http://fonts.gstatic.com/s/titilliumweb/v6/r9OmwyQxrgzUAhaLET_KO6qVnG43xFTRN40gwdrG-aE.woff2" as="font" crossorigin)
+            link(rel="preload" href="http://fonts.gstatic.com/s/titilliumweb/v6/anMUvcNT0H1YN4FII8wpr9INifKjd1RJ3NxxEi9Cy2w.woff2" as="font" crossorigin)
+            link(rel="preload" href="http://fonts.gstatic.com/s/titilliumweb/v6/anMUvcNT0H1YN4FII8wpr4-67659ICLY8bMrYhtePPA.woff2" as="font" crossorigin)
+            link(rel="preload" href="http://fonts.gstatic.com/s/titilliumweb/v6/7XUFZ5tgS-tD6QamInJTcSo_WB_cotcEMUw1LsIE8mM.woff2" as="font" crossorigin)
+            link(rel="preload" href="http://fonts.gstatic.com/s/titilliumweb/v6/7XUFZ5tgS-tD6QamInJTcZSnX671uNZIV63UdXh3Mg0.woff2" as="font" crossorigin)
+            link(rel="preload" href="http://fonts.gstatic.com/s/titilliumweb/v6/anMUvcNT0H1YN4FII8wpr_SNRT0fZ5CX-AqRkMYgJJo.woff2" as="font" crossorigin)
+            link(rel="preload" href="http://fonts.gstatic.com/s/titilliumweb/v6/anMUvcNT0H1YN4FII8wpr46gJz9aNFrmnwBdd69aqzY.woff2" as="font" crossorigin)
+            link(rel="preload" href="http://fonts.gstatic.com/s/titilliumweb/v6/anMUvcNT0H1YN4FII8wpr-y7CP8YvcHYdGV61pt7QTE.woff2" as="font" crossorigin)
+            link(rel="preload" href="http://fonts.gstatic.com/s/titilliumweb/v6/anMUvcNT0H1YN4FII8wprxP6Eu1_xfSBSoi9uie1FdE.woff2" as="font" crossorigin)
+            link(rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web:300,400,400i,600,700")
+        link(rel="stylesheet" href="/assets/style/root.css")
+        link(rel="icon" href="/assets/images/linked/favicon.png")
+        link(rel="prefetch" href="/docs/index.html")
+
+    block scripts
+        script(defer src="/assets/logic/js/root.js")
+        - if (env === 'prod')
+            script(async src="https://www.googletagmanager.com/gtag/js?id=UA-112418634-1")
+            script.
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'UA-112418634-1');

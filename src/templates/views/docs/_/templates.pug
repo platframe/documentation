@@ -1,0 +1,352 @@
+section(id="templates" class="templates")
+
+    h2 Templates
+
+    p.
+        Project markup is comprised of #[em partials] and #[em views] in the #[span.dir templates]
+        directory and if used, components. As components are prepackaged functionality that does not
+        form part of the foundational templates and markup we are going to discuss here, we deal
+        with them in a #[a(href="/docs/components/") dedicated section].
+    p.
+        Your app's core markup files live in #[span.dir templates] and, depending on their scope,
+        is conceptually separated into "global" and "local". #[em Global] markup is confined to
+        #[span.file root.pug] and the partials contained in its sibling directory, #[span.dir _].
+        The #[span.dir views] folder is home to all #[em local] markup and splits into
+        #[span.file index.pug] and any amount of sections that the project could be comprised of.
+
+    h3 Global
+
+    p.
+        The purpose of global markup is to supply the project's #[em view] files with the resources
+        they share in a maintainable and #[abbr(title="Don't Repeat Yourself") DRY] fashion. These
+        shared resources generally consist of foundational markup, metadata, various project assests
+        and more static elements such as headers and footers. Files with global reach are
+        #[span.file root.pug] and those in the project's root-level partials directory
+        (#[span.dir _]), namely #[span.file mixins.pug], #[span.file head.pug] and
+        #[span.file body.pug].
+
+    h4#templates-root Root
+
+    .explain.code
+
+        .pug
+
+            pre
+                code.language-pug.
+
+                    doctype html
+                    html(lang="en")
+
+                        include _/mixins
+
+                        block context
+
+                        include _/head
+
+                        block body
+            aside root.pug #[b 3.1]
+
+    p.
+        By looking at figure 3.1, we can see  that #[span.file root.pug] declares the doctype, sets
+        the root HTML element with associated attributes and then goes on to pull in the remaining
+        structural parts of the project, serving as the common ancestor for all markup. It loads the
+        #[em global] partials (contained in the sibling #[span.dir _] directory) in a
+        dependency-sensitive order.
+    p.
+        First, we include #[span.file mixins.pug], used for your own mixin collection as well as
+        referencing those of components that the project make use of.
+    p.
+        Next, with #[code block context] we reserve a "context" block that will allow us to inject
+        variables that can be consumed by all the descendants of the root HTML tag. For instance,
+        this is useful for changing the page title in the HEAD and set ID and CLASS attributes on
+        the BODY element of each page.
+
+    h4#templates-head Head
+
+    .explain.code
+
+        .pug
+
+            pre
+                code.language-pug.
+
+                    head
+
+                        meta(charset="utf-8")
+
+                        block description
+                            meta(name="description" content="Lorem ipsum dolor sit amet.")
+
+                        title= pageTitle || 'Or Fallback to Default Title'
+
+                        block links
+                            - if (env === 'prod')
+                                link(rel="stylesheet" href="//cdn.example.com/lib.css")
+                            link(rel="stylesheet" href="/assets/style/root.css")
+
+                        block scripts
+                            - if (env === 'dev')
+                                script(src="/assets/logic/js/libs/lib-a/x.x.x.js")
+                            - else
+                                script(defer src="//cdn.example.com/lib/x.x.x.js")
+                            script(defer src="/assets/logic/js/root.js")
+
+            aside head.pug #[b 3.2]
+
+    p.
+        The above code sample is a modified excerpt from #[span.file head.pug], another
+        partial living in #[span.dir _]. In the HEAD element, we declare 4 blocks and a
+        variable for the page title. The document description, keywords and title will
+        typically be different on each page, so we declare blocks for any part of HEAD that
+        could be subject to change, including #[i links] and #[i scripts]. The #[i keywords]
+        meta tag is optional while the #[i scripts] block is only of use when an external
+        library requires loading from within #[code &lt;head&gt;].
+
+    aside
+        h6 &#9881; Build notes
+        ul
+            li.
+                Depending on whether the build system was executed in development or production
+                mode, the conditions in HEAD will ensure that the appropriate resources are linked.
+
+    h4#templates-body Body
+
+    .explain.code
+
+        .pug
+
+            pre
+                code.language-pug.
+
+                    extends ../root
+
+                    block body
+
+                        body(id=bodyId class=bodyClass)
+
+                            block header
+                                +header-1-1("/#home", "logo", "Header Text", [
+                                    {
+                                        href: "/somewhere/",
+                                        name: "Menu Entry 1"
+                                    }
+                                ])
+
+                            block main
+
+                            block footer
+                                include ../../components/footers/column_3/1/_
+
+                            noscript Please enable JavaScript
+
+            aside body.pug #[b 3.3]
+
+    p.
+        The #[span.file body.pug] global partial extends #[span.file root.pug] and makes use of the
+        latter's reserved #[code block body] for correct placement. #[span.file body.pug] serves as
+        the default base structure for all views, providing a single location from which to manage
+        the header, footer and additional dependency provisioning for your pages.
+    p.
+        As we continue with figure 3.3, notice the placeholder ID and CLASS attribute variables we
+        assigned to the BODY element for future use.
+    p.
+        #[code block header] is declared to serve as the global page header, specifically placed in
+        a #[em block] in case we need to override it at some point. To serve as the default, we call
+        one of our primary (1st level) header components, in particular its #[em Pug] mixin. For
+        more on "header-1", have a look at its #[a(href="/docs/components/headers/") writeup].
+    p.
+        #[code block main] is where the dependants of #[span.file body.pug] (#[em views]) will
+        expose their content and alludes to the MAIN element that will be used for this purpose.
+    p.
+        Since a footer is not necessarily static across a project, we declare another block to allow
+        for superceding this default in specific views. Note that due to the complexity of the
+        footer included in the example above, the author of the  component decided not to
+        encapsulate it within a mixin. We therefore modify and include it directly from its location
+        in #[em components]. For more on "footer-1", have a look at its
+        #[a(href="/docs/components/footers/") description].
+    p.
+        The bottom of #[span.file body.pug] can be used for whatever seems sensible, permitting that
+        it should have a project-wide reach and be provisioned last. The default is for Platframe to
+        ship with this section being used for #[code &lt;noscript&gt;] and loading
+        #[span.file root.js]
+
+    h3 Local
+
+    p.
+        We refer to markup files that do not have a global, application-wide impact as being
+        #[em local]. A local file's reach can however stretch beyond itself, such as when a
+        selection of sibling or descendant files are extending it and thus inherit from it. Think of
+        #[em local] markup as just having variably less reach.
+
+    h4#templates-views Views
+
+    .explain.code
+
+        .pug
+
+            pre
+                code.language-pug.
+
+                    extends ../_/body
+
+                    block context
+                        -
+                            bodyId = 'wxyz';
+                            bodyClass = 'index';
+                            pageTitle = 'Page Title';
+
+                    block main
+
+                        main(role="main")
+
+                            section.canvas
+
+                                .content
+
+                                    h2 Lorem ipsum dolor sit amet
+
+                                    p Consectetur adipisicing elit...
+            aside index.pug #[b 3.4]
+
+    p.
+        As the name suggests, the #[span.dir views] directory contains the project's #[em views].
+        Views are the markup files that holds the content and define the structure of your project's
+        pages. As views make up the individual pages of your application, they should be unique in
+        terms of their content and share only those features present in their common ancestors - the
+        globals.
+    p.
+        When dealing with a multi-category project, the #[span.dir views] directory can branch out
+        into a hierarchy of interconnected sections that follows a set pattern, regardless of
+        relational extent or depth - see #[em nesting] below.
+    p.
+        When a view is the landing page of any particular section, it will be identified as
+        #[span.file index.pug] at the root level of the directory. For instance, the first
+        #[span.file index.pug] we encounter as a direct child of #[span.dir views] is the main
+        landing page for the site and in the case of an #[abbr(title="Single Page Application") SPA]
+        may be the #[em only] view file.
+
+    p.
+        Views would normally inherit its basic structure and resources from the #[em globals] we
+        covered above. Should the need arise, basic provision for overriding inhereted markup is
+        already in place and can be further customized through the use of #[code block]'s. #[i Views]
+        are compiled into #[abbr(title="HyperText Markup Language") HTML] files upon build. For
+        instance, #[code index.pug] becomes #[code index.html] and #[code hello.pug] becomes
+        #[code hello.html].
+
+    h3 Nesting
+
+    .explain.code
+
+        .pug.map
+
+            pre
+                code.
+                    #[i._folder 🖿] views─┐
+                             ├─ #[i._markup_icon 📄] index.pug
+                             ├─ #[i._folder 🖿] about ── #[i._markup_icon 📄] index.pug
+                             ├─ #[i._folder 🖿] menu ─┐
+                             |           ├─ #[i._markup_icon 📄] index.pug
+                             |           ├─ #[i._folder 🖿] _        ── #[i._markup_icon 📄] nav-2.pug
+                             |           ├─ #[i._folder 🖿] starters ── #[i._markup_icon 📄] index.pug
+                             |           ├─ #[i._folder 🖿] main     ── #[i._markup_icon 📄] index.pug
+                             |           ├─ #[i._folder 🖿] desserts ── #[i._markup_icon 📄] index.pug
+                             |           └─ #[i._folder 🖿] drinks ─┐
+                             |                         ├─ #[i._markup_icon 📄] index.pug
+                             |                         ├─ #[i._folder 🖿] juice  ── #[i._markup_icon 📄] index.pug
+                             |                         ├─ #[i._folder 🖿] coffee ── #[i._markup_icon 📄] index.pug
+                             |                         └─ #[i._folder 🖿] beer ─┐
+                             |                                     ├─ #[i._markup_icon 📄] index.pug
+                             |                                     ├─ #[i._folder 🖿] draft ── #[i._markup_icon 📄] index.pug
+                             |                                     ├─ #[i._folder 🖿] craft ── #[i._markup_icon 📄] index.pug
+                             |                                     └─ #[i._folder 🖿] local ── #[i._markup_icon 📄] index.pug
+                             ├─ #[i._folder 🖿] reservations ── #[i._markup_icon 📄] index.pug
+                             └─ #[i._folder 🖿] contact      ── #[i._markup_icon 📄] index.pug
+
+            aside nesting pattern #[b 3.5]
+
+    p.
+        Applications with nested categories follows a recursive structural pattern regardless of
+        hierarchical depth. The above visualization demonstrates a typical nesting scenario. Each
+        nested category has its own #[span.file index.pug] page to serve as the landing view for
+        that particular section (level) of the parent category. Again, when a sub-category has to
+        divide into one or more child (offspring) categories, the pattern repeats.
+
+    h3 Partials
+
+    p.
+        Depending on how they are used, partials can be beneficial in a variety of ways. For example,
+        they are great at making your templates DRY, easier to manage and reducing the overall
+        maintenance burden.
+    p.
+        Platframe uses an underscore to denote a partial directory or file. There are two ways we
+        can indicate partials in our project's file system: either by grouping several related
+        partial files in a directory named "_" or by just prefixing each partial file with an
+        underscore. If grouped in a folder, the prefix is negated. Figure 3.6 illustrates the former
+        method, while figure 3.7 shows the latter. It is recommended to only use the prefix method
+        (figure 3.7) when dealing with #[em content] partials.
+
+    h4#templates-global Global
+
+    .explain.code
+
+        .pug.map
+
+            pre
+                code.
+                    #[i._folder 🖿] templates ─┐
+                                  ├─ #[i._markup_icon 📄] root.pug
+                                  ├─ #[i._folder 🖿] views
+                                  └─ #[i._folder 🖿] _ ─┐
+                                           ├─ #[i._markup_icon 📄] mixins.pug
+                                           ├─ #[i._markup_icon 📄] head.pug
+                                           └─ #[i._markup_icon 📄] body.pug
+            aside global partials #[b 3.6]
+
+    p.
+        The files contained in the partial folder that is a direct child of the root template
+        directory, #[span.dir templates], are #[em global] in that they are inherited by all views.
+        Figure 3.6 illustrates the global partials in #[span.dir _]: #[span.file mixins.pug],
+        #[span.file head.pug] and #[span.file body.pug].
+
+    h4#templates-local Local
+
+    p.
+        Partials that relate only to a specific section or view are referred to as being #[em local].
+        We distinguish between two types of local partials, #[em sectional] and #[em content].
+
+    h5 Sectional
+
+    p.
+        An example of a #[em sectional partial] would be the markup of a navigation component aimed
+        at providing menu support adapted for the requirements of sub-sections (referred to as "2nd
+        level" navigation within components). In Figure 3.5, #[span.file nav-2.pug] is housed in the
+        partial directory (#[span.dir _]) in the "menu" section. Being restricted to the menu
+        section indicates that it should only be consumed by views in that section.
+
+    h5 Content
+
+    .explain.code
+
+        .pug.map
+
+            pre
+                code.
+                    #[i._folder 🖿] section x ─┐
+                                  ├─ #[i._markup_icon 📄] _1.pug
+                                  ├─ #[i._markup_icon 📄] _2.pug
+                                  ├─ #[i._markup_icon 📄] _3.pug
+                                  ├─ #[i._markup_icon 📄] _4.pug
+                                  ├─ #[i._markup_icon 📄] _5.pug
+                                  └─ #[i._markup_icon 📄] index.pug
+
+            aside content partials #[b 3.7]
+
+    p.
+        Depending on the amount of content a #[i view] holds, it might make sense to partialize the
+        constituent parts for ease of management. We then unify the separate parts by including them
+        at their proper positions in the main view. As they are only relevant to a single #[i view]
+        file, it is not necessary to separate #[em content] partials into an underscored directory
+        that signifies a group of partials. If we go this route however, we need to ensure that each
+        partial name is prefixed with an underscore (_) to signify that they are partials (figure
+        3.7). In the example above, we split the content of #[span.file index.pug] from
+        #[em section x] into five partials, from #[span.file _1.pug] to #[span.file _5.pug].

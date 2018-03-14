@@ -1,0 +1,33 @@
+section(id="start" class="start")
+
+    h2 Get started
+
+    h4 Install
+
+    p.
+        #[b 1.&nbsp;] Ensure that you have
+        #[a(href="https://nodejs.org" title="6  ≤  version  ≤  8") Node.js] and NPM or
+        #[a(href="https://yarnpkg.com") Yarn] on your machine.
+
+    div.install-options
+        b 2.
+        div
+            p #[span ⓐ]&nbsp; #[a(href="https://github.com/platframe/platframe/archive/v1.0.0.zip") Download the latest release] or
+            p #[span ⓑ]&nbsp; #[code git clone https://github.com/platframe/platframe.git project]
+
+    p #[b 3.&nbsp;] In the root of your project, run&nbsp; #[code yarn] &nbsp;or&nbsp; #[code npm install]
+
+    h4 Develop
+
+    p Spin up a dev environment with&nbsp; #[code grunt develop]
+    p By default, the auto-sync development server runs at&nbsp; #[code localhost:3003]
+
+    h4 Test
+
+    p Run your test suit with&nbsp; #[code grunt test]
+    p Build, test and locally serve a production build for inspection:&nbsp; #[code grunt preflight]
+
+    h4 Deploy
+
+    p For an optimized, production-targeted build:&nbsp; #[code grunt build]
+    p Deployment logic can be run with:&nbsp; #[code grunt deploy]

@@ -1,0 +1,488 @@
+extends ../../../_/body
+
+//- variables
+block context
+    -
+        bodyId = 'docs';
+        bodyClass = 'docs index components';
+        pageTitle = 'Docs - Components | Platframe';
+
+//- header
+block header
+
+    +header-2('/#front', 'logo', 'Platframe', 'Components', [
+        {
+            href: "/",
+            name: "Home"
+        },
+        {
+            href: "/docs/",
+            name: "Docs"
+        }
+    ], false, "themed")
+
+//- body
+block main
+
+    main(role="main")
+
+        div(class="content")
+
+            section(id="deploy")
+
+                h3 Deployment
+
+                p.
+                    A component is a collection of related modules that provides specific
+                    functionality. Located in #[span.dir components], they are grouped by category
+                    and indexed numerically. Once a new component package is placed in its
+                    respective parent category, all that remains is plugging it into your project.
+
+                p.
+                    Components are deployed by implementing its constituent modules. We'll start by
+                    covering #[em markup] as it's a core module essential to all components.
+
+                h4#deploy-markup Markup
+
+                .explain.code
+
+                    .pug
+
+                        pre
+                            code.language-pug.
+
+                                include ../../components/category/1/_
+
+                        aside mixins.pug #[b 8.1]
+
+                p.
+                    The #[em Pug] portion of the component is provisioned for project-wide use by
+                    including it in #[span.file mixins.pug], the global partials file of
+                    #[span.dir templates] (Fig. 8.1).
+
+                .explain.code
+
+                    .pug
+
+                        pre
+                            code.language-pug.
+
+                                // keep the defaults
+                                +header-1()
+
+                                // or customize with modifiers
+                                +header-1("/#home", "logo", "Heading", [
+                                    {
+                                        href: "/about/",
+                                        name: "About"
+                                    }
+                                ])
+
+                        aside mixins.pug #[b 8.2]
+
+                p.
+                    Once included, call the component at an appropriate location in the target
+                    document. If the mixin accepts any modifiers, you can pass arguments to
+                    customize the output.
+
+                aside
+                    h6 &#128736; Dev notes
+                    ul
+                        li.
+                            Markup can generally be deployed in any document (#[i view]) unless
+                            otherwise advised by the #[em Paths] section in the component's
+                            documentation. For example, a primary header component would need to be
+                            deployed in #[code body.pug] to be active across the app.
+                        li.
+                            In some cases the component's markup may not be wrapped in a mixin, in
+                            which case you'll have to reference it directly from its home in
+                            #[span.dir components]. Refer to its documentation.
+
+                h4#deploy-style Style
+
+                p.
+                    Style files within #[span.dir components] will be picked up by the #[em Stylus]
+                    interpreter and available for use throughout the project's core styles.
+
+                .explain.code
+
+                    .styl
+
+                        pre
+                            code.language-stylus.
+
+                                // keep the defaults
+                                header-1()
+
+                                // overriding the default color scheme
+                                header-1(scheme)
+
+                                // call as #[em block] mixin to override more specifically
+                                +header-1(arg1, arg2: this)
+                                    h1
+                                        color: gray.header
+                                        border-color: #333
+                                        background: _20
+
+                        aside attach the styling #[b 8.2]
+
+                p.
+                    Components receive their styling by attaching the similarly named mixin to them.
+                    Each component is labelled with a unique class that is used for tying it to the
+                    styles. To provide room for adaptation, you can instantiate the mixin in a few
+                    ways. Figure 8.2 illustrates the different methods of applying the styles to its
+                    component.
+
+                h4#deploy-images Images
+
+                p.
+                    Component images should not require any additional configuration in order to
+                    work. Authors include the original images so it can be altered to suit the host
+                    application if necessary. It is best to keep the images directory structure
+                    unchanged after modifying any graphics as the build system depends on its
+                    conventions for determining sprite options.
+
+                h4#deploy-scripts Scripts
+
+                p.
+                    Platframe components make their JavaScript available for consumption by way of
+                    the standardized ES2015 module definition.
+
+                .explain.code
+
+                    .js
+
+                        pre
+                            code.language-javascript.
+
+                                // get the component's logic
+                                import header from 'headers/1/_';
+
+                                // typical initiation scenario
+                                document.addEventListener('DOMContentLoaded', () => {
+                                    header();
+                                });
+
+                        aside root.js #[b 8.3]
+
+                p.
+                    To activate a component's logic, import its script module into
+                    #[span.file root.js], located in #[code src/logic/js]. Be sure to initiate any
+                    DOM-dependant packages appropriately (fig. 8.3).
+
+            section(id="create")
+
+                h3 Creation
+
+                p.
+                    A Platframe component is the result of packaging the dependencies of existing,
+                    specific functionality into discreet payloads that are easy to consume by other
+                    developers.
+
+                p.
+                    As a structural scaffolding system first, Platframe is opinionated on
+                    architectural conventions. However, it is less prescriptive when it comes to how
+                    you write your code. Not only does this allow developers to exercise their
+                    preference in language methodology, but it also allows components that are
+                    specifically built for Platframe to be used in other (non-native) projects, with
+                    little to no adaptation needed. Of course, the only requirement is that
+                    #[em Pug], #[em Stylus] and in some cases #[em ES6] must be part of the target
+                    app's frontend stack.
+
+                h4#create-gist The gist
+
+                p.
+                    Depending on the type and complexity of a component it generally consist of the
+                    following parts:
+
+                ul
+                    li Markup* (Pug)
+                    li Style* (Stylus)
+                    li Graphics (vector/raster)
+                    li Logic (JavaScript)
+
+                p.
+                    The most basic components should contain at least the first two layers: markup
+                    and style.
+                p.
+                    Components should be complete in the functionality or purpose they aim to
+                    achieve, and fall within one of the 6 component types (more types may be added).
+                    Whether you're building a header, footer or a form, ensure that the component
+                    provides all the necessary functionality, styling and assets for production
+                    usage. Only stylistic changes should be necessary as the component is likely to
+                    be thematically adapted to be consistent with the host project's appearance.
+
+                h5 Naming
+
+                p.
+                    Component names should conform to the #[code type-{num}] format. The number part
+                    gets incremented with each new component added to the category in question. For
+                    instance, if the last #[em form] component was number 4, the subsequent one will
+                    be ID'd as #[code form-5]. This ensures quick and unique identification.
+
+                h4#create-markup Markup
+
+                p.
+                    The markup portion of a component can be static (imported "as is") or it can be
+                    encapsulated within a mixin. Most component's markup can be sensibly abstracted
+                    into a mixin and it's also the ideal way for wrapping the structural (HTML) part
+                    as it facilitates reuse and hide unnecessary detail.
+
+                h5 Mixin
+
+                p.
+                    While there's no restriction on the amount of arguments your component's #[i Pug]
+                    mixin may take, there is one that is compulsory and that - unless you're making
+                    use of the #[em rest parameter] syntax - should always be specified last. It is
+                    the #[code hook] parameter that allow users to add an additional style hook in
+                    the form of a CSS class, should they require additional specificity.
+
+                h5 Attributes
+
+                p.
+                    The only required attribute on components is the default CSS class that is a
+                    verbatim reference to its name. This attribute should be applied to the
+                    component's root element and be included by way of a ternary expression that
+                    allows the optional style hook to be chained (figure 8.4).
+
+                .explain.code
+
+                    .pug
+
+                        pre
+                            code.language-pug.
+
+                                mixin component-x(param1, param2, hook)
+                                    div(class=hook ? "component-x " + hook :  "component-x")
+                                        // body...
+
+                        aside _.pug #[b 8.4]
+
+                p.
+                    You may choose to avoid using a mixin in the case where, due to the scope, size
+                    or complexity of the component it is not feasible or may defeat the purpose of
+                    the abstraction. For example, the markup of a complex footer component is
+                    generally not a good candidate for mixin encapsulation (figure 8.5).
+
+                .explain.code
+
+                    .pug
+
+                        pre
+                            code.language-pug.
+
+                                footer(class="footer-x")
+                                    // body...
+
+                        aside _.pug #[b 8.5]
+
+                h4#create-style Style
+
+                p.
+                    Components should be styled in a responsive manner as all platforms should be
+                    treated as 1#[sup st] class citizens in relation to the user's experience and
+                    the app's appearance.
+
+                h5 Mixin
+
+                p.
+                    Encapsulate styles within a
+                    #[a(href="//stylus-lang.com/docs/mixins.html#block-mixins") block mixin].
+                    A mixin is necessary to allow the component to accept modifiers while a
+                    #[code block] adds a transparent interface for end users with which to override
+                    the styling of a particular instance of a component without altering the
+                    original which may be called in more than one place. To allow the component to
+                    either inherit the global scheme or receive an arbitrary one, it should have at
+                    least a #[code scheme] parameter that defaults to the project's primary scheme.
+
+                h5 Rule
+
+                p.
+                    Attach the styling to a class selector with the same name as the component it
+                    belongs to. This ensures that it gets associated with its sibling markup. Avoid
+                    hard coding color values into your component as it lessens interoperability. In
+                    stead, assign color by referencing the scoped identities from the framework's
+                    #[a(href="/docs/#style-color") scheme hash] format. This allows your component
+                    to receive the appropriate paint from the context of the active scheme.
+
+                .explain.code
+
+                    .styl
+
+                        pre
+                            code.language-stylus.
+
+                                component-x(scheme = __default)
+                                    .component-x
+                                        // declaration...
+                                        // border: 1px solid scheme.border
+                                        // background: scheme.background
+                                        { block }
+
+                        aside index.styl #[b 8.5]
+
+                h4#create-images Images
+
+                p.
+                    If your component will make use of image assets, it should be bundled with the
+                    distributable package, specifically in its #[span.dir images] directory. You'll
+                    need to decide on the most appropriate form of implementation, a decision that
+                    will largely depend on the nature of your componemt, i.e. whether it will be
+                    used across the application or be confined to one particular location and so
+                    forth. Images can either become part of a project's global sprite sheet
+                    (for SVG's), be embedded as #[em inline] images, or get #[em linked]. Refer to
+                    the #[a(href="/docs/#images") section on images] for the difference between
+                    these techniques.
+                p.
+                    SVG assets that should be included in a project's SVG sprite sheet(s), must be
+                    contained in either a #[span.dir view] or #[span.dir symbols] folder that is
+                    housed within the #[span.dir sprite] folder in #[span.dir images] (refer to
+                    figure 8.3). This allows the build system to determine which SVG's are destined
+                    for which type of sprite sheet and produce it accordingly.
+                p.
+                    Embedded images should be placed in a directory named #[span.dir inline]. To
+                    prepare assets for embedding, the build system will produce minified versions of
+                    SVG's while rasters will be encoded as #[i base64] during a development build.
+
+                h4#create-scripts Scripts
+
+                p.
+                    A component with JavaScript functionality should wrap its logic in the
+                    standardized ES6 module syntax. Where possible, use #[code default] as the
+                    export method - it allows for easier consumption with a more transparent
+                    interface (Fig 8.4 &amp; 8.5).
+
+                .explain.code
+
+                    .js
+
+                        pre
+                            code.language-javascript.
+
+                                // category/1/_.js
+                                export default function() {
+                                    // do many things
+                                }
+
+                                // use preferred indent. in root.js
+                                import allthethings from 'category/1/_';
+
+                        aside #[span._js_dark _.js] &nbsp; &#10564; &nbsp; #[span._js_dark root.js] #[b 8.4]
+
+                p.
+                    Functionality should be written exclusively for the component by only addressing
+                    its needs and avoiding any excess weight. Avoid the inclusion of external
+                    dependencies if possible (eg. 3#[sup rd]-party libs). If deemed unavoidable,
+                    extract the necessary functionality for inclusion, taking care to do so in a way
+                    that respects the author's license.
+
+                aside
+                    h6 &#128736; Dev notes
+                    ul
+                        li.
+                            Component scripts can make use of the framework's internal library to
+                            avoid external dependencies and reduce redundancy. However, as the
+                            native library is still in its infancy, using 3#[sup rd]-party libraries
+                            may be necessary for some time.
+                        li.
+                            As Platframe uses #[em Babel], consider making use of ES6+ when writing
+                            your component's logic. Specification support are detailed in the
+                            transpiler's #[a(href="https://babeljs.io/docs/plugins/#transform-plugins-es2015") documentation].
+
+                h4#create-structure Structure
+
+                .explain.code
+
+                    .map
+
+                        pre
+                            code.
+
+                                #[i._folder 🖿] headers ─┐
+                                            ├─ #[i._folder 🖿] 1 ─┐
+                                            |        ├─ #[i._folder 🖿] images ─┐
+                                            |        |             #[i._folder 🖿] sprite ─┐
+                                            |        |                        #[i._folder 🖿] symbols
+                                            |        ├─ #[i._js_icon 📄] _.js                |
+                                            |        ├─ #[i._markup_icon 📄] _.pug               ├─ #[i._image_icon 🖺] header-1-logo.svg
+                                            |        └─ #[i._style_icon 📄] index.styl          └─ #[i._image_icon 🖺] header-1-mobile.svg
+                                            |
+                                            ├─ #[i._folder 🖿] 2
+                                            ├─ #[i._folder 🖿] 3
+                                            ┆
+
+                        aside #[span._map #[span._js_dark component structure]] #[b 8.5]
+
+                p.
+                    Component directory structure follows a predictable pattern. As an example,
+                    we'll be looking at how the 1#[sup st] header component is structured
+                    (figure 8.3).
+                p.
+                    To simplify indexing, we only distinguish between major component types.
+                    Currently, these are:
+
+                ul
+                    li Banners
+                    li Footers
+                    li Forms
+                    li Headers
+                    li Navigation
+
+                p.
+                    Within the above categories, individual components are numerically separated,
+                    incrementing only the component number with each new addition.
+                p.
+                    JavaScript and #[i Pug] files should be named with a single underscore (fig. 8.3
+                    ). Name your main stylesheet #[span.file index.styl] to allow #[i Stylus] to
+                    find and process it. Image files should be arranged as explained above in the
+                    #[a(href="#create-images") section on images].
+
+            section(id="share")
+
+                h3 Sharing
+
+                p.
+                    Components are pluggable units of functionality, making them shareable between
+                    projects that use Platframe's infrastructure.
+                p.
+                    You may also contribute a component you've built to Platframe. Once approved, it
+                    will become part of the default collection distributed with the framework. We'll
+                    cover the necessary steps next.
+
+                h5 Note on theming
+
+                p.
+                    If you're considering contributing your component back to Platframe, it is a
+                    good idea to keep the appearance of your component relatively consistent with
+                    the current major iteration of Platframe's theme and general style. Doing so
+                    helps to ease integration of the component into existing Platframe-based
+                    projects. As the framework does not have an official style guide yet, you'll
+                    have to take a look at the
+                    #[a(href="/docs/components/banners") existing collection] of components for
+                    current theme pointers.
+
+                h4#share-test Testing
+
+                p.
+                    Test the component in a fresh copy of Platframe to ensure that it integrates
+                    seamlessly with the framework.
+
+                h4#share-docs Documentation
+
+                p.
+                    Use the current component #[a(href="/docs/components/headers/") documentation]
+                    as a reference for writing your own. Extend the appropriate component category
+                    in the documentation #[a(href="//github.com/platframe/docs/") repository], using
+                    the existing template as a foundation.
+
+                h4#share-submit Submission
+
+                p.
+                    Once tested and documented, you'll need to submit 2 pull requests. For the
+                    documentation, submit a PR the the
+                    #[a(href="https://github.com/platframe/docs") documentation] repository. For the
+                    component, choose the appropriate category in #[span.dir components] and submit
+                    a PR to the #[a(href="https://github.com/platframe/platframe") distribution]
+                    repository.
+
+        include _/nav-2_index

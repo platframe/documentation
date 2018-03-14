@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" viewBox="0 0 100 100" height="100" width="100" xmlns="http://www.w3.org/2000/svg">
+  <desc>Platframe logo. Designed by Gideon Kreitzer.</desc>
+  <title>Platframe</title>
+  <path d="M 0 0 L 0 8.25 C 30.583 8.25 61.167 8.25 91.75 8.25 L 91.75 91.75 L 8.25 91.75 L 8.25 33.295 L 41.342 33.295 L 41.342 66.732 L 16.92 66.732 L 16.92 74.98 C 27.767 74.98 39.721 74.98 50 74.98 C 50 58.314 50 41.647 50 24.98 C 31.54 24.98 17.076 24.98 0 24.98 L 0 33.295 L 0 100 L 100 100 L 100 0 Z" fill="#333333"/>
+</svg>

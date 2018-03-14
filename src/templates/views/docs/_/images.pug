@@ -1,0 +1,151 @@
+section(id="images" class="images")
+
+    h2 Images
+
+    p.
+        The #[span.dir images] directory forks into #[span.dir sprite], #[span.dir inline] and 
+        #[span.dir linked]. This allows for the grouping of image assets based on their respective 
+        scope and function. While optional, it helps to keep assets organized with #[em subject] 
+        directories that are children of the aforementioned trio.
+
+    .explain.code
+
+        .image.map
+
+            pre
+                code.
+
+                    #[i._folder 🖿] images ─┐
+                               ├─ #[i._folder 🖿] sprite ─┐
+                               |             ├─ #[i._folder 🖿] icons ─┐
+                               |             |            #[i._folder 🖿] views ─┐
+                               |             |            |         ├─ #[i._image_icon 🖺] icon-1.svg
+                               |             |            |         ├─ #[i._image_icon 🖺] icon-2.svg
+                               |             |            |         └─ #[i._image_icon 🖺] icon-3.svg
+                               |             |            |
+                               |             |            ├─ #[i._image_icon 🖻] icon-1.png
+                               |             |            └─ #[i._image_icon 🖻] icon-2.png
+                               |             |
+                               |             └─ #[i._folder 🖿] brand ─┐
+                               |                          #[i._folder 🖿] symbols ─┐
+                               |                                      ├─ #[i._image_icon 🖺] logo-1.svg
+                               |                                      └─ #[i._image_icon 🖺] logo-2.svg
+                               ├─ #[i._folder 🖿] inline ─┐
+                               |             ├─ #[i._folder 🖿] home ─┐
+                               |             |           ├─ #[i._folder 🖿] hello ─ #[i._image_icon 🖺] hello.svg
+                               |             |           |
+                               |             |           ├─ #[i._folder 🖿] story ─ #[i._image_icon 🖻] story.png
+                               |             |           |
+                               |             |           └─ #[i._folder 🖿] thend ─ #[i._image_icon 🖼] thend.jpg
+                               |             |
+                               |             └─ #[i._folder 🖿] about ─┐
+                               |                          ├─ #[i._image_icon 🖺] graphic.svg
+                               |                          └─ #[i._image_icon 🖼] founder.jpg
+                               |
+                               └─ #[i._folder 🖿] linked ─ #[i._image_icon 🖻] favicon.png
+
+            aside structure #[b 6.1]
+
+    h4 Subject groups
+    
+    p.
+        A #[em subject] directory serves to demarcate our image assets. If the asset is used across
+        the project, it gets separated based on its function, otherwise according to the page it's 
+        used on in the case of #[em inline] images. This helps to make our file system more intuitive 
+        and speeds up both development and maintenance as less time is spent navigating and managing 
+        resources.
+    p.
+        In figure 6.1 #[span.dir sprite] and #[span.dir inline] each contain two subject directories: 
+        #[span.dir icons] and #[span.dir brand] in the former and #[span.dir home] and 
+        #[span.dir about] in the latter.
+    
+    aside
+        h6 &#128736; Dev notes
+        ul
+            li.
+                In the case of #[em inline] image groups, it may be beneficial to create further 
+                division beyond the #[em subject] point in order to make the file system easier to 
+                navigate and more intelligible. For instance, creating sub-folders that reflect the 
+                target view's main sections. For example, #[span.dir home] splits into 
+                #[span.dir hello], #[span.dir story] and #[span.dir thend] which are the 
+                corresponding sections of the #[span.file index.pug] view in #[span.dir home] 
+                (refer to templates).
+
+    h3 Sprite
+
+    p.
+        #[em Sprites] are home to images that are not confined to a particular section or document 
+        and are used throughout the project.
+
+    h4 Vector
+
+    p.
+        Global SVG's are compiled into sprite sheets. Depening on the intented use of the 
+        images, you may choose a particular flavour of sprite to be used exclusively or in 
+        tandem with another.
+    p.
+        Continuing with the example above, the images in #[span.dir icons] will become part 
+        of the #[em view] sprite and those contained in #[span.dir brand] will populate the 
+        #[em symbols] sprite.
+
+    aside
+        h6 &#9881; Build notes
+        ul
+            li.
+                The build system determines the required sprite type by looking at the SVG 
+                container's name. Currently, this can be either "views" or "symbols". Figure 6.1 
+                shows how we can produce a "view" #[em and] "symbol" sprite for different images in 
+                the same project by appropriately setting the directory names. Additional 
+                #[span.dir view] or #[span.dir symbol] folder's SVG's elsewhere in the sprite image 
+                directory will just be added to the original sprite file of its respective type.
+            li.
+                Vectors will undergo minification before being included in a sprite sheet.
+
+    aside
+        h6 &#128640; Perf notes
+        ul
+            li.
+                Sprites reduce HTTP lookups and are cacheable.
+
+    h4 Raster
+
+    p.
+        Rasters (png, jpg, webp, gif) can be placed in the same #[em subject] directory as 
+        SVG's, however not within a #[em view] or #[em symbol] folder as these are reserved for 
+        vectors. Note that the build system does not support sprite creation for rasters. If your 
+        project requires a raster-based sprite sheet, you can either extend the existing tooling or 
+        produce it manually and place it in the #[span.dir linked] folder - see below.
+
+    h3 Inline
+
+    p.
+        Images with a narrow, document-level scope are often inlined. They should be placed in the 
+        #[span.dir inline] directory (see figure 6.1). #[i Inline] graphics will not end up in a 
+        production build as they should be embedded in the development stage.
+
+    aside
+        h6 &#128640; Perf notes
+        ul
+            li.
+                Embedded images will generally improve page load time by reducing server trips.
+
+    aside
+        h6 &#9881; Build notes
+        ul
+            li.
+                Inline vectors are minified while rasters will be converted to #[i base64] during a 
+                development build.
+    
+    h3 Linked
+
+    p.
+        Some situations may call for a graphic to be made available as a discrete asset that can be 
+        cached and referenced by means of a URL. To earmark graphics for linking, group them in the 
+        #[span.dir linked] directory (fig. 6.1).
+
+    aside
+        h6 &#9881; Build notes
+        ul
+            li.
+                Linked graphics of the SVG and PNG formats will be minified on running a development 
+                or production build.

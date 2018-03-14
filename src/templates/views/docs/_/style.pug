@@ -1,0 +1,536 @@
+section(id="style" class="style")
+
+    h2 Style
+
+    .explain.code
+
+        .styl.map
+
+            pre
+                code.
+
+                    #[i._folder 🖿] style ─┐
+                              ├─ #[i._folder 🖿] _
+                              ├─ #[i._folder 🖿] views
+                              └─ #[i._style_icon 📄] root.styl
+
+            aside structure #[b 4.1]
+
+    p.
+        The #[span.dir style] directory is the central location from which we manage the project's
+        presentation. It expands into #[span.dir _], #[span.dir views] and #[span.file root.styl].
+        Styles are structured similar to #[em templates] in that both have their content logically
+        grouped with respect to its scope, either #[i global] or #[i local].
+
+    aside
+        h6 &#9881; Build notes
+        ul
+            li.
+                #[i Autoprefixer] will apply vendor prefixes according to the configuration in
+                #[span.file .browserslistrc].
+            li.
+                Only unique media queries remain after a build. Queries are combined by platform
+                (target value) with their associated styles and then stacked in a mobile-first order.
+                As there is no additional impact on performance, you can use the media
+                #[a(href="#style-mixins") mixins] liberally for granular control.
+
+    h3 Global
+
+    p.
+        General styles that have a site-wide impact are grouped according to type and referred to as
+        being #[em global]. These are #[span.file root.styl] and those contained in #[span.dir _]
+        (the partials folder), which are #[span.dir modules], #[span.dir plugins] and
+        #[span.dir elements].
+
+    h5 Root
+
+    .explain.code
+
+        .styl
+
+            pre
+                code.language-stylus.
+
+                    @require '_/modules'
+                    @require '_/plugins'
+                    @require '_/elements'
+
+                    @require 'views'
+
+            aside root.styl #[b 4.2]
+
+    p.
+        As the name suggests, #[span.file root.styl] serves to unify the integral parts of our
+        styles. To ensure all dependencies are met at build time, we first load the partials from
+        #[span.dir _] after which we process the individual view styles.
+
+    h5 Partials
+
+    p.
+        #[span.dir _] is a direct child of #[span.dir style] and houses the global partials.
+        #[span.file root.styl] is responsible for including these partials in a dependency-sensitive
+        manner. We first pull in #[span.dir modules], containing our base styles. We then fetch
+        #[span.dir plugins] which in turn makes all component styles available for use. Up next is
+        #[span.dir elements] from where we manage the styles of features that are common to all
+        views.
+
+    h4 Modules
+
+    .explain.code
+
+        .styl.map
+
+            pre
+                code.
+
+                    #[i._folder 🖿] modules ─┐
+                                ├─ #[i._style_icon 📄] index.styl
+                                ├─ #[i._style_icon 📄] cache.styl      #[span.comment &#129030; various placeholder styles]
+                                ├─ #[i._style_icon 📄] equalize.styl   #[span.comment &#129030; normalize / reset rules]
+                                ├─ #[i._style_icon 📄] forms.styl      #[span.comment &#129030; form defaults]
+                                ├─ #[i._style_icon 📄] globals.styl    #[span.comment &#129030; sundry global variables]
+                                ├─ #[i._style_icon 📄] graphics.styl   #[span.comment &#129030; image/graphic defaults]
+                                ├─ #[i._style_icon 📄] layout.styl     #[span.comment &#129030; basic structural styles]
+                                ├─ #[i._style_icon 📄] media.styl      #[span.comment &#129030; media and platform defaults]
+                                ├─ #[i._style_icon 📄] tables.styl     #[span.comment &#129030; table defaults]
+                                |
+                                ├─ #[i._folder 🖿] color ─┐
+                                |            ├─ #[i._style_icon 📄] index.styl    #[span.comment &#129030; set primary scheme]
+                                |            ├─ #[i._style_icon 📄] palette.styl  #[span.comment &#129030; global defaults]
+                                |            ├─ #[i._style_icon 📄] keys.styl     #[span.comment &#129030; shorthand references]
+                                |            └─ #[i._folder 🖿] schemes ─┐
+                                |                           ├─ #[i._folder 🖿] dark  #[span.comment &#129030; scheme package]
+                                |                           ├─ #[i._folder 🖿] gray
+                                |                           ├─ #[i._folder 🖿] light ─┐
+                                |                           ┆            ├─ #[i._style_icon 📄] index.styl
+                                |                                        ├─ #[i._style_icon 📄] palette.styl
+                                |                                        └─ #[i._style_icon 📄] dictionary.styl
+                                |
+                                ├─ #[i._folder 🖿] mixins ─┐  #[span.comment &#129030; manage mixins / functions]
+                                |             |
+                                |             ├─ #[i._style_icon 📄] index.styl
+                                |             ├─ #[i._style_icon 📄] color.styl
+                                |             ├─ #[i._style_icon 📄] conversion.styl
+                                |             ├─ #[i._style_icon 📄] effects.styl
+                                |             ├─ #[i._style_icon 📄] interaction.styl
+                                |             ├─ #[i._style_icon 📄] layout.styl
+                                |             └─ #[i._style_icon 📄] text.styl
+                                |
+                                └─ #[i._folder 🖿] text ─┐
+                                            ├─ #[i._style_icon 📄] index.styl
+                                            ├─ #[i._style_icon 📄] stacks.styl
+                                            ├─ #[i._folder 🖿] domains ─┐  #[span.comment &#129030; defaults for markup domains]
+                                            |              |
+                                            |              ├─ #[i._style_icon 📄] body.styl
+                                            |              ├─ #[i._style_icon 📄] headings.styl
+                                            |              ├─ #[i._style_icon 📄] paragraphs.styl
+                                            |              ├─ #[i._style_icon 📄] anchors.styl
+                                            |              ├─ #[i._style_icon 📄] lists.styl
+                                            |              ├─ #[i._style_icon 📄] forms.styl
+                                            |              ├─ #[i._style_icon 📄] monospaced.styl
+                                            |              └─ #[i._style_icon 📄] modifiers.styl
+                                            |
+                                            └─ #[i._folder 🖿] fonts ─┐
+                                                         ├─ #[i._style_icon 📄] font-1.styl  #[span.comment &#129030; face rules]
+                                                         ├─ #[i._style_icon 📄] font-2.styl
+                                                         ┆
+
+            aside modules #[b 4.3]
+
+    p.
+        The #[span.dir modules] directory group together all the generic, foundational styles. Use
+        #[span.file index.styl] for both activating existing modules and adding new ones. Figure 4.3
+        presents a terse summary of each module's function. While most modules are self-explanatory,
+        we'll cover the more involved ones next.
+
+    h5(id="style-color") Color
+
+    p.
+        Colors are managed centrally from within the #[span.dir color] module. Platframe has a
+        unique color system that combines the characteristics of schemes and scopes with the cascade.
+        This enables rapid, consistent and precise color modification.
+
+    h6 Palette
+
+    p.
+        Default colors that do not belong to a scheme package are managed from the top-level
+        #[span.file palette.styl]. This may include colors that belong to a custom theme, gradients
+        and sundry color classes.
+
+    h6 Schemes
+
+    p.
+        A color scheme is comprised of a package consisting of 3 files. Schemes are self-contained
+        and thus good for sharing between disparate Platframe projects.
+
+    ol
+        li #[span.file index.styl] &nbsp;🡒&nbsp; pulls in the dependants
+        li #[span.file palette.styl] &nbsp;🡒&nbsp; tie color values to special scheme variables
+        li #[span.file dictionary.styl] &nbsp;🡒&nbsp; hooks into the palette to build scheme
+
+    .explain.code
+
+        .styl
+
+            pre
+                code.language-stylus.
+
+                    .class
+                        color: scheme.default
+                        background: scheme.background
+
+            aside .styl #[b 4.4]
+
+    p.
+        Color dictionaries enable both internal as well as component styles to reference common,
+        generic color combinations. This means that color values which are authored against
+        Platframe's scheme protocol are decoupled from arbitrary colors and can thus receive its
+        ink from the active (parent) scheme. Figure 4.4 illustrate rules with basic dictionary
+        references.
+
+    .explain.code
+
+        .styl
+
+            pre
+                code.language-stylus.
+
+                    header
+                        color: scheme.header.default
+                        svg
+                            fill: scheme.header.vector
+
+            aside .styl #[b 4.5]
+
+    p.
+        Dictionaries are multi-dimensional to allow for more precision through the use of "scopes".
+        Scopes are special name-spaced sections defined in palettes and their related dictionaries
+        to target specific areas of the interface. For example, areas like #[code nav],
+        #[code header] and #[code footer] make a good case for scope creation as they often require
+        some degree of deviation from the basic scheme. Figure 4.5 samples a #[i header] scope in
+        action.
+
+    h6 Keys
+
+    p.
+        #[span.file keys.styl] contains shorthand references to the hierarchical color relationships
+        of the active scheme.
+
+    h6 Conventions
+
+    p.
+        Naming conventions help to avoid namespace collision and makes it easier to identify a
+        variable's purpose.
+
+    .explain.code
+
+        .styl
+
+            pre
+                code.language-stylus.
+
+                    // general colors: single underscore prefix
+                    _color = #FF6347
+                    // scheme colors: double underscore prefix
+                    __scheme_default = #000
+                    // gradients: triple underscore prefix
+                    ___gradient = #FFF 0%, #AAA 100%
+
+            aside .styl #[b 4.6]
+
+    h5(id="style-mixins") Mixins
+
+    p.
+        The style module ships with a number of convenience methods to speed up development. They
+        are categorized according to their functionality and grouped within sub-modules contained in
+        #[span.dir mixins].
+
+    h6 Color
+
+    p.mixin &#127292; &nbsp;
+        code schemer(scheme)
+
+    p.
+        Provides the ability to supercede the active global scheme on a local (view) level. Useful
+        in scenarios where a sub-section is themed differently from the rest of the project. Call
+        this mixin at the root level of the parent selector common to the target section(s) and pass
+        it a valid scheme name from a package in #[span.dir schemes]. Also affects nested components.
+
+    .explain.code
+
+        .pug
+
+            pre
+                code.language-pug.
+
+                    body(class="fancy")
+
+            aside .pug #[b 4.7]
+
+    .explain.code
+
+        .styl
+
+            pre
+                code.language-stylus.
+
+                    .fancy
+                        schemer(gray)
+
+            aside .styl #[b 4.8]
+
+    p.mixin &#127292; &nbsp;
+        code anchors(scheme, [scope])
+
+    p.
+        Exclusively target anchor elements for scheme change. May pass an existing scheme-scope as a
+        second argument to increase precision.
+
+    .explain.code
+
+        .styl
+
+            pre
+                code.language-stylus.
+
+                    // target general anchors
+                    .special-links
+                        anchors(gray)
+
+                    // override link values in scheme scope
+                    .dark-footer-links
+                        anchors(dark, footer)
+
+            aside .styl #[b 4.9]
+
+    h6 Conversion
+
+    p.mixin &#127292; &nbsp;
+        code rem(32px)
+
+    p.
+        Convert pixel values to #[em rem] units with #[code rem()] (fig. 4.10)
+
+    .explain.code
+
+        .styl
+
+            pre
+                code.language-stylus.
+
+                    font-size: rem(32px) // 2rem; :root = 16px
+
+            aside .styl #[b 4.10]
+
+    h6 Layout
+
+    p.mixin &#127292; &nbsp;
+        code +min(value)
+        span &#8192;|&#8192;
+        code +max(value)
+        span &#8192;|&#8192;
+        code +between(value, value)
+
+    p.
+        Media query helpers are provided to allow granular control for a mobile-first responsive
+        design. Acceptable arguments are literal values as well as numbers or keyword identifiers
+        correlating to the viewport scale as specified in #[span.file media.styl] (fig. 4.11).
+
+
+    .explain.code
+
+        .styl
+
+            pre
+                code.language-stylus.
+
+                    // target first breakpoint range
+                    +min(1)
+                    // pass an arbitrary literal
+                    +max(500px)
+                    // target interstice between 2nd &amp; 3rd breakpoints
+                    +between(second, third)
+
+            aside .styl #[b 4.11]
+
+    aside
+        h6 &#128736; Dev notes
+        ul
+            li.
+                Before beginning development, open #[span.file media.styl] in #[span.dir modules] to
+                modify the default platform breakpoints if they do not suit your app's requirements.
+                The breakpoints are stored in an array with the first value at index 1.
+
+    aside
+        h6 &#128640; Perf notes
+        ul
+            li.
+                The media query mixins may be used liberally for fine control in a responsive design.
+                While the impact on performance may be negligible, duplicate media queries are still
+                factored out during a build, leaving only unique combinations with their associated
+                rules to make it through to the production stylesheet.
+
+    h6 Grid
+
+    p.mixin &#127292; &nbsp;
+        code grid(width)
+
+    p.
+        The grid routine enables responsive, grid-based development (fig. 4.12). Check out
+        #[span.file layout.styl] in the mixins module for more configuration options.
+
+    .explain.code
+
+        .styl
+
+            pre
+                code.language-stylus.
+
+                    definition = 12    // set granularity
+                    interstice = 15px  // set gutter
+
+                    // 1 column / parent's full width
+                    .example-1
+                       grid(12)
+
+                    // 3 columns &amp; active gutter
+                    .example-2
+                       grid('third', true)
+
+                    // 2 columns, active gutter, override gutter
+                    .example-3
+                       grid(6, true, 2%)
+
+            aside .styl #[b 4.12]
+
+
+    aside
+        h6 &#128736; Dev notes
+        ul
+            li.
+                Flexbox is used by default for document layout. You can complement or replace this
+                approach by using the #[a(href="#style-mixins") grid mixin] for responsive,
+                grid-based development. Both useful for supporting older UA's and as an alternative
+                layout mode until native CSS grids enjoy sufficient support.
+
+    h4 Plugins
+
+    .explain.code
+
+        .styl.map
+
+            pre
+                code.
+
+                    #[i._folder 🖿] plugins ─┐
+                                ├─ #[i._style_icon 📄] index.styl
+                                ├─ #[i._folder 🖿] plugin-a ─ #[i._style_icon 📄] plugin.styl
+                                └─ #[i._folder 🖿] plugin-b ─ #[i._style_icon 📄] plugin.css
+
+            aside plugins #[b 4.13]
+
+    p.
+        External style resources can be used by linking to it from #[span.file index.styl] in
+        #[span.dir plugins]. Since Platframe's native components are essentially plugins too,
+        their styles are made available for use throughout our primary sheets by linking to them
+        from here.
+
+    h4 Elements
+
+    .explain.code
+
+        .styl.map
+
+            pre
+                code.
+
+                    #[i._folder 🖿] elements ─┐
+                                 ├─ #[i._style_icon 📄] index.styl
+                                 ├─ #[i._style_icon 📄] header.styl
+                                 └─ #[i._style_icon 📄] footer.styl
+
+            aside elements #[b 4.14]
+
+    p.
+        The styling of features that are commonly shared among views can be defined in
+        #[span.dir elements]. Figure 4.14 illustrates how the style rules for the
+        #[code &lt;header&gt;] and #[code &lt;footer&gt;] elements are segregated by default. We
+        take specificity into account by deploying these features only as direct children of the
+        #[code &lt;body&gt;] element, allowing for easier overriding in scenarios where the default
+        needs adaptation or replacement.
+
+    h3 Local
+
+    p.
+        Style files with local, page-level scope are confined to the #[span.dir views] directory.
+
+    h4 Views
+
+    .explain.code
+
+        .styl.map
+
+            pre
+                code.
+
+                    #[i._folder 🖿] views ─┐
+                              ├─ #[i._style_icon 📄] index.styl
+                              ├─ #[i._folder 🖿] home ─────┐
+                              |               ├─ #[i._style_icon 📄] _hello.styl
+                              |               ├─ #[i._style_icon 📄] _story.styl
+                              |               ├─ #[i._style_icon 📄] _convert.styl
+                              |               └─ #[i._style_icon 📄] index.styl
+                              |
+                              ├─ #[i._folder 🖿] category-1 ─ #[i._style_icon 📄] index.styl
+                              ├─ #[i._folder 🖿] category-2 ─ #[i._style_icon 📄] index.styl
+                              └─ #[i._folder 🖿] category-3 ─┐
+                                                ├─ index.styl
+                                                ├─ #[i._folder 🖿] sub-1 ─ #[i._style_icon 📄] index.styl
+                                                └─ #[i._folder 🖿] sub-2 ─ #[i._style_icon 📄] index.styl
+
+            aside views #[b 4.15]
+
+    p.
+        View styles are modular and pertain to specific sections and the pages within them.
+        Referring to the example directory structure above (figure 4.15), we see that each section
+        has a primary stylesheet in the form of #[span.file index.styl] and may divide into any
+        number of sub-sections. Akin to templates, this is a structural pattern that holds
+        regardless of hierarchical depth or breadth.
+
+    p.
+        You may notice parity in how our #[em style views] are structured in relation to their
+        counterpart #[em markup views] within #[span.dir templates]. Keeping with this pattern leads
+        to a more intuitive file system.
+
+    h5 View Partials
+
+    p.
+        Similar to templates, we deal with 2 types of partials in styles: #[i global] and #[i local].
+        Having covered global partials in the beginning of this section, let's focus on
+        partials as they're used in views.
+    p.
+        In line with convention, partial files not housed in a dedicated folder are individually
+        prepended with an underscore (refer to the section on partials in #[em templates]). Looking
+        at figure 4.15, we see that #[span.dir home] contains 3 partials: #[span.file _hello.styl],
+        #[span.file _story.styl] and #[span.file _convert.styl]. We'll use the main stylesheet for
+        the home section (#[span.file index.styl]) to gather these parts in their proper positions
+        by using the file import ability of #[i Stylus].
+
+    .explain.code
+
+        .styl
+
+            pre
+                code.language-stylus.
+
+                    .home
+                        #[span.comment // partials]
+                        @require '*_'
+
+            aside #[span index.styl] #[b 4.16]
+
+    p.
+        The above is a simplified sample that serves to illustrate a method for including all the
+        partials in a given directory (sectional level) by using #[code @require] (figure 4.16).
+        Whilst taking in mind the cascade, the partials are set to only be targeted as children of
+        #[code .home] as instructed by the indentation.

@@ -1,0 +1,58 @@
+.gist
+    .content
+        +min(2)
+            justify-content: space-between
+        > div
+            width: 100%
+            +min(2)
+                width: 45%
+            article
+                h3
+                    text-align: center
+                svg
+                    width: rem(120px)
+                    margin-bottom: rem(10px)
+                    +min(2)
+                        padding-top: rem(15px)
+                p
+                    font-size: rem(21px)
+                    +min(3)
+                        font-size: rem(24px)
+            &.gist-left
+                article:first-of-type
+                    svg
+                        float: left
+                        margin-right: rem(45px)
+                        +min(3)
+                            width: rem(140px)
+                article:last-of-type
+                    +min(3)
+                        margin-top: rem(40px)
+                    svg
+                        float: right
+                        margin-right: 0
+                        margin-left: rem(20px)
+                        +min(3)
+                            width: rem(140px)
+                            margin-left: rem(30px)
+            &.gist-right
+                article
+                    h3 + div
+                        clearfloat()
+                        svg
+                            float: left
+                            margin-right: rem(25px)
+                            +min(3)
+                                width: rem(140px)
+                                margin-bottom: 0
+                                padding-top: rem(5px)
+                        p
+                            margin-bottom: rem(7px)
+                    h4
+                        clear: left
+                        font-size: rem(16px)
+                        &::first-letter
+                            font-size: rem(18px)
+                    .explain.code
+                        div pre
+                            min-width: inherit

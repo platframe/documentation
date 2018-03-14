@@ -1,0 +1,155 @@
+section(class="component" id="2")
+
+    header
+
+        h3: span 2
+        dl.inline
+            div
+                dt Type
+                dd menu
+            div.comma
+                dt Tags
+                dd secondary
+                dd menu
+                dd fixed
+
+    h4 Preview
+
+    section.preview
+
+        .scroll
+
+            .pseudo
+                h5 Paragraph 1
+                p At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.
+                h5 Paragraph 2
+                p Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.
+                h5 Paragraph 3
+                p Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.
+
+        +nav-2([
+            {
+                href: "#2",
+                name: "Lorem"
+            },
+            {
+                href: "#2",
+                name: "Ipsum"
+            },
+            {
+                href: "#2",
+                name: "Consectetur"
+            },
+            {
+                href: "#2",
+                name: "Eiusmod"
+            }
+        ])
+
+    h4 Implementation
+
+    section.implement
+
+        .explain
+
+            .routine
+
+                h5 Markup
+
+                table
+                    caption
+                        | nav-2(
+                        i anchors
+                        |,
+                        i [hook]
+                        |)
+
+                    thead
+                        tr
+                            th Parameter
+                            th Definition
+                            th Description
+                            th Type
+                    tbody
+                        tr
+                            td.parameter anchors
+                            td.definition URL: set
+                            td.description navigation links
+                            td.type array, hash
+                        tr
+                            td.parameter hook
+                            td.definition attribute: class
+                            td.description arbitrary style hook
+                            td.type string
+
+            .brief
+
+                h5 Brief
+                p.
+                    A fixed-menu component for use on the right edge of a page.
+
+        .explain
+
+            .paths
+
+                h5 Paths
+
+                ul
+                    li location:&nbsp; #[code components/navigation/2]
+                    li activate:&nbsp; #[code templates/_/mixins.pug]
+
+            .dependencies
+
+                h5 Dependencies
+
+                ul
+                    li.pug
+                        svg: use(xlink:href="/assets/images/sprite/symbols.svg#html")
+                        span _.pug
+                    li.styl
+                        svg: use(xlink:href="/assets/images/sprite/symbols.svg#css")
+                        span index.styl
+
+        h5 Examples
+
+        .explain.code
+
+            .pug
+
+                pre
+                    code.language-pug.
+
+                        .content
+
+                            +nav-2([
+                                {
+                                    href: "/lorem/",
+                                    name: "Lorem"
+                                },
+                                {
+                                    href: "/ipsum/",
+                                    name: "Ipsum"
+                                },
+                                {
+                                    href: "/consectetur/",
+                                    name: "Consectetur"
+                                },
+                                {
+                                    href: "/eiusmod/",
+                                    name: "Eiusmod"
+                                }
+                            ])
+
+                aside .pug
+
+        .explain.code
+
+            .styl
+
+                pre
+
+                    code.language-stylus.
+
+                        nav-2()
+
+                aside .styl

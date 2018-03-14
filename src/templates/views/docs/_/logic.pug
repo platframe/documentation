@@ -1,0 +1,140 @@
+section(id="logic" class="logic")
+
+    h2 Logic
+
+    .explain.code
+
+        .js.map
+
+            pre
+                code.
+
+                    #[i._folder 🖿] logic ─┐
+                              ├─ #[i._folder 🖿] js ─┐
+                              |         ├─ #[i._js_icon 📄] root.js
+                              |         ├─ #[i._folder 🖿] libs ─┐
+                              |         |           ├─ #[i._folder 🖿] int ─┐
+                              |         |           |          ├─ #[i._js_icon 📄] animation.js
+                              |         |           |          ├─ #[i._js_icon 📄] math.js
+                              |         |           |          ┆
+                              |         |           |
+                              |         |           └─ #[i._folder 🖿] ext ─┐
+                              |         |                      └─ #[i._folder 🖿] lib-a ─┐
+                              |         |                                   ├─ #[i._js_icon 📄] x.x.x.js
+                              |         |                                   └─ #[i._js_icon 📄] x.x.x.min.js
+                              |         └─ #[i._folder 🖿] modules ─┐
+                              |                        ├─ #[i._js_icon 📄] module.js
+                              |                        ┆
+                              ├─ #[i._folder 🖿] lang-x
+                              ┆
+
+            aside structure #[b 5.1]
+
+    p.
+        Scripted functionality is contained in #[span.dir logic]. While it is set up for JavaScript
+        development by default, it may also be used to house logic from other languages (Fig. 5.1).
+
+    h3 JavaScript
+
+    p.
+        Your project's JavaScript is managed from the #[span.dir js] directory. Its immediate
+        children are #[span.file root.js], #[span.dir libs] and #[span.dir modules].
+
+    h4 Root
+
+    .explain.code
+
+        .js
+
+            pre
+                code.language-javascript.
+
+                    // general functionality
+                    import { function } from 'modules/module';
+
+                    // component logic
+                    import header from 'headers/1/_';
+
+                    // external package from node_modules
+                    import 'fancylib';
+
+                    // manage execution
+                    document.addEventListener('DOMContentLoaded', () => {
+                        header();
+                    });
+
+            aside root.js #[b 5.2]
+
+    p.
+        As the main entry point for your app's JavaScript, #[span.file root.js] consume both the
+        project's own logic as well as #[abbr(title="Node Package Manager") NPM] dependencies,
+        permitting that they use the standard (ES6) module syntax. While Platframe does not support
+        idiosyncratic methods like #[em CommonJS] out of the box, it
+        #[a(href="//www.npmjs.com/package/rollup-plugin-commonjs") can be enabled].
+
+    aside
+        h6 &#9881; Build notes
+        ul
+            li.
+                #[i Babel] will transpile your JS/ES6 with respect to the configuration in
+                #[span.file .browserslistrc], located in the root of your project. It's populated
+                with some defaults but may need modification to cover your app's target environments.
+            li.
+                #[i Rollup] bundles #[span.file root.js] as an
+                #[abbr(title="immediately-invoked function expression") IIFE] into a single
+                client-side dependency. It is loaded via a #[i defer] directive in
+                #[span.file head.pug] but could be moved to the #[a(href="#templates-body") footer]
+                block in #[span.file body.pug] if needed.
+
+    h4 Libs
+
+    p.
+        The #[span.dir libs] folder is a direct child of the parent language directory and contain
+        the respective native (#[span.dir int]) and 3#[sup rd] party libraries (#[span.dir ext])
+        that your app consumes.
+
+    aside
+        h6 &#128736; Dev notes
+        ul
+            li.
+                The framework does not rely on or include any external #[em client-side] libraries.
+                Consider them with respect to your project.
+
+    h5 Internal
+
+    p.
+        The native library is made up by a collection of utility modules contained in
+        #[span.dir int] (fig. 5.1). They are separated by type and consist of low-level, "atomic"
+        functionality that essentially derives its usefulness from being part of larger compilations.
+        They serve to make your code #[abbr(title="Don't Repeat Yourself") DRY] by being shared
+        between higher level functionality in #[span.dir modules] and #[span.dir components].
+        Utilities may also be interdependant.
+
+    h5 External
+
+    p.
+        #[span.dir ext] contains your project's external (3#[sup rd] party), client-side libraries
+        that are not provisioned with a package manager like
+        #[abbr(title="Node Package Manager") NPM].
+
+    h4 Modules
+
+    p.
+        Logic that are neither part of a component nor qualify as a simple utility should be placed
+        in #[span.dir modules]. You decide how modules are structured as it may depend on factors
+        beyond the framework's reach, such as the development pattern in use and the scale of your
+        project.
+
+    aside
+        h6 &#128736; Dev notes
+        ul
+            li.
+                One way of keeping #[span.dir modules] organized and navigable is to separate code
+                into individual files based on their general functionality. Naturally,
+                the smaller each file's domain, the more partitions (files) you'll have so, decide
+                on a scope that works for you / your team. Note that this will also determine how
+                you export your module's functionality, i.e. #[i default] for a single module or
+                #[i named] for a collection of modules that shares type.
+            li.
+                Keep in mind that scripts may at first be placed in #[span.dir modules] and then at
+                a later stage be pulled out and refactored as part of a new component.

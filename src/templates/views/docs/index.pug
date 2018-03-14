@@ -1,0 +1,37 @@
+extends ../../_/body
+
+//- variables
+block context
+    -
+        bodyId = 'docs';
+        bodyClass = 'docs index';
+        pageTitle = 'Documentation | Platframe';
+
+//- header
+block header
+
+    +header-2('/#front', 'logo', 'Platframe', 'Documentation', [
+        {
+            href: "/",
+            name: "Home"
+        }
+    ], false, "themed")
+
+//- body
+block main
+
+    main(role="main")
+        
+        div(class="content")
+
+            include _/start
+            include _/architecture
+            include _/templates
+            include _/style
+            include _/logic
+            include _/images
+            include _/fonts
+            //- component docs @ /components/
+            include _/contribute
+                
+        include _/nav-2

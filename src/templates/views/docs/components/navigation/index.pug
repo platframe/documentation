@@ -1,0 +1,28 @@
+extends ../../../../_/body
+
+//- variables
+block context
+    - 
+        bodyId = 'docs';
+        bodyClass = 'docs components category navigation';
+        pageTitle = 'Components - Navigation | Platframe';
+
+//- header
+block header
+
+    //- assets
+    include ../_/data
+
+    +header-2(args.url, args.icon, args.h1, 'Navigation', args.crumbs, args.nav, args.hook)
+
+//- body
+block main
+
+    main(role="main")
+
+        div(class="content")
+            
+            include _1
+            include _2
+
+        include ../_/nav-2_cmpnt
