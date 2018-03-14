@@ -6,6 +6,7 @@
 
 <p align="center">
     <a href="https://travis-ci.org/platframe/platframe-docs"><img src="https://travis-ci.org/platframe/platframe-docs.svg?branch=master"></a>
+    <a href="https://www.codacy.com/app/gidhon/platframe-docs?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=platframe/platframe-docs&amp;utm_campaign=Badge_Grade"><img src="https://api.codacy.com/project/badge/Grade/d0144aec63154afdacc926eb3322a65d"/></a>
     <a href="https://david-dm.org/platframe/platframe-docs?type=dev"><img src="https://david-dm.org/platframe/platframe-docs/dev-status.svg"></a>
     <a href="https://nodesecurity.io/orgs/platframe/projects/e031a7e8-437c-4ffc-aeab-1e6721a4b3e1"><img src="https://nodesecurity.io/orgs/platframe/projects/e031a7e8-437c-4ffc-aeab-1e6721a4b3e1/badge"></a>
     <a href="http://t.me/platframe"><img src="https://img.shields.io/badge/telegram-chat-30A7DE.svg"></a>
