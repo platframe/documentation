@@ -22,7 +22,7 @@ npm run serve
 Read the [docs](http://platframe.com/docs) for more details on deployment.
 
 ## Contributing
-Refer to the contribution [guidelines](CONTRIBUTING.md) on how to get started.
+Refer to the contribution [guidelines](.github/CONTRIBUTING.md) on how to get started.
 
 ## License
 Released under the [MIT](LICENSE) license.
