@@ -18,7 +18,7 @@ section(class="component" id="1")
 
     section.preview
 
-        +form-1("/", "get", true, true)
+        +form-1("", "/", "get", true, true)
 
     h4 Implementation
 
@@ -33,6 +33,8 @@ section(class="component" id="1")
                 table
                     caption
                         | form-1(
+                        i legend
+                        |,
                         i action
                         |,
                         i method
@@ -50,6 +52,10 @@ section(class="component" id="1")
                             th Description
                             th Type
                     tbody
+                        tr
+                            td.parameter legend
+                            td.description form caption (core fieldset)
+                            td.type string
                         tr
                             td.parameter action
                             td.description URL for the form processing logic
@@ -113,7 +119,7 @@ section(class="component" id="1")
                 pre
                     code.language-pug.
 
-                        +form-1("/processor.php", "post", true, true)
+                        +form-1("Post", "assets/logic/php/process.php", "post", false, true)
 
                 aside .pug
 
