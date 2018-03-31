@@ -13,6 +13,10 @@ section(class="canvas front" id="front")
             a(href="#gist") Get the gist
             a(href="/docs/") Read the docs
 
+    //-
+        receives the version from package.json, should thus maintain "artificial"
+        release equality with platframe (core) - in this repo's package config
+
     - bannerText = "v" + version
     
     +nav-1("next", "nav-1-stroke")
