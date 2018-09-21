@@ -1,7 +1,7 @@
 {
   "name": "platframe.com",
   "description": "Website and documentation for Platframe.",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "scripts": {
     "start": "grunt",
     "develop": "grunt develop",
