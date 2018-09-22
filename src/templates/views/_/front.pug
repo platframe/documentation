@@ -17,7 +17,7 @@ section(class="canvas front" id="front")
         receives the version from package.json, should thus maintain "artificial"
         release equality with platframe (core) - in this repo's package config
 
-    - bannerText = "v" + version
+    - bannerText = "v" + process.env.npm_package_version
     
     +nav-1("next", "nav-1-stroke")
     +banner-1("//github.com/platframe/platframe", bannerText)

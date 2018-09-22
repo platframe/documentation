@@ -3,7 +3,6 @@ module.exports = {
     options: {
         data: {
             env: '<%= env %>',
-            version: '<%= package.version %>',
             timestamp: '<%= new Date().getTime() %>'
         }
     },
