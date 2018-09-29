@@ -5,29 +5,31 @@ section(id="start" class="start")
     h4 Install
 
     p.
-        #[b 1.&nbsp;] Ensure that you have
-        #[a(href="https://nodejs.org" title="≥ v6") Node.js] and NPM or
-        #[a(href="https://yarnpkg.com") Yarn] on your machine.
+        #[b 1.&nbsp;] You'll need
+        #[a(href="https://nodejs.org" title="≥ v8") Node.js], 
+        #[span(title="≥ v5.2") NPM] or 
+        #[a(href="https://yarnpkg.com") Yarn] and
+        #[a(href="https://github.com/Rich-Harris/degit") degit]
 
     div.install-options
         b 2.
         div
-            p #[span ⓐ]&nbsp; #[a(href=`https://github.com/platframe/platframe/archive/v${ process.env.npm_package_version }.zip`) Download the latest release] or
-            p #[span ⓑ]&nbsp; #[code git clone https://github.com/platframe/platframe.git project]
+            p #[span ⓐ]&nbsp; #[code npx degit github:platframe/platframe new-project]
+            p #[span ⓑ]&nbsp; or #[a(href=`https://github.com/platframe/platframe/archive/v${ process.env.npm_package_version_platframe }.zip`) download] the latest release
 
-    p #[b 3.&nbsp;] In the root of your project, run&nbsp; #[code yarn] &nbsp;or&nbsp; #[code npm install]
+    p #[b 3.&nbsp;] #[code cd new-project && git init && yarn]
 
     h4 Develop
 
-    p Spin up a dev environment with&nbsp; #[code grunt develop]
+    p Spin up a dev environment with&nbsp; #[code npm development]
     p By default, the auto-sync development server runs at&nbsp; #[code localhost:3003]
 
     h4 Test
 
-    p Run your test suit with&nbsp; #[code grunt test]
-    p Build, test and locally serve a production build for inspection:&nbsp; #[code grunt preflight]
+    p Run your test suit with&nbsp; #[code npm test]
+    p Build, test and locally serve a production build for inspection:&nbsp; #[code npm preflight]
 
     h4 Deploy
 
-    p For an optimized, production-targeted build:&nbsp; #[code grunt build]
-    p Deployment logic can be run with:&nbsp; #[code grunt deploy]
+    p For an optimized, production-targeted build:&nbsp; #[code npm production]
+    p Deployment logic can be run with:&nbsp; #[code npm deploy]

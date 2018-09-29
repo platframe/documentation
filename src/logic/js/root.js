@@ -2,7 +2,12 @@
 ┃ Main entry point for client-side JavaScript, bundled as IIFE.      ┃
 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 
-// 🔄 DEPENDENCIES
+// DEPENDENCIES
+
+// external
+import 'prismjs';
+import 'prismjs/components/prism-pug.js';
+import 'prismjs/components/prism-stylus.js';
 
 // modules
 import { smooth } from 'modules/scroll';
@@ -16,12 +21,7 @@ import footer from 'footers/1/_';
 import header_1 from 'headers/1/internal/_';
 import nav_1 from 'navigation/1/internal/_';
 
-// npm
-import 'prismjs';
-import 'prismjs/components/prism-pug.js';
-import 'prismjs/components/prism-stylus.js';
-
-// ⚙ EXECUTION
+// EXECUTION
 document.addEventListener('DOMContentLoaded', () => {
 
     smooth();

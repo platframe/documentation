@@ -15,7 +15,8 @@
 ## Deploying
 Instructions for hosting the documentation locally:
 ```bash
-git clone https://github.com/platframe/platframe-docs.git
+mkdir manual && cd $_
+npx degit github:platframe/platframe-docs
 npm install # or yarn
 npm run serve
 ```
