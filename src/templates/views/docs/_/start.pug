@@ -6,30 +6,28 @@ section(id="start" class="start")
 
     p.
         #[b 1.&nbsp;] You'll need
-        #[a(href="https://nodejs.org" title="≥ v8") Node.js], 
-        #[span(title="≥ v5.2") NPM] or 
-        #[a(href="https://yarnpkg.com") Yarn] and
-        #[a(href="https://github.com/Rich-Harris/degit") degit]
+        #[span(title="≥ v8") Node.js] and 
+        #[span(title="≥ v5.2") NPM] or Yarn
 
     div.install-options
         b 2.
         div
-            p #[span ⓐ]&nbsp; #[code npx degit github:platframe/platframe new-project]
+            p #[span ⓐ]&nbsp; #[code npx degit platframe/new my-app]
             p #[span ⓑ]&nbsp; or #[a(href=`https://github.com/platframe/platframe/archive/v${ process.env.npm_package_version_platframe }.zip`) download] the latest release
 
-    p #[b 3.&nbsp;] #[code cd new-project && git init && yarn]
+    p #[b 3.&nbsp;] #[code cd my-app && git init && yarn]
 
     h4 Develop
 
-    p Spin up a dev environment with&nbsp; #[code npm development]
+    p Spin up a dev environment with&nbsp; #[code npm run development]
     p By default, the auto-sync development server runs at&nbsp; #[code localhost:3003]
 
     h4 Test
 
     p Run your test suit with&nbsp; #[code npm test]
-    p Build, test and locally serve a production build for inspection:&nbsp; #[code npm preflight]
+    p Build, test and locally serve a production build for inspection:&nbsp; #[code npm run preflight]
 
     h4 Deploy
 
-    p For an optimized, production-targeted build:&nbsp; #[code npm production]
-    p Deployment logic can be run with:&nbsp; #[code npm deploy]
+    p For an optimized, production-targeted build:&nbsp; #[code npm run production]
+    p Deployment logic can be run with:&nbsp; #[code npm run deploy]
