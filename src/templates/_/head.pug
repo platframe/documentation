@@ -14,7 +14,7 @@ head
     title= pageTitle || "Platframe | A Structured Frontend Development Platform"
 
     block links
-        - if (env === 'prod')
+        - if (env === 'prd')
             link(rel="preload" href="http://fonts.gstatic.com/s/titilliumweb/v6/r9OmwyQxrgzUAhaLET_KO86gOKNGPbHY3c2d_06TbvM.woff2" as="font" crossorigin)
             link(rel="preload" href="http://fonts.gstatic.com/s/titilliumweb/v6/r9OmwyQxrgzUAhaLET_KO6qVnG43xFTRN40gwdrG-aE.woff2" as="font" crossorigin)
             link(rel="preload" href="http://fonts.gstatic.com/s/titilliumweb/v6/anMUvcNT0H1YN4FII8wpr9INifKjd1RJ3NxxEi9Cy2w.woff2" as="font" crossorigin)
@@ -32,7 +32,7 @@ head
 
     block scripts
         script(defer src="/assets/logic/js/root.js")
-        - if (env === 'prod')
+        - if (env === 'prd')
             script(async src="https://www.googletagmanager.com/gtag/js?id=UA-112418634-1")
             script.
                 window.dataLayer = window.dataLayer || [];
