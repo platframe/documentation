@@ -35,31 +35,34 @@ section(id="templates" class="templates")
                 code.language-pug.
 
                     doctype html
-                    html(lang="en")
+
+                    block context
+
+                    html(lang="en" class=rootClass)
 
                         include _/mixins
-
-                        block context
 
                         include _/head
 
                         block body
+
             aside root.pug #[b 3.1]
 
     p.
-        By looking at figure 3.1, we can see  that #[span.file root.pug] declares the doctype, sets
-        the root HTML element with associated attributes and then goes on to pull in the remaining
-        structural parts of the project, serving as the common ancestor for all markup. It loads the
-        #[em global] partials (contained in the sibling #[span.dir _] directory) in a
-        dependency-sensitive order.
+        By looking at figure 3.1, we can see that #[span.file root.pug] declares
+        the doctype, introduces a document context and sets the root HTML
+        element with two default attributes. It then goes on to pull in the
+        dependencies, serving as the common ancestor for all markup. It loads
+        the #[em global] partials (contained in the sibling #[span.dir _]
+        directory) in a dependency-sensitive order.
     p.
-        First, we include #[span.file mixins.pug], used for your own mixin collection as well as
-        referencing those of components that the project make use of.
+        First, with #[code block context] we reserve a "context" block that will
+        allow us to inject data into the page that can then be consumed by all
+        the descendant nodes of the root #[code document] object.
     p.
-        Next, with #[code block context] we reserve a "context" block that will allow us to inject
-        variables that can be consumed by all the descendants of the root HTML tag. For instance,
-        this is useful for changing the page title in the HEAD and set ID and CLASS attributes on
-        the BODY element of each page.
+        Next, we include #[span.file mixins.pug], used for your own mixin
+        collection as well as referencing those of components that the project
+        make use of.
 
     h4#templates-head Head
 
@@ -80,12 +83,12 @@ section(id="templates" class="templates")
                         title= pageTitle || 'Or Fallback to Default Title'
 
                         block links
-                            - if (env === 'prod')
+                            - if (ENV === 'production')
                                 link(rel="stylesheet" href="//cdn.example.com/lib.css")
                             link(rel="stylesheet" href="/assets/style/root.css")
 
                         block scripts
-                            - if (env === 'dev')
+                            - if (ENV === 'development')
                                 script(src="/assets/logic/js/libs/lib-a/x.x.x.js")
                             - else
                                 script(defer src="//cdn.example.com/lib/x.x.x.js")
@@ -241,26 +244,26 @@ section(id="templates" class="templates")
 
             pre
                 code.
-                    #[i._folder 🖿] views─┐
-                             ├─ #[i._markup_icon 📄] index.pug
-                             ├─ #[i._folder 🖿] about ── #[i._markup_icon 📄] index.pug
-                             ├─ #[i._folder 🖿] menu ─┐
-                             |           ├─ #[i._markup_icon 📄] index.pug
-                             |           ├─ #[i._folder 🖿] _        ── #[i._markup_icon 📄] nav-2.pug
-                             |           ├─ #[i._folder 🖿] starters ── #[i._markup_icon 📄] index.pug
-                             |           ├─ #[i._folder 🖿] main     ── #[i._markup_icon 📄] index.pug
-                             |           ├─ #[i._folder 🖿] desserts ── #[i._markup_icon 📄] index.pug
-                             |           └─ #[i._folder 🖿] drinks ─┐
-                             |                         ├─ #[i._markup_icon 📄] index.pug
-                             |                         ├─ #[i._folder 🖿] juice  ── #[i._markup_icon 📄] index.pug
-                             |                         ├─ #[i._folder 🖿] coffee ── #[i._markup_icon 📄] index.pug
-                             |                         └─ #[i._folder 🖿] beer ─┐
-                             |                                     ├─ #[i._markup_icon 📄] index.pug
-                             |                                     ├─ #[i._folder 🖿] draft ── #[i._markup_icon 📄] index.pug
-                             |                                     ├─ #[i._folder 🖿] craft ── #[i._markup_icon 📄] index.pug
-                             |                                     └─ #[i._folder 🖿] local ── #[i._markup_icon 📄] index.pug
-                             ├─ #[i._folder 🖿] reservations ── #[i._markup_icon 📄] index.pug
-                             └─ #[i._folder 🖿] contact      ── #[i._markup_icon 📄] index.pug
+                    #[i.emoji-folder] views─┐
+                             ├─ #[i.emoji-file] index.pug
+                             ├─ #[i.emoji-folder] about ── #[i.emoji-file] index.pug
+                             ├─ #[i.emoji-folder] menu ─┐
+                             |           ├─ #[i.emoji-file] index.pug
+                             |           ├─ #[i.emoji-folder] _        ── #[i.emoji-file] nav-2.pug
+                             |           ├─ #[i.emoji-folder] starters ── #[i.emoji-file] index.pug
+                             |           ├─ #[i.emoji-folder] main     ── #[i.emoji-file] index.pug
+                             |           ├─ #[i.emoji-folder] desserts ── #[i.emoji-file] index.pug
+                             |           └─ #[i.emoji-folder] drinks ─┐
+                             |                         ├─ #[i.emoji-file] index.pug
+                             |                         ├─ #[i.emoji-folder] juice  ── #[i.emoji-file] index.pug
+                             |                         ├─ #[i.emoji-folder] coffee ── #[i.emoji-file] index.pug
+                             |                         └─ #[i.emoji-folder] beer ─┐
+                             |                                     ├─ #[i.emoji-file] index.pug
+                             |                                     ├─ #[i.emoji-folder] draft ── #[i.emoji-file] index.pug
+                             |                                     ├─ #[i.emoji-folder] craft ── #[i.emoji-file] index.pug
+                             |                                     └─ #[i.emoji-folder] local ── #[i.emoji-file] index.pug
+                             ├─ #[i.emoji-folder] reservations ── #[i.emoji-file] index.pug
+                             └─ #[i.emoji-folder] contact      ── #[i.emoji-file] index.pug
 
             aside nesting pattern #[b 3.5]
 
@@ -293,13 +296,13 @@ section(id="templates" class="templates")
 
             pre
                 code.
-                    #[i._folder 🖿] templates ─┐
-                                  ├─ #[i._markup_icon 📄] root.pug
-                                  ├─ #[i._folder 🖿] views
-                                  └─ #[i._folder 🖿] _ ─┐
-                                           ├─ #[i._markup_icon 📄] mixins.pug
-                                           ├─ #[i._markup_icon 📄] head.pug
-                                           └─ #[i._markup_icon 📄] body.pug
+                    #[i.emoji-folder] templates ─┐
+                                  ├─ #[i.emoji-file] root.pug
+                                  ├─ #[i.emoji-folder] views
+                                  └─ #[i.emoji-folder] _ ─┐
+                                           ├─ #[i.emoji-file] mixins.pug
+                                           ├─ #[i.emoji-file] head.pug
+                                           └─ #[i.emoji-file] body.pug
             aside global partials #[b 3.6]
 
     p.
@@ -331,13 +334,13 @@ section(id="templates" class="templates")
 
             pre
                 code.
-                    #[i._folder 🖿] section x ─┐
-                                  ├─ #[i._markup_icon 📄] _1.pug
-                                  ├─ #[i._markup_icon 📄] _2.pug
-                                  ├─ #[i._markup_icon 📄] _3.pug
-                                  ├─ #[i._markup_icon 📄] _4.pug
-                                  ├─ #[i._markup_icon 📄] _5.pug
-                                  └─ #[i._markup_icon 📄] index.pug
+                    #[i.emoji-folder] section x ─┐
+                                  ├─ #[i.emoji-file] _1.pug
+                                  ├─ #[i.emoji-file] _2.pug
+                                  ├─ #[i.emoji-file] _3.pug
+                                  ├─ #[i.emoji-file] _4.pug
+                                  ├─ #[i.emoji-file] _5.pug
+                                  └─ #[i.emoji-file] index.pug
 
             aside content partials #[b 3.7]
 

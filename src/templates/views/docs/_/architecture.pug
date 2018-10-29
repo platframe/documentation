@@ -8,13 +8,13 @@ section(id="architecture" class="architecture")
 
     figure
         figcaption architecture #[strong 2.1]
-        img(src="/assets/images/linked/architecture.svg" alt="diagram of Platframe's architecture")
+        img(src="/assets/images/linked/architecture.svg" alt="Diagram of Platframe's frontend architecture")
 
     h4 root
 
     p.
         The #[span.dir root] directory contains your project. It is the parent of the 
-        #[span.dir src], #[span.dir dev] and #[span.dir prod] directories (explained below). It also 
+        #[span.dir src], #[span.dir dev] and #[span.dir prd] directories (explained below). It also 
         contains files not present on the above schematic, such as configuration, tooling and 
         metadata. Be sure to change "root" to something more descriptive, as you see fit for your 
         project.
@@ -31,7 +31,7 @@ section(id="architecture" class="architecture")
         This is where the build system deploys and serves the project during development. Where 
         applicable, assets are optimized for developmental purposes.
 
-    h4 prod
+    h4 prd
 
     p.
         The production build is located here. As illustrated by the schematic, directory layout is 
