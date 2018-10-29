@@ -11,6 +11,7 @@ var path = require('path'),
     svgoPlugins = [
         { removeViewBox:              false }, // remove viewBox attribute
         { removeTitle:                false }, // remove <title>
+        { removeDesc:                 false }, // remove <desc>
         { mergePaths:                 false }, // merge multiple paths into one
         { convertStyleToAttrs:        false }, // convert styles into attributes
         { moveGroupAttrsToElems:      false }, // move some group attributes to the content elements
