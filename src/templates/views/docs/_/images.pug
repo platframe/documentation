@@ -54,8 +54,9 @@ section(id="images" class="images")
     p.
         The build system determines the appropriate image processing steps by
         inferring the implementation type from the directory name. To signify
-        their significance and avoid naming collisions with subject groups,
-        implementation directories are prefixed with an underscore.
+        their significance, avoid naming collisions with subject groups, and 
+        speed up visual grepping of the file system, implementation directories 
+        are prefixed with an underscore.
 
     p.
         There are currently four implementation types under which image assets
@@ -67,20 +68,19 @@ section(id="images" class="images")
     h4 Inline
 
     p.
-        To designate images for inlining into either markup or styles, place
-        them in a folder named #[span.dir _inline]. Ensure that you use relative
-        paths when referencing them in your source.
+        To designate images for inlining into either markup or styles, place them in a folder named #[span.dir _inline]. Ensure that you use a relative path to the #[span.dir images] directory in #[span.dir src] when referencing these assets in your code. Additionally, to inline an
+        image in your markup you'll need to add #[code inline] as an attribute
+        of the element in question.
 
     aside
-        h6.icon-dev Development notes
+        h6.i-emoji-hammer-wrench Development notes
         ul
             li.
-                User agents enforce limits on URL length, thereby restricting
-                the size of inlined images.
+                User agents enforce limits on URL length, thereby restricting the size of images inlined via the URL method.
 
 
     aside
-        h6.icon-prf Performance notes
+        h6.i-emoji-rocket Performance notes
         ul
             li.
                 Inline images are not individually cached by the user agent.
@@ -93,12 +93,12 @@ section(id="images" class="images")
                 roughly 30%.
 
     aside
-        h6.icon-bld Build notes
+        h6.i-emoji-gear Build notes
         ul
             li.
-                Inline vectors are minified
+                Inline vectors are minified.
             li.
-                Bitmaps are converted to #[i base64]
+                Only bitmaps will be converted to #[i base64].
 
     h4 Linked
 
@@ -107,7 +107,7 @@ section(id="images" class="images")
         grouping them in a #[span.dir _linked] directory (fig. 6.1).
 
     aside
-        h6.icon-bld Build notes
+        h6.i-emoji-gear Build notes
         ul
             li.
                 If additional optimization is possible, linked #[code .svg],
@@ -128,7 +128,7 @@ section(id="images" class="images")
         #[span.dir icons] will be added to the #[em view] sprite.
 
     aside
-        h6.icon-dev Development notes
+        h6.i-emoji-hammer-wrench Development notes
         ul
             li.
                 The name of an image will become its #[em fragment identifier]
@@ -167,13 +167,13 @@ section(id="images" class="images")
             aside index.styl #[b 6.3]
 
     aside
-        h6.icon-bld Build notes
+        h6.i-emoji-gear Build notes
         ul
             li.
                 Vectors will undergo minification before being included in a sprite sheet.
 
     aside
-        h6.icon-prf Performance notes
+        h6.i-emoji-rocket Performance notes
         ul
             li.
                 Sprites reduce HTTP lookups and are cacheable.
