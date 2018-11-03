@@ -9,26 +9,26 @@ section(id="fonts" class="fonts")
             pre
                 code.
 
-                    #[i._folder 🖿] fonts ─┐
-                              ├─ #[i._folder 🖿] font-1 ─┐
-                              |             ├─ #[i._font_icon 🗛] black.woff
-                              |             ├─ #[i._font_icon 🗛] bold.woff
-                              |             ├─ #[i._font_icon 🗛] light.woff
-                              |             └─ #[i._font_icon 🗛] regular.woff
+                    #[i.i-emoji-folder] fonts ─┐
+                              ├─ #[i.i-emoji-folder] font-1 ─┐
+                              |             ├─ #[i.i-emoji-letters] black.woff
+                              |             ├─ #[i.i-emoji-letters] bold.woff
+                              |             ├─ #[i.i-emoji-letters] light.woff
+                              |             └─ #[i.i-emoji-letters] regular.woff
                               |
-                              └─ #[i._folder 🖿] font-2
+                              └─ #[i.i-emoji-folder] font-2
 
             aside structure #[b 7.1]
 
     p.
-        Fonts are contained in the #[span.dir fonts] folder and managed from the #[em fonts] module 
-        in #[span.dir style]. By default the framework is setup to work with a typography 
-        #[abbr(title="Content Delivery Network") CDN] in production. This means that the #[em local] 
-        type assets contained in #[span.dir fonts] are to be included for development purposes only 
-        and are not transfered to the production build. This avoids potential connectivity issues 
+        Fonts are contained in the #[span.dir fonts] folder and managed from the #[em fonts] module
+        in #[span.dir style]. By default the framework is setup to work with a typography
+        #[abbr(title="Content Delivery Network") CDN] in production. This means that the #[em local]
+        type assets contained in #[span.dir fonts] are to be included for development purposes only
+        and are not transfered to the production build. This avoids potential connectivity issues
         that slows down development.
-        
+
     p.
-        If your project makes use of custom fonts, modify #[span.file head.pug] to configure your 
-        provider. Platframe uses #[a(href="https://fonts.google.com/") Google&trade; Fonts] as 
+        If your project makes use of custom fonts, modify #[span.file head.pug] to configure your
+        provider. Platframe uses #[a(href="https://fonts.google.com/") Google&trade; Fonts] as
         the default font service in production.

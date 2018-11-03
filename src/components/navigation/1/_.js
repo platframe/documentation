@@ -8,11 +8,14 @@ export default function() {
             triggers = document.querySelectorAll('[data-go]'),
             duration = 500;
 
+        // console.log(triggers);
+
+
         for (let trigger of triggers) {
 
             // determine the intended destination
             let destination = (trigger.attributes['data-go'].value === 'next')
-                ? (trigger.parentNode.nextElementSibling)
+                ? trigger.parentNode.nextElementSibling
                 : context;
 
             trigger.addEventListener('click', function(event) {
@@ -24,8 +27,7 @@ export default function() {
 
                 } else {
 
-                    destination = destination.offsetTop;
-                    scroll(destination, duration);
+                    scroll(destination.offsetTop, duration);
 
                 }
                 event.stopPropagation;
