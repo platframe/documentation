@@ -8,9 +8,6 @@ export default function() {
             triggers = document.querySelectorAll('[data-go]'),
             duration = 500;
 
-        // console.log(triggers);
-
-
         for (let trigger of triggers) {
 
             // determine the intended destination

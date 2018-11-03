@@ -1,11 +1,11 @@
 {
   "name": "platframe.com",
   "description": "Website and documentation for Platframe.",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "version_platframe": "1.3.2",
   "scripts": {
-    "start": "grunt",
-    "development": "grunt development",
+    "start": "NODE_ENV=development grunt",
+    "development": "NODE_ENV=development grunt",
     "production": "NODE_ENV=production grunt production",
     "test": "NODE_ENV=production grunt test",
     "serve": "NODE_ENV=production grunt serve",
