@@ -11,7 +11,7 @@ export default function() {
         for (let trigger of triggers) {
 
             // determine the intended destination
-            let destination = (trigger.attributes['data-go'].value === 'next')
+            let destination = trigger.attributes['data-go'].value === 'next'
                 ? trigger.parentNode.nextElementSibling
                 : context;
 
