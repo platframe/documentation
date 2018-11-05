@@ -1,4 +1,4 @@
-import { scroll } from '../libs/int/animation';
+import { scroll } from '../libs/internal/animation';
 
 // set scroll behavior of in-page anchors to "smooth"
 function smooth() {
@@ -14,7 +14,7 @@ function smooth() {
 
             let href = link.hash,
                 destination = href.length
-                    ? document.getElementById(`${href.slice(1)}`)
+                    ? document.getElementById(`${ href.slice(1) }`)
                     : false;
 
             if (destination) {
@@ -27,8 +27,7 @@ function smooth() {
 
                     } else {
 
-                        destination = destination.scrollTop;
-                        scroll(destination, duration);
+                        scroll(destination.offsetTop, duration);
 
                     }
 

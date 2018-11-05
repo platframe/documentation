@@ -1,0 +1,10 @@
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "sameorigin"
+
+[[redirects]]
+  from = "https://platframe.netlify.com/*"
+  to = "https://platframe.com/:splat"
+  status = 301
+  force = true

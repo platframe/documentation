@@ -2,7 +2,7 @@
  * @overview Modified copy of Nav 1's logic for documentation.
  */
 
-import { smoothstep } from '../../../../logic/js/libs/int/math';
+import { smoothstep } from '../../../../logic/js/libs/internal/math';
 
 export default function() {
 
@@ -38,8 +38,8 @@ export default function() {
         for (let trigger of triggers) {
 
             // determine the intended destination
-            let destination = (trigger.attributes['data-go'].value === 'next')
-                ? (trigger.parentNode.nextElementSibling.offsetTop)
+            let destination = trigger.attributes['data-go'].value === 'next'
+                ? trigger.parentNode.nextElementSibling.offsetTop
                 : context.offsetTop;
 
             trigger.addEventListener('click', function(event) {
