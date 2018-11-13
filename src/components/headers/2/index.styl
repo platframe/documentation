@@ -34,6 +34,7 @@ header-2(scheme = __default)
                 font-weight: 600
                 align-items: center
                 letter-spacing: normal
+                color: scheme.header.default
                 margin: 0
                 padding: rem(20px) 0
                 justify-content: center
@@ -46,10 +47,12 @@ header-2(scheme = __default)
                 a
                     display: flex
                     align-items: center
+                    transition: color 200ms
                     svg
                         width: 24px
                         height: 24px
                         margin: -1px 8px 0 0
+                        transition: fill 200ms
                         +min(1)
                             width: 20px
                             height: 20px
@@ -85,6 +88,7 @@ header-2(scheme = __default)
                             font-size: .95rem
                             font-weight: 400
                             text-transform: lowercase
+                            transition: color 200ms
         .peripheral
             width: inherit
             padding: 0 rem(50px)

@@ -3,7 +3,7 @@ section(id="images" class="images")
     h2 Images
 
     p.
-        The #[span.dir images] directory prescribes a logical grouping of assets
+        The #[code.folder images] directory prescribes a logical grouping of assets
         against their respective scope and function, ensuring a flexible, yet
         intuitive file system. It forks into #[em subject] groups, which in turn
         are organized by #[em implementation] identifiers.
@@ -39,13 +39,13 @@ section(id="images" class="images")
     p.
         #[em Subject] directories do not begin with an underscore and should
         receive names that indicate the context they represent. For instance, a
-        #[span.dir global] folder may be created to house images that are used
-        across the project, while the images in #[span.dir home] or
-        #[span.dir about] are specific to those views.
+        #[code.folder global] folder may be created to house images that are used
+        across the project, while the images in #[code.folder home] or
+        #[code.folder about] are specific to those views.
     p.
-        In figure 6.1 there are three subject groups, #[span.dir global],
-        #[span.dir home] and #[span.dir about]. The #[span.dir brand] and
-        #[span.dir icons] folders represent additional #[em nested] subject
+        In figure 6.1 there are three subject groups, #[code.folder global],
+        #[code.folder home] and #[code.folder about]. The #[code.folder brand] and
+        #[code.folder icons] folders represent additional #[em nested] subject
         groups. These “offspring” subjects can be used as necessary for added
         clarification.
 
@@ -54,23 +54,51 @@ section(id="images" class="images")
     p.
         The build system determines the appropriate image processing steps by
         inferring the implementation type from the directory name. To signify
-        their significance, avoid naming collisions with subject groups, and 
-        speed up visual grepping of the file system, implementation directories 
+        their significance, avoid naming collisions with subject groups, and
+        speed up visual grepping of the file system, implementation directories
         are prefixed with an underscore.
 
     p.
         There are currently four implementation types under which image assets
         that share a particular type may be grouped. These are
-        #[span.dir _inline] and #[span.dir _link] for discrete graphics, as
-        well as #[span.dir _symbols] and #[span.dir _views] for vector sprites.
+        #[code.folder _inline] and #[code.folder _link] for discrete graphics, as
+        well as #[code.folder _symbols] and #[code.folder _views] for vector sprites.
         We'll explore each of them in the next sections.
 
     h4 Inline
 
     p.
-        To designate images for inlining into either markup or styles, place them in a folder named #[span.dir _inline]. Ensure that you use a relative path to the #[span.dir images] directory in #[span.dir src] when referencing these assets in your code. Additionally, to inline an
-        image in your markup you'll need to add #[code inline] as an attribute
-        of the element in question.
+        To designate images for inlining into either markup or styles, place them in a folder named #[code.folder _inline] within #[code.folder images]. A #[em relative path] to #[code.folder src] is required when referencing these assets. Additionally, to inline an image in your markup you'll need to add #[code inline] as an attribute of the element in question.
+
+    p Usage within markup
+
+    .explain.code
+
+        .pug
+
+            pre
+                code.language-pug.
+
+                    // embed a vector as SVG
+                    img(src="images/section-a/_inline/graphic.svg" inline)
+
+                    // embed a bitmap as base64
+                    img(src="images/section-b/_inline/picture.png" inline)
+
+            aside index.pug #[b 6.2]
+
+    p Usage within styles
+
+    .explain.code
+
+        .styl
+
+            pre
+                code.language-stylus.
+
+                    background: url("images/section-c/_inline/drawing.svg")
+
+            aside index.styl #[b 6.3]
 
     aside
         h6.i-emoji-hammer-wrench Development notes
@@ -104,7 +132,7 @@ section(id="images" class="images")
 
     p.
         Earmark discrete graphics that are linked to from within the source by
-        grouping them in a #[span.dir _link] directory (fig. 6.1).
+        grouping them in a #[code.folder _link] directory (fig. 6.1).
 
     aside
         h6.i-emoji-gear Build notes
@@ -118,25 +146,16 @@ section(id="images" class="images")
 
     p.
         Vector sprites are supported through both its #[code view] and
-        #[code symbol] variants. For example, to add #[code image.svg] to the
+        #[code symbol] variants. For example, to add #[code icon.svg] to the
         project's “symbol” sprite, place it in a folder named
-        #[span.dir _symbols], or to add it to the “view” sprite, place it in a
-        #[span.dir _views] folder in stead.
+        #[code.folder _symbols], or to add it to the “view” sprite, place it in a
+        #[code.folder _views] folder in stead.
     p.
-        Continuing with the example above, the image in #[span.dir brand] will
+        Continuing with the example above, the image in #[code.folder brand] will
         be appended to the #[em symbols] sprite and the images in
-        #[span.dir icons] will be added to the #[em view] sprite.
+        #[code.folder icons] will be added to the #[em view] sprite. The resulting sprite sheets are consumed from the top-level #[code.folder _sprites] within the respective build's #[code.folder /assets/images].
 
-    aside
-        h6.i-emoji-hammer-wrench Development notes
-        ul
-            li.
-                The name of an image will become its #[em fragment identifier]
-                within the designated sprite sheet. At this stage you'll need to
-                ensure that images destined for sprite consumption have unique
-                names.
-
-        p Usage within markup
+    p Usage within markup
 
     .explain.code
 
@@ -145,13 +164,9 @@ section(id="images" class="images")
             pre
                 code.language-pug.
 
-                    // reference the "cat" view
-                    svg: use(xlink:href="/assets/images/sprites/views.svg#cat")
+                    svg: use(xlink:href="/assets/images/_sprites/symbols.svg#icon")
 
-                    // reference the "dog" symbol
-                    svg: use(xlink:href="/assets/images/sprites/symbols.svg#dog")
-
-            aside index.pug #[b 6.2]
+            aside index.pug #[b 6.4]
 
     p Usage within styles
 
@@ -162,9 +177,18 @@ section(id="images" class="images")
             pre
                 code.language-stylus.
 
-                    background-image: url('/assets/images/sprites/views.svg#cat')
+                    background: url("/assets/images/_sprites/views.svg#icon")
 
-            aside index.styl #[b 6.3]
+            aside index.styl #[b 6.5]
+
+    aside
+        h6.i-emoji-hammer-wrench Development notes
+        ul
+            li.
+                The name of an image will become its #[em fragment identifier]
+                within the designated sprite sheet. At this stage you'll need to
+                ensure that images destined for sprite consumption have unique
+                names.
 
     aside
         h6.i-emoji-gear Build notes
@@ -183,5 +207,5 @@ section(id="images" class="images")
     p.
         Platframe does not support traditional raster sprites. If your project
         require such a sprite sheet format, you may either extend the existing
-        tooling or produce it manually and place it in a #[span.dir _link]
+        tooling or produce it manually and place it in a #[code.folder _link]
         folder from where you can source it.

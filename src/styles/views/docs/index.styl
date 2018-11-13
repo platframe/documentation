@@ -1,0 +1,149 @@
+.docs
+    // assignments
+    docs_c_x_b3_min = rem(1050px)
+    // code samples
+    code-1()
+    // header
+    +header-2()
+        position: static
+        +min(2)
+            position: fixed
+        .core
+            +min(3)
+                min-width: docs_c_x_b3_min
+    // navigation
+    &:not(.components)
+        +nav-2()
+            +max(2)
+                z-index: 2
+            +min(2)
+                top: 100px
+                li:nth-last-of-type(2)::after
+                    content: ''
+                    display: block
+                    width: rem(190px)
+                    margin-bottom: rem(16px)
+                    padding-bottom: rem(16px)
+                    border-bottom: 1px solid scheme.border
+            +min(3)
+                position: sticky
+                top: rem(103px)
+                width: auto
+                order: 0
+                ul
+                    position: sticky
+                    top: rem(125px)
+                    height: 86vh
+    // footer
+    +footer-1()
+        > div div
+            &:first-of-type
+                +max(2)
+                    ul
+                        margin-bottom: 0
+            &:last-of-type
+                +max(2)
+                    order: 2
+                    ul
+                        margin-top: rem(10px)
+                        margin-bottom: 25px
+                        li
+                            display: inline-block
+                            margin: 5px 8px
+                +min(3)
+                    ul li
+                        margin: 0
+                        padding: 0 0 8px
+    main
+        +min(2)
+            width: 69%
+            margin: initial
+            padding-left: rem(50px)
+            padding-top: rem(103px)
+        +min(3)
+            margin: auto
+            width: b3_content_width
+            min-width: docs_c_x_b3_min
+            justify-content: space-between
+            padding-left: 0
+            padding-bottom: 0
+        .content
+            margin: auto
+            padding-bottom: rem(50px)
+            +min(1)
+                padding-top: rem(11px)
+            +min(2)
+                width: 100%
+                min-width: initial
+                margin: initial
+                padding-top: rem(22px)
+            +min(3)
+                width: 74%
+                min-width: initial
+            section
+                &.start
+                    .requirements
+                        span
+                            font-weight: 600
+                    .install-options
+                        display: flex
+                        align-items: center
+                        div
+                            margin-left: rem(10px)
+                            padding-left: rem(14px)
+                            border-left: 2px solid _80
+                            p
+                                margin: rem(9px) 0
+                                span
+                                    color: _65
+                &.architecture
+                    h4
+                        &::before
+                            content: '\1F4C2'
+                            color: _50
+                            font-size: 1.6rem
+                            font-weight: normal
+                            padding-right: rem(10px)
+                        &:nth-of-type(1)::before
+                            content: '\1F5C3'
+                    figure // schematic drawing
+                        margin: rem(35px) 0
+                        figcaption
+                            float: right
+                            font-size: 0.9rem
+                            strong
+                                padding-left: rem(12px)
+                        svg
+                            margin: 20px 0
+                            width: 100%
+                            height: auto
+        code
+            padding: .2rem .5rem
+            border-radius: 4px
+            background: #eaeaea
+            &.file // denote file refs
+                padding: .15rem .35rem
+                white-space: nowrap
+                &::after
+                    content: '\1F4C4'
+                    padding-left: .33rem
+            &.folder // denote directory refs
+                padding: .15rem .35rem
+                white-space: nowrap
+                &::after
+                    content: '\1F4C1'
+                    padding-left: .33rem
+            &.shell
+                color: #039944
+                padding-left: 0
+                background: none
+                &::before
+                    content: '$'
+                    color: #d1903c
+                    padding-right: .4rem
+            &.mixin:not(.token) // denote mixin schemas; avoid conflict with prism syntax tokens
+                color: _40
+                font-size: 1.2rem
+                text-shadow: -1px -1px 0 _15
+    // partials
+    @require 'components'

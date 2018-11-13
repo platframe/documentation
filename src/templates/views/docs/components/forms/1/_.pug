@@ -1,0 +1,132 @@
+section(class="component" id="1")
+
+    header
+
+        h3: span 1
+        dl.inline
+            div
+                dt Type
+                dd contact
+            div.comma
+                dt Tags
+                dd validation
+                dd interactive
+                dd no-script
+                dd anti-spam
+
+    h4 Preview
+
+    +iframe("forms/1", 440)
+
+    h4 Implementation
+
+    section.implement
+
+        .explain
+
+            .routine
+
+                h5 Markup
+
+                table
+                    caption.signature
+                        | form-1(
+                        i legend
+                        |,
+                        i action
+                        |,
+                        i method
+                        |,
+                        i phone
+                        |,
+                        i spam
+                        |,
+                        i [hook]
+                        |)
+
+                    thead
+                        tr
+                            th Parameter
+                            th Description
+                            th Type
+                    tbody
+                        tr
+                            td.parameter legend
+                            td.description form caption (core fieldset)
+                            td.type string
+                        tr
+                            td.parameter action
+                            td.description URL for the form processing logic
+                            td.type string
+                        tr
+                            td.parameter method
+                            td.description data transfer method
+                            td.type string
+                        tr
+                            td.parameter phone
+                            td.description toggle the phone number field
+                            td.type boolean
+                        tr
+                            td.parameter spam
+                            td.description toggle the spam module
+                            td.type boolean
+                        tr
+                            td.parameter hook
+                            td.description additional CSS class attribute
+                            td.type string
+
+            .brief
+
+                h5 Brief
+                p.
+                    A basic contact form relying only on HTML and CSS. Supports input validation and feedback. A simplistic anti-spam section can be enabled or replaced with a more robust solution if needed.
+
+        .explain
+
+            .paths
+
+                h5 Paths
+
+                ul
+                    li location:&nbsp; #[code components/forms/1]
+                    li activate:&nbsp; #[code templates/_/mixins.pug]
+
+            .dependencies
+
+                h5 Dependencies
+
+                ul
+                    li.pug
+                        svg: use(xlink:href="/assets/images/_sprites/symbols.svg#html")
+                        span _.pug
+                    li.styl
+                        svg: use(xlink:href="/assets/images/_sprites/symbols.svg#css")
+                        span index.styl
+                    li.svg
+                        svg: use(xlink:href="/assets/images/_sprites/symbols.svg#svg")
+                        span *.svg
+
+        h5 Examples
+
+        .explain.code
+
+            .pug
+
+                pre
+                    code.language-pug.
+
+                        +form-1("Contact", "assets/logic/php/process.php", "post", false, true)
+
+                aside .pug
+
+        .explain.code
+
+            .styl
+
+                pre
+
+                    code.language-stylus.
+
+                        form-1()
+
+                aside .styl

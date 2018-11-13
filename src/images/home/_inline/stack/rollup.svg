@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <style type="text/css">.st0{fill:url(#XMLID_4_);}
+	.st1{fill:url(#XMLID_5_);}
+	.st2{fill:url(#XMLID_8_);}
+	.st3{fill:url(#XMLID_9_);}
+	.st4{fill:url(#XMLID_11_);}
+	.st5{opacity:0.3;fill:url(#XMLID_16_);}</style>
+    <linearGradient id="XMLID_8_" x1="429.39" x2="469.39" y1="517.16" y2="559.16" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#FF6533" offset="0"/>
+        <stop stop-color="#FF5633" offset=".1573"/>
+        <stop stop-color="#FF4333" offset=".4342"/>
+        <stop stop-color="#FF3733" offset=".7142"/>
+        <stop stop-color="#f33" offset="1"/>
+    </linearGradient>
+    <linearGradient id="XMLID_11_" x1="450.12" x2="506.94" y1="514.21" y2="552.85" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#FBB040" offset="0"/>
+        <stop stop-color="#FB8840" offset="1"/>
+    </linearGradient>
+    <linearGradient id="XMLID_16_" x1="508.33" x2="450.33" y1="295.76" y2="933.76" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#fff" offset="0"/>
+        <stop stop-color="#fff" stop-opacity="0" offset="1"/>
+    </linearGradient>
+    <g transform="matrix(.17425 0 0 .17425 -35.685 -38.7)">
+        <linearGradient id="XMLID_4_" x1="444.47" x2="598.47" y1="526.05" y2="562.05" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#FF6533" offset="0"/>
+            <stop stop-color="#FF5633" offset=".1573"/>
+            <stop stop-color="#FF4333" offset=".4342"/>
+            <stop stop-color="#FF3733" offset=".7142"/>
+            <stop stop-color="#f33" offset="1"/>
+        </linearGradient>
+        <path class="st0" d="m721 410c0-33.6-8.8-65.1-24.3-92.4-41.1-42.3-130.5-52.1-152.7-0.2-22.8 53.2 38.3 112.4 65 107.7 34-6-6-84-6-84 52 98 40 68-54 158s-190 279.9-204 287.9c-0.6 0.4-1.2 0.7-1.9 1h368.7c6.5 0 10.7-6.9 7.8-12.7l-96.4-190.8c-2.1-4.1-0.6-9.2 3.4-11.5 56.4-32.4 94.4-93.2 94.4-163z" fill="url(#XMLID_4_)"/>
+        <linearGradient id="XMLID_5_" x1="420.38" x2="696.38" y1="475" y2="689" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#BF3338" offset="0"/>
+            <stop stop-color="#f33" offset="1"/>
+        </linearGradient>
+        <path class="st1" d="m721 410c0-33.6-8.8-65.1-24.3-92.4-41.1-42.3-130.5-52.1-152.7-0.2-22.8 53.2 38.3 112.4 65 107.7 34-6-6-84-6-84 52 98 40 68-54 158s-190 279.9-204 287.9c-0.6 0.4-1.2 0.7-1.9 1h368.7c6.5 0 10.7-6.9 7.8-12.7l-96.4-190.8c-2.1-4.1-0.6-9.2 3.4-11.5 56.4-32.4 94.4-93.2 94.4-163z" fill="url(#XMLID_5_)"/>
+        <path class="st2" d="m345 787c14-8 110-198 204-288s106-60 54-158c0 0-199 279-271 417" fill="url(#XMLID_8_)"/>
+        <linearGradient id="XMLID_9_" x1="502.11" x2="490.11" y1="589.46" y2="417.46" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#FF6533" offset="0"/>
+            <stop stop-color="#FF5633" offset=".1573"/>
+            <stop stop-color="#FF4333" offset=".4342"/>
+            <stop stop-color="#FF3733" offset=".7142"/>
+            <stop stop-color="#f33" offset="1"/>
+        </linearGradient>
+        <path class="st3" d="m373 537c134.4-247.1 152-272 222-272 36.8 0 73.9 16.6 97.9 46.1-32.7-52.7-90.6-88-156.9-89h-228.3c-4.8 0-8.7 3.9-8.7 8.7v460.2c13.6-35.1 36.7-85.3 74-154z" fill="url(#XMLID_9_)"/>
+        <path class="st4" d="m549 499c-94 90-190 280-204 288s-37.5 9-50-5c-13.3-14.9-34-39 78-245 134.4-247.1 152-272 222-272 36.8 0 73.9 16.6 97.9 46.1 1.3 2.1 2.6 4.3 3.9 6.5-41.1-42.3-130.5-52.1-152.7-0.2-22.8 53.2 38.3 112.4 65 107.7 34-6-6-84-6-84 51.9 97.9 39.9 67.9-54.1 157.9z" fill="url(#XMLID_11_)"/>
+        <path class="st5" d="m384 548c134.4-247.1 152-272 222-272 30.3 0 60.8 11.3 84 31.7-24-27.4-59.6-42.7-95-42.7-70 0-87.6 24.9-222 272-112 206-91.3 230.1-78 245 1.9 2.1 4.1 3.9 6.4 5.4-11.7-17-16.9-56.5 82.6-239.4z" fill="url(#XMLID_16_)"/>
+    </g>
+</svg>

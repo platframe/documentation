@@ -21,21 +21,21 @@ section(id="fonts" class="fonts")
             aside structure #[b 7.1]
 
     p.
-        Fonts are contained in the #[span.dir fonts] folder and managed from the
-        #[em fonts] module in #[span.dir style]. By default the platform is
+        Fonts are contained in the #[code.folder fonts] folder and managed from the
+        #[em fonts] module in #[code.folder style]. By default the platform is
         setup to work with a typography
         #[abbr(title="Content Delivery Network") CDN] in production. This means
-        that the #[em local] type assets contained in #[span.dir fonts] are to
+        that the #[em local] type assets contained in #[code.folder fonts] are to
         be included for development purposes only and are not transfered to the
         production build. This avoids potential connectivity issues that slows
         down development.
 
     p.
         Font stacks are managed through the configuration files in the
-        #[span.dir stacks] module within #[span.dir styles]. Production builds
+        #[code.folder stacks] module within #[code.folder styles]. Production builds
         use #[a(href="https://fonts.google.com/") Google&trade; Fonts] as the
         default font delivery service, and can be managed with
-        #[span.file head.pug]
+        #[code.file head.pug]
 
     p.
         #[a(href="https://fonts.adobe.com/fonts/source-sans") Source&reg; Sans Pro]

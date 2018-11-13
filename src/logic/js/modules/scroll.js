@@ -20,7 +20,7 @@ function smooth() {
             if (destination) {
                 link.addEventListener('click', function(event) {
 
-                    // attempt to use native implementation first
+                    // prefer native implementation
                     if ('scrollBehavior' in document.documentElement.style) {
 
                         destination.scrollIntoView({ behavior: 'smooth' });

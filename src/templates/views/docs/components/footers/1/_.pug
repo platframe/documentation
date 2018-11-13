@@ -1,0 +1,109 @@
+section(class="component" id="1")
+
+    header
+
+        h3: span 1
+        dl.inline
+            div
+                dt Type
+                dd 3 column
+            div.comma
+                dt Tags
+                dd navigation
+                dd graphics
+                dd address
+
+    h4 Preview
+
+    +iframe("footers/1", 362)
+
+    h4 Implementation
+
+    section.implement
+
+        .explain
+
+            .brief
+
+                h5 Brief
+                p 3-column footer with navigation menu in the left flank, center piece with SVG graphics and captions as well as address support in the rightmost column.
+
+        .explain
+
+            .paths
+
+                h5 Paths
+
+                ul
+                    li location:&nbsp; #[code components/footers/1]
+                    li markup:&nbsp; #[code templates/_/body.pug]
+                    li style:&nbsp; #[code style/_/elements/footer.styl]
+
+            .dependencies
+
+                h5 Dependencies
+
+                ul
+                    li.pug
+                        svg: use(xlink:href="/assets/images/_sprites/symbols.svg#html")
+                        span _.pug
+                    li.styl
+                        svg: use(xlink:href="/assets/images/_sprites/symbols.svg#css")
+                        span index.styl
+                    li.svg
+                        svg: use(xlink:href="/assets/images/_sprites/symbols.svg#svg" alt="W3C SVG Logo")
+                        span *.svg
+                    li.js
+                        svg: use(xlink:href="/assets/images/_sprites/symbols.svg#js")
+                        span _.js
+
+        h5 Examples
+
+        .explain.code
+
+            .pug
+
+                pre
+                    code.language-pug.
+
+                        extends ../root
+
+                        block body
+
+                            body
+
+                                block header
+                                    //...
+
+                                block main
+
+                                block footer
+                                    include ../../../components/footers/1/_
+
+                                //...
+
+                aside body.pug
+
+        .explain.code
+
+            .styl
+
+                pre
+
+                    code.language-stylus.
+
+                        footer-1()
+
+                aside footer.styl
+
+        .explain.code
+
+            .js
+
+                pre
+
+                    code.language-javascript.
+
+                        import footer from 'footers/1/_';
+
+                aside root.js

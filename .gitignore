@@ -3,12 +3,15 @@
 # root
 /dev/
 /prd/
-/docs/
+/prod/
 
 # deps
 node_modules/
 
 ### 3RD PARTY
+
+# VS Code
+.vscode/
 
 # JetBrains
 .idea/

@@ -5,20 +5,21 @@ block body
     body(id=bodyId class=bodyClass)
 
         block header
+
             +header-1("/#front", "logo", "Platframe", [
-                { 
+                {
                     href: "/#gist",
                     name: "Gist"
                 },
-                { 
+                {
                     href: "/#features",
                     name: "Features"
                 },
-                { 
+                {
                     href: "/#stack",
                     name: "Stack"
                 },
-                { 
+                {
                     href: "/docs/",
                     name: "Docs"
                 }
@@ -26,9 +27,12 @@ block body
 
         block main
 
-        block footer 
+        block footer
 
             include ../../components/footers/1/_
 
+        //- end-of-body script insertion
+        block inject
+
         //- compatibility
-        noscript: a(href="http://browsersmart.com") Please use a compatible browser and enable JavaScript
+        noscript: a(href="https://browsersmart.com") Please use a compatible browser and enable JavaScript

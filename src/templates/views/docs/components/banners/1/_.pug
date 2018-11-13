@@ -1,0 +1,119 @@
+section(class="component" id="1")
+
+    header
+
+        h3: span 1
+        dl.inline
+            div
+                dt Type
+                dd corner (diagonal)
+            div.comma
+                dt Tags
+                dd promotion
+                dd button
+                dd highlight
+
+    h4 Preview
+
+    +iframe("/banners/1", 222)
+
+    h4 Implementation
+
+    section.implement
+
+        .explain
+
+            .routine
+
+                h5 Markup
+
+                table
+                    caption.signature
+                        | banner-1(
+                        i url
+                        |,&nbsp;
+                        i text
+                        |,&nbsp;
+                        i [icon]
+                        |,&nbsp;
+                        i [hook]
+                        |)
+
+                    thead
+                        tr
+                            th Parameter
+                            th Definition
+                            th Type
+                    tbody
+                        tr
+                            td.parameter url
+                            td.definition attribute: href
+                            td.type string
+                        tr
+                            td.parameter text
+                            td.definition banner text
+                            td.type string
+                        tr
+                            td.parameter icon
+                            td.definition SVG: path
+                            td.type string
+                        tr
+                            td.parameter hook
+                            td.definition attribute: class
+                            td.type string
+
+            .brief
+
+                h5 Brief
+                p.
+                    Page corner banner for use as a button. Takes an optional path to an SVG icon that will add interaction and be inlined during build. Works well as a direct child of an element with relative positioning.
+
+        .explain
+
+            .paths
+
+                h5 Paths
+
+                ul
+                    li location:&nbsp; #[code components/banners/1]
+                    li activate:&nbsp; #[code templates/_/mixins.pug]
+
+            .dependencies
+
+                h5 Dependencies
+
+                ul
+                    li.pug
+                        svg: use(xlink:href="/assets/images/_sprites/symbols.svg#html")
+                        span _.pug
+                    li.styl
+                        svg: use(xlink:href="/assets/images/_sprites/symbols.svg#css")
+                        span index.styl
+
+        h5 Examples
+
+        .explain.code
+
+            .pug
+
+                pre
+                    code.language-pug.
+
+                        div
+                            +banner-1("https://example.com/", "Awesome")
+                            // or with icon effect
+                            +banner-1("#uri", "Banner", "images/_inline/icon.svg")
+
+                aside .pug
+
+        .explain.code
+
+            .styl
+
+                pre
+
+                    code.language-stylus.
+
+                        banner-1()
+
+                aside .styl
