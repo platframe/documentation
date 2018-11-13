@@ -1,17 +1,18 @@
-footer(class="footer-1" role="complementary" itemscope itemtype="https://schema.org/WPFooter")
+footer(
+    class="footer-1"
+    role="contentinfo"
+    itemscope
+    itemtype="https://schema.org/WPFooter")
 
     div
 
         div
 
             ul
-
                 li
-                    a(href="/") Home
+                    a(href="https://github.com/platframe/platframe") GitHub
                 li
-                    a(href="/docs/") Documentation
-                li
-                    a(href="/docs/components/") Components
+                    a(href="https://v1.platframe.com") Version 1
 
         div
 
@@ -20,19 +21,19 @@ footer(class="footer-1" role="complementary" itemscope itemtype="https://schema.
             ul
 
                 li.rollover
-                    svg: use(xlink:href="/assets/images/sprite/symbols.svg#firefox")
+                    svg: use(xlink:href="/assets/images/_sprites/symbols.svg#firefox")
                     span Firefox #[br]28+
                 li.rollover
-                    svg: use(xlink:href="/assets/images/sprite/symbols.svg#chrome")
+                    svg: use(xlink:href="/assets/images/_sprites/symbols.svg#chrome")
                     span Chrome #[br]29+
                 li.rollover
-                    svg: use(xlink:href="/assets/images/sprite/symbols.svg#safari")
+                    svg: use(xlink:href="/assets/images/_sprites/symbols.svg#safari")
                     span Safari #[br]9+
                 li.rollover
-                    svg: use(xlink:href="/assets/images/sprite/symbols.svg#opera")
+                    svg: use(xlink:href="/assets/images/_sprites/symbols.svg#opera")
                     span Opera #[br]17+
                 li.rollover
-                    svg: use(xlink:href="/assets/images/sprite/symbols.svg#ie")
+                    svg: use(xlink:href="/assets/images/_sprites/symbols.svg#ie")
                     span Edge/IE #[br]10+
 
         div
@@ -41,7 +42,5 @@ footer(class="footer-1" role="complementary" itemscope itemtype="https://schema.
 
                 li
                     a(href="//github.com/platframe/platframe/blob/master/LICENSE") MIT Licensed
-                li Supported by 
+                li Supported by&nbsp;
                     a(href="//cygnul.com" translate="no") Cygnul
-                li Created by 
-                    a(href="//gidhon.com" rel="author" title="Gideon Kreitzer" translate="no") Gideon

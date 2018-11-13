@@ -3,10 +3,10 @@ section(id="images" class="images")
     h2 Images
 
     p.
-        The #[span.dir images] directory forks into #[span.dir sprite], #[span.dir inline] and
-        #[span.dir linked]. This allows for the grouping of image assets based on their respective
-        scope and function. While optional, it helps to keep assets organized with #[em subject]
-        directories that are children of the aforementioned trio.
+        The #[code.folder images] directory prescribes a logical grouping of assets
+        against their respective scope and function, ensuring a flexible, yet
+        intuitive file system. It forks into #[em subject] groups, which in turn
+        are organized by #[em implementation] identifiers.
 
     .explain.code
 
@@ -16,136 +16,196 @@ section(id="images" class="images")
                 code.
 
                     #[i.i-emoji-folder] images ─┐
-                               ├─ #[i.i-emoji-folder] sprite ─┐
-                               |             ├─ #[i.i-emoji-folder] icons ─┐
-                               |             |            #[i.i-emoji-folder] views ─┐
-                               |             |            |         ├─ #[i.i-emoji-picture] icon-1.svg
-                               |             |            |         ├─ #[i.i-emoji-picture] icon-2.svg
-                               |             |            |         └─ #[i.i-emoji-picture] icon-3.svg
-                               |             |            |
-                               |             |            ├─ #[i.i-emoji-picture] icon-1.png
-                               |             |            └─ #[i.i-emoji-picture] icon-2.png
-                               |             |
-                               |             └─ #[i.i-emoji-folder] brand ─┐
-                               |                          #[i.i-emoji-folder] symbols ─┐
-                               |                                      ├─ #[i.i-emoji-picture] logo-1.svg
-                               |                                      └─ #[i.i-emoji-picture] logo-2.svg
-                               ├─ #[i.i-emoji-folder] inline ─┐
-                               |             ├─ #[i.i-emoji-folder] home ─┐
-                               |             |           ├─ #[i.i-emoji-folder] hello ─ #[i.i-emoji-picture] hello.svg
-                               |             |           |
-                               |             |           ├─ #[i.i-emoji-folder] story ─ #[i.i-emoji-picture] story.png
-                               |             |           |
-                               |             |           └─ #[i.i-emoji-folder] thend ─ #[i.i-emoji-picture] thend.jpg
-                               |             |
-                               |             └─ #[i.i-emoji-folder] about ─┐
-                               |                          ├─ #[i.i-emoji-picture] graphic.svg
-                               |                          └─ #[i.i-emoji-picture] founder.jpg
+                               ├─ #[i.i-emoji-folder] global ─┐
+                               |             ├─ #[i.i-emoji-folder] brand ─┐
+                               |             |            #[i.i-emoji-folder] _symbols ─┐
+                               |             |                         └─ #[i.i-emoji-picture] logo.svg
+                               |             └─ #[i.i-emoji-folder] _link ─┐
+                               |                            └─ #[i.i-emoji-picture] favicon.png
                                |
-                               └─ #[i.i-emoji-folder] linked ─ #[i.i-emoji-picture] favicon.png
-
+                               ├─ #[i.i-emoji-folder] home ─┐
+                               |           ├─ #[i.i-emoji-folder] icons ─┐
+                               |           |            #[i.i-emoji-folder] _views ─┐
+                               |           |                       ├─ #[i.i-emoji-picture] icon-1.svg
+                               |           |                       └─ #[i.i-emoji-picture] icon-2.svg
+                               |           └─ #[i.i-emoji-folder] _inline ─┐
+                               |                          └─ #[i.i-emoji-picture] background.jpg
+                               └─ #[i.i-emoji-folder] about ─┐
+                                            ┆
             aside structure #[b 6.1]
 
-    h4 Subject groups
+    h3 Subjects
 
     p.
-        A #[em subject] directory serves to demarcate our image assets. If the asset is used across
-        the project, it gets separated based on its function, otherwise according to the page it's
-        used on in the case of #[em inline] images. This helps to make our file system more intuitive
-        and speeds up both development and maintenance as less time is spent navigating and managing
-        resources.
+        #[em Subject] directories do not begin with an underscore and should
+        receive names that indicate the context they represent. For instance, a
+        #[code.folder global] folder may be created to house images that are used
+        across the project, while the images in #[code.folder home] or
+        #[code.folder about] are specific to those views.
     p.
-        In figure 6.1 #[span.dir sprite] and #[span.dir inline] each contain two subject directories:
-        #[span.dir icons] and #[span.dir brand] in the former and #[span.dir home] and
-        #[span.dir about] in the latter.
+        In figure 6.1 there are three subject groups, #[code.folder global],
+        #[code.folder home] and #[code.folder about]. The #[code.folder brand] and
+        #[code.folder icons] folders represent additional #[em nested] subject
+        groups. These “offspring” subjects can be used as necessary for added
+        clarification.
+
+    h3 Implementations
+
+    p.
+        The build system determines the appropriate image processing steps by
+        inferring the implementation type from the directory name. To signify
+        their significance, avoid naming collisions with subject groups, and
+        speed up visual grepping of the file system, implementation directories
+        are prefixed with an underscore.
+
+    p.
+        There are currently four implementation types under which image assets
+        that share a particular type may be grouped. These are
+        #[code.folder _inline] and #[code.folder _link] for discrete graphics, as
+        well as #[code.folder _symbols] and #[code.folder _views] for vector sprites.
+        We'll explore each of them in the next sections.
+
+    h4 Inline
+
+    p.
+        To designate images for inlining into either markup or styles, place them in a folder named #[code.folder _inline] within #[code.folder images]. A #[em relative path] to #[code.folder src] is required when referencing these assets. Additionally, to inline an image in your markup you'll need to add #[code inline] as an attribute of the element in question.
+
+    p Usage within markup
+
+    .explain.code
+
+        .pug
+
+            pre
+                code.language-pug.
+
+                    // embed a vector as SVG
+                    img(src="images/section-a/_inline/graphic.svg" inline)
+
+                    // embed a bitmap as base64
+                    img(src="images/section-b/_inline/picture.png" inline)
+
+            aside index.pug #[b 6.2]
+
+    p Usage within styles
+
+    .explain.code
+
+        .styl
+
+            pre
+                code.language-stylus.
+
+                    background: url("images/section-c/_inline/drawing.svg")
+
+            aside index.styl #[b 6.3]
 
     aside
-        h6.i-emoji-hammer-wrench Dev notes
+        h6.i-emoji-hammer-wrench Development notes
         ul
             li.
-                In the case of #[em inline] image groups, it may be beneficial to create further
-                division beyond the #[em subject] point in order to make the file system easier to
-                navigate and more intelligible. For instance, creating sub-folders that reflect the
-                target view's main sections. For example, #[span.dir home] splits into
-                #[span.dir hello], #[span.dir story] and #[span.dir thend] which are the
-                corresponding sections of the #[span.file index.pug] view in #[span.dir home]
-                (refer to templates).
+                User agents enforce limits on URL length, thereby restricting the size of images inlined via the URL method.
 
-    h3 Sprite
 
-    p.
-        #[em Sprites] are home to images that are not confined to a particular section or document
-        and are used throughout the project.
-
-    h4 Vector
-
-    p.
-        Global SVG's are compiled into sprite sheets. Depening on the intented use of the
-        images, you may choose a particular flavour of sprite to be used exclusively or in
-        tandem with another.
-    p.
-        Continuing with the example above, the images in #[span.dir icons] will become part
-        of the #[em view] sprite and those contained in #[span.dir brand] will populate the
-        #[em symbols] sprite.
+    aside
+        h6.i-emoji-rocket Performance notes
+        ul
+            li.
+                Inline images are not individually cached by the user agent.
+            li.
+                Embedded images may improve page load time by reducing the
+                amount of server round trips.
+            li.
+                Bitmaps inlined in Platframe will be converted to #[i base64]
+                encoding, which tend to inflate the original binary size by
+                roughly 30%.
 
     aside
         h6.i-emoji-gear Build notes
         ul
             li.
-                The build system determines the required sprite type by looking at the SVG
-                container's name. Currently, this can be either "views" or "symbols". Figure 6.1
-                shows how we can produce a "view" #[em and] "symbol" sprite for different images in
-                the same project by appropriately setting the directory names. Additional
-                #[span.dir view] or #[span.dir symbol] folder's SVG's elsewhere in the sprite image
-                directory will just be added to the original sprite file of its respective type.
+                Inline vectors are minified.
+            li.
+                Only bitmaps will be converted to #[i base64].
+
+    h4 Link
+
+    p.
+        Earmark discrete graphics that are linked to from within the source by
+        grouping them in a #[code.folder _link] directory (fig. 6.1).
+
+    aside
+        h6.i-emoji-gear Build notes
+        ul
+            li.
+                If additional optimization is possible, linked #[code .svg],
+                #[code .png] and #[code .jpg] files will be minified the during
+                the build phase.
+
+    h4 Sprites
+
+    p.
+        Vector sprites are supported through both its #[code view] and
+        #[code symbol] variants. For example, to add #[code icon.svg] to the
+        project's “symbol” sprite, place it in a folder named
+        #[code.folder _symbols], or to add it to the “view” sprite, place it in a
+        #[code.folder _views] folder in stead.
+    p.
+        Continuing with the example above, the image in #[code.folder brand] will
+        be appended to the #[em symbols] sprite and the images in
+        #[code.folder icons] will be added to the #[em view] sprite. The resulting sprite sheets are consumed from the top-level #[code.folder _sprites] within the respective build's #[code.folder /assets/images].
+
+    p Usage within markup
+
+    .explain.code
+
+        .pug
+
+            pre
+                code.language-pug.
+
+                    svg: use(xlink:href="/assets/images/_sprites/symbols.svg#icon")
+
+            aside index.pug #[b 6.4]
+
+    p Usage within styles
+
+    .explain.code
+
+        .styl
+
+            pre
+                code.language-stylus.
+
+                    background: url("/assets/images/_sprites/views.svg#icon")
+
+            aside index.styl #[b 6.5]
+
+    aside
+        h6.i-emoji-hammer-wrench Development notes
+        ul
+            li.
+                The name of an image will become its #[em fragment identifier]
+                within the designated sprite sheet. At this stage you'll need to
+                ensure that images destined for sprite consumption have unique
+                names.
+
+    aside
+        h6.i-emoji-gear Build notes
+        ul
             li.
                 Vectors will undergo minification before being included in a sprite sheet.
 
     aside
-        h6.i-emoji-rocket Perf notes
+        h6.i-emoji-rocket Performance notes
         ul
             li.
                 Sprites reduce HTTP lookups and are cacheable.
 
-    h4 Raster
+    h5 Rasters
 
     p.
-        Rasters (png, jpg, webp, gif) can be placed in the same #[em subject] directory as
-        SVG's, however not within a #[em view] or #[em symbol] folder as these are reserved for
-        vectors. Note that the build system does not support sprite creation for rasters. If your
-        project requires a raster-based sprite sheet, you can either extend the existing tooling or
-        produce it manually and place it in the #[span.dir linked] folder - see below.
-
-    h3 Inline
-
-    p.
-        Images with a narrow, document-level scope are often inlined. They should be placed in the
-        #[span.dir inline] directory (see figure 6.1). #[i Inline] graphics will not end up in a
-        production build as they should be embedded in the development stage.
-
-    aside
-        h6.i-emoji-rocket Perf notes
-        ul
-            li.
-                Embedded images will generally improve page load time by reducing server trips.
-
-    aside
-        h6.i-emoji-gear Build notes
-        ul
-            li.
-                Inline vectors are minified while rasters will be converted to #[i base64] during a
-                development build.
-
-    h3 Linked
-
-    p.
-        Some situations may call for a graphic to be made available as a discrete asset that can be
-        cached and referenced by means of a URL. To earmark graphics for linking, group them in the
-        #[span.dir linked] directory (fig. 6.1).
-
-    aside
-        h6.i-emoji-gear Build notes
-        ul
-            li.
-                Linked graphics of the SVG and PNG formats will be minified on running a development
-                or production build.
+        Platframe does not support traditional raster sprites. If your project
+        require such a sprite sheet format, you may either extend the existing
+        tooling or produce it manually and place it in a #[code.folder _link]
+        folder from where you can source it.

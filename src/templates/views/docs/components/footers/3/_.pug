@@ -1,0 +1,94 @@
+section(class="component" id="3")
+
+    header
+
+        h3: span 3
+        dl.inline
+            div
+                dt Type
+                dd 4 column
+            div.comma
+                dt Tags
+                dd navigation
+                dd social
+                dd address
+
+    h4 Preview
+
+    +iframe("footers/3", 85)
+
+    h4 Implementation
+
+    section.implement
+
+        .explain
+
+            .brief
+
+                h5 Brief
+                p A 4-column footer with navigation, social networking and vcard address support.
+
+        .explain
+
+            .paths
+
+                h5 Paths
+
+                ul
+                    li location:&nbsp; #[code components/footers/3]
+                    li markup:&nbsp; #[code templates/_/body.pug]
+                    li style:&nbsp; #[code style/_/elements/footer.styl]
+
+            .dependencies
+
+                h5 Dependencies
+
+                ul
+                    li.pug
+                        svg: use(xlink:href="/assets/images/_sprites/symbols.svg#html")
+                        span _.pug
+                    li.styl
+                        svg: use(xlink:href="/assets/images/_sprites/symbols.svg#css")
+                        span index.styl
+                    li.svg
+                        svg: use(xlink:href="/assets/images/_sprites/symbols.svg#svg" alt="W3C SVG Logo")
+                        span *.svg
+
+        h5 Examples
+
+        .explain.code
+
+            .pug
+
+                pre
+                    code.language-pug.
+
+                        extends ../root
+
+                        block body
+
+                            body
+
+                                block header
+                                    //...
+
+                                block main
+
+                                block footer
+                                    include ../../../components/footers/2/_
+
+                                //...
+
+                aside body.pug
+
+        .explain.code
+
+            .styl
+
+                pre
+
+                    code.language-stylus.
+
+                        footer-2()
+
+                aside footer.styl

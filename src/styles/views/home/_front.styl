@@ -1,0 +1,118 @@
+.front
+    .content
+        flex-flow: row wrap
+        align-content: center
+        justify-content: center
+        +min(2)
+            margin-top: -20px
+            justify-content: initial
+        h2
+            position: relative
+            font-size: 3.6rem
+            font-weight: 600
+            letter-spacing: -3px
+            margin-bottom: 0
+            text-align: center
+            line-height: 1.1
+            +min(1)
+                font-size: 5.5rem
+                line-height: inherit
+                margin: 0 0 1vw
+            +min(2)
+                text-align: initial
+                font-size: 7rem
+                margin: 0 0 0.2vw -0.4rem
+            +min(3)
+                width: 100%
+                font-size: 7.5rem
+        .call
+            width: 100%
+            text-align: center
+            font-weight: 400
+            +min(1)
+                width: 90%
+            +min(2)
+                width: 80%
+                text-align: initial
+            +min(3)
+                width: 70%
+            h3
+                font-size: 1.6rem
+                font-weight: inherit
+                text-align: inherit
+                +min(1)
+                    font-size: 2rem
+                +min(2)
+                    font-size: 2.2rem
+                +min(3)
+                    font-size: 2.5rem
+            h4
+                font-size: 1.2rem
+                font-weight: inherit
+                text-align: inherit
+                margin: 2rem 0
+                padding-top: 2.2rem
+                border-top: 2px solid _platframe
+                +min(1)
+                    font-size: 1.3rem
+                    margin: 3rem 0 4rem
+                    padding-top: 2.5rem
+                +min(2)
+                    margin: 2.5rem 0 3.5rem
+                    padding-top: 2.5rem
+                +min(3)
+                    font-size: 1.4rem
+                a
+                    color: _heading
+                    &:hover
+                        color: _50
+        .action
+            display: flex
+            flex-flow: column wrap
+            align-items: center
+            width: 100%
+            justify-content: center
+            +min(1)
+                flex-flow: row wrap
+            +min(2)
+                justify-content: initial
+            a
+                font-size: 1.25rem
+                font-weight: 600
+                padding: padding or rem(16px) rem(28px)
+                padding: rem(17px) rem(27px)
+                text-align: center
+                border-width: 2px
+                border-style: solid
+                &:first-of-type
+                    color: _platframe
+                    border-color: @color
+                    &:hover
+                        background: @border-color
+                &:last-of-type
+                    color: _50
+                    border-color: _60
+                    &:hover
+                        background: @border-color
+                &:hover
+                    color: _100
+                    cursor: pointer
+                +max(1)
+                    &:last-of-type
+                        margin-top: rem(15px)
+                +min(1)
+                    font-size: 1.2rem
+                    &:first-of-type
+                        margin-right: rem(12px)
+                +min(2)
+                    font-size: 1.25rem
+                    padding: rem(18px) rem(42px)
+                    &:first-of-type
+                        margin-right: rem(14px)
+                +min(3)
+                    font-size: 1.32rem
+                    padding: rem(18px) rem(32px)
+    +banner-1()
+        a
+            color: _100
+            background: scheme.default

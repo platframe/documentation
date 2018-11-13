@@ -4,30 +4,36 @@ section(id="start" class="start")
 
     h4 Install
 
-    p.
+    p.requirements.
         #[b 1.&nbsp;] You'll need
-        #[span(title="≥ v8") Node.js] and 
-        #[span(title="≥ v5.2") NPM] or Yarn
+        #[span(title="≥ v8") Node.js] and
+        #[span(title="≥ v5.2") NPM] or #[span Yarn]
 
     div.install-options
         b 2.
         div
-            p #[span ⓐ]&nbsp; #[code npx degit platframe/new my-app]
-            p #[span ⓑ]&nbsp; or #[a(href=`https://github.com/platframe/platframe/archive/v${ process.env.npm_package_version_platframe }.zip`) download] the latest release
+            p #[span &#10137;]&nbsp; #[code.shell npx degit platframe/new my-app]
+            p #[span &#10137;]&nbsp; or #[a(href=`https://github.com/platframe/platframe/archive/v${ process.env.npm_package_version_platframe }.zip`) download] the latest release
 
-    p #[b 3.&nbsp;] #[code cd my-app && git init && yarn]
+    p #[b 3.&nbsp;] #[code.shell cd my-app && git init && yarn]
 
     h4 Develop
 
-    p Spin up a dev environment with&nbsp; #[code npm run development]
-    p By default, the auto-sync development server runs at&nbsp; #[code localhost:3003]
+    p.
+        Spin up a development environment with&nbsp; #[code.shell yarn start]
+        #[br]
+        By default, the auto-sync development server runs at&nbsp; #[code localhost:3003]
 
     h4 Test
 
-    p Run your test suit with&nbsp; #[code npm test]
-    p Build, test and locally serve a production build for inspection:&nbsp; #[code npm run preflight]
+    p.
+        Run your test suit with&nbsp; #[code.shell yarn test]
+        #[br]
+        Produce and serve a production build for local inspection:&nbsp; #[code.shell yarn preflight]
 
     h4 Deploy
 
-    p For an optimized, production-targeted build:&nbsp; #[code npm run production]
-    p Deployment logic can be run with:&nbsp; #[code npm run deploy]
+    p.
+        For an optimized, production-targeted build:&nbsp; #[code.shell yarn production]
+        #[br]
+        More complex deployment logic can be run with&nbsp; #[code.shell yarn deploy]

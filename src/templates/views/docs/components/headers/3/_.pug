@@ -1,0 +1,132 @@
+section(class="component" id="3")
+
+    header
+
+        h3: span 3
+        dl.inline
+            div
+                dt Type
+                dd primary
+            div.comma
+                dt Tags
+                dd minimal
+                dd header
+                dd navigation
+
+    h4 Preview
+
+    +iframe("headers/3")
+
+    h4 Implementation
+
+    section.implement
+
+        .explain
+
+            .routine
+
+                h5 Markup
+
+                table
+                    caption.signature
+                        | header-3(
+                        i url
+                        |,&nbsp;
+                        i icon
+                        |,&nbsp;
+                        i h1
+                        |,&nbsp;
+                        i nav
+                        |,&nbsp;
+                        i [hook]
+                        |)
+
+                    thead
+                        tr
+                            th Parameter
+                            th Definition
+                            th Type
+                    tbody
+                        tr
+                            td.parameter url
+                            td.definition URL: homepage
+                            td.type string
+                        tr
+                            td.parameter icon
+                            td.definition SVG: fragment
+                            td.type string
+                        tr
+                            td.parameter h1
+                            td.definition heading: global
+                            td.type string
+                        tr
+                            td.parameter nav
+                            td.definition anchors: navigation
+                            td.type array, object
+                        tr
+                            td.parameter hook
+                            td.definition attribute: class
+                            td.type string
+
+            .brief
+
+                h5 Brief
+                p This primary page header rely exclusively on HTML and CSS while oferring support for compact mobile viewports. Take it for a spin in the preview panel!
+
+        .explain
+
+            .paths
+
+                h5 Paths
+
+                ul
+                    li location:&nbsp; #[code components/headers/3]
+                    li activate:&nbsp; #[code templates/_/mixins.pug]
+
+            .dependencies
+
+                h5 Dependencies
+
+                ul
+                    li.pug
+                        svg: use(xlink:href="/assets/images/_sprites/symbols.svg#html")
+                        span _.pug
+                    li.styl
+                        svg: use(xlink:href="/assets/images/_sprites/symbols.svg#css")
+                        span index.styl
+
+        h5 Example
+
+        .explain.code
+
+            .pug
+
+                pre
+                    code.language-pug.
+
+                        block header
+
+                            +header-3("/", "logo", "Heading", [
+                                {
+                                    href: "/",
+                                    name: "Home"
+                                },
+                                {
+                                    href: "/login",
+                                    name: "Log in"
+                                },
+                            ], "home")
+
+                aside .pug
+
+        .explain.code
+
+            .styl
+
+                pre
+
+                    code.language-stylus.
+
+                        header-3()
+
+                aside .styl

@@ -17,8 +17,8 @@ section(id="style" class="style")
             aside structure #[b 4.1]
 
     p.
-        The #[span.dir style] directory is the central location from which we manage the project's
-        presentation. It expands into #[span.dir _], #[span.dir views] and #[span.file root.styl].
+        The #[code.folder style] directory is the central location from which we manage the project's
+        presentation. It expands into #[code.folder _], #[code.folder views] and #[code.file root.styl].
         Styles are structured similar to #[em templates] in that both have their content logically
         grouped with respect to its scope, either #[i global] or #[i local].
 
@@ -27,7 +27,7 @@ section(id="style" class="style")
         ul
             li.
                 #[i Autoprefixer] will apply vendor prefixes according to the configuration in
-                #[span.file .browserslistrc].
+                #[code.file .browserslistrc].
             li.
                 Only unique media queries remain after a build. Queries are combined by platform
                 (target value) with their associated styles and then stacked in a mobile-first order.
@@ -38,9 +38,9 @@ section(id="style" class="style")
 
     p.
         General styles that have a site-wide impact are grouped according to type and referred to as
-        being #[em global]. These are #[span.file root.styl] and those contained in #[span.dir _]
-        (the partials folder), which are #[span.dir modules], #[span.dir plugins] and
-        #[span.dir elements].
+        being #[em global]. These are #[code.file root.styl] and those contained in #[code.folder _]
+        (the partials folder), which are #[code.folder modules], #[code.folder plugins] and
+        #[code.folder elements].
 
     h5 Root
 
@@ -60,18 +60,18 @@ section(id="style" class="style")
             aside root.styl #[b 4.2]
 
     p.
-        As the name suggests, #[span.file root.styl] serves to unify the integral parts of our
+        As the name suggests, #[code.file root.styl] serves to unify the integral parts of our
         styles. To ensure all dependencies are met at build time, we first load the partials from
-        #[span.dir _] after which we process the individual view styles.
+        #[code.folder _] after which we process the individual view styles.
 
     h5 Partials
 
     p.
-        #[span.dir _] is a direct child of #[span.dir style] and houses the global partials.
-        #[span.file root.styl] is responsible for including these partials in a dependency-sensitive
-        manner. We first pull in #[span.dir modules], containing our base styles. We then fetch
-        #[span.dir plugins] which in turn makes all component styles available for use. Up next is
-        #[span.dir elements] from where we manage the styles of features that are common to all
+        #[code.folder _] is a direct child of #[code.folder style] and houses the global partials.
+        #[code.file root.styl] is responsible for including these partials in a dependency-sensitive
+        manner. We first pull in #[code.folder modules], containing our base styles. We then fetch
+        #[code.folder plugins] which in turn makes all component styles available for use. Up next is
+        #[code.folder elements] from where we manage the styles of features that are common to all
         views.
 
     h4 Modules
@@ -138,15 +138,15 @@ section(id="style" class="style")
             aside modules #[b 4.3]
 
     p.
-        The #[span.dir modules] directory group together all the generic, foundational styles. Use
-        #[span.file index.styl] for both activating existing modules and adding new ones. Figure 4.3
+        The #[code.folder modules] directory group together all the generic, foundational styles. Use
+        #[code.file index.styl] for both activating existing modules and adding new ones. Figure 4.3
         presents a terse summary of each module's function. While most modules are self-explanatory,
         we'll cover the more involved ones next.
 
     h5(id="style-color") Color
 
     p.
-        Colors are managed centrally from within the #[span.dir color] module. Platframe has a
+        Colors are managed centrally from within the #[code.folder color] module. Platframe has a
         unique color system that combines the characteristics of schemes and scopes with the cascade.
         This enables rapid, consistent and precise color modification.
 
@@ -154,7 +154,7 @@ section(id="style" class="style")
 
     p.
         Default colors that do not belong to a scheme package are managed from the top-level
-        #[span.file palette.styl]. This may include colors that belong to a custom theme, gradients
+        #[code.file palette.styl]. This may include colors that belong to a custom theme, gradients
         and sundry color classes.
 
     h6 Schemes
@@ -164,9 +164,9 @@ section(id="style" class="style")
         and thus good for sharing between disparate Platframe projects.
 
     ol
-        li #[span.file index.styl] &nbsp;&rarr;&nbsp; pulls in the dependants
-        li #[span.file palette.styl] &nbsp;&rarr;&nbsp; tie color values to special scheme variables
-        li #[span.file dictionary.styl] &nbsp;&rarr;&nbsp; hooks into the palette to build scheme
+        li #[code.file index.styl] &nbsp;&rarr;&nbsp; pulls in the dependants
+        li #[code.file palette.styl] &nbsp;&rarr;&nbsp; tie color values to special scheme variables
+        li #[code.file dictionary.styl] &nbsp;&rarr;&nbsp; hooks into the palette to build scheme
 
     .explain.code
 
@@ -213,7 +213,7 @@ section(id="style" class="style")
     h6 Keys
 
     p.
-        #[span.file keys.styl] contains shorthand references to the hierarchical color relationships
+        #[code.file keys.styl] contains shorthand references to the hierarchical color relationships
         of the active scheme.
 
     h6 Conventions
@@ -243,7 +243,7 @@ section(id="style" class="style")
     p.
         The style module ships with a number of convenience methods to speed up development. They
         are categorized according to their functionality and grouped within sub-modules contained in
-        #[span.dir mixins].
+        #[code.folder mixins].
 
     h6 Color
 
@@ -254,7 +254,7 @@ section(id="style" class="style")
         Provides the ability to supercede the active global scheme on a local (view) level. Useful
         in scenarios where a sub-section is themed differently from the rest of the project. Call
         this mixin at the root level of the parent selector common to the target section(s) and pass
-        it a valid scheme name from a package in #[span.dir schemes]. Also affects nested components.
+        it a valid scheme name from a package in #[code.folder schemes]. Also affects nested components.
 
     .explain.code
 
@@ -334,7 +334,7 @@ section(id="style" class="style")
     p.
         Media query helpers are provided to allow granular control for a mobile-first responsive
         design. Acceptable arguments are literal values as well as numbers or keyword identifiers
-        correlating to the viewport scale as specified in #[span.file media.styl] (fig. 4.11).
+        correlating to the viewport scale as specified in #[code.file media.styl] (fig. 4.11).
 
 
     .explain.code
@@ -357,7 +357,7 @@ section(id="style" class="style")
         h6.i-emoji-hammer-wrench Dev notes
         ul
             li.
-                Before beginning development, open #[span.file media.styl] in #[span.dir modules] to
+                Before beginning development, open #[code.file media.styl] in #[code.folder modules] to
                 modify the default platform breakpoints if they do not suit your app's requirements.
                 The breakpoints are stored in an array with the first value at index 1.
 
@@ -377,7 +377,7 @@ section(id="style" class="style")
 
     p.
         The grid routine enables responsive, grid-based development (fig. 4.12). Check out
-        #[span.file layout.styl] in the mixins module for more configuration options.
+        #[code.file layout.styl] in the mixins module for more configuration options.
 
     .explain.code
 
@@ -430,8 +430,8 @@ section(id="style" class="style")
             aside plugins #[b 4.13]
 
     p.
-        External style resources can be used by linking to it from #[span.file index.styl] in
-        #[span.dir plugins]. Since Platframe's native components are essentially plugins too,
+        External style resources can be used by linking to it from #[code.file index.styl] in
+        #[code.folder plugins]. Since Platframe's native components are essentially plugins too,
         their styles are made available for use throughout our primary sheets by linking to them
         from here.
 
@@ -453,7 +453,7 @@ section(id="style" class="style")
 
     p.
         The styling of features that are commonly shared among views can be defined in
-        #[span.dir elements]. Figure 4.14 illustrates how the style rules for the
+        #[code.folder elements]. Figure 4.14 illustrates how the style rules for the
         #[code &lt;header&gt;] and #[code &lt;footer&gt;] elements are segregated by default. We
         take specificity into account by deploying these features only as direct children of the
         #[code &lt;body&gt;] element, allowing for easier overriding in scenarios where the default
@@ -462,7 +462,7 @@ section(id="style" class="style")
     h3 Local
 
     p.
-        Style files with local, page-level scope are confined to the #[span.dir views] directory.
+        Style files with local, page-level scope are confined to the #[code.folder views] directory.
 
     h4 Views
 
@@ -493,13 +493,13 @@ section(id="style" class="style")
     p.
         View styles are modular and pertain to specific sections and the pages within them.
         Referring to the example directory structure above (figure 4.15), we see that each section
-        has a primary stylesheet in the form of #[span.file index.styl] and may divide into any
+        has a primary stylesheet in the form of #[code.file index.styl] and may divide into any
         number of sub-sections. Akin to templates, this is a structural pattern that holds
         regardless of hierarchical depth or breadth.
 
     p.
         You may notice parity in how our #[em style views] are structured in relation to their
-        counterpart #[em markup views] within #[span.dir templates]. Keeping with this pattern leads
+        counterpart #[em markup views] within #[code.folder templates]. Keeping with this pattern leads
         to a more intuitive file system.
 
     h5 View Partials
@@ -511,9 +511,9 @@ section(id="style" class="style")
     p.
         In line with convention, partial files not housed in a dedicated folder are individually
         prepended with an underscore (refer to the section on partials in #[em templates]). Looking
-        at figure 4.15, we see that #[span.dir home] contains 3 partials: #[span.file _hello.styl],
-        #[span.file _story.styl] and #[span.file _convert.styl]. We'll use the main stylesheet for
-        the home section (#[span.file index.styl]) to gather these parts in their proper positions
+        at figure 4.15, we see that #[code.folder home] contains 3 partials: #[code.file _hello.styl],
+        #[code.file _story.styl] and #[code.file _convert.styl]. We'll use the main stylesheet for
+        the home section (#[code.file index.styl]) to gather these parts in their proper positions
         by using the file import ability of #[i Stylus].
 
     .explain.code

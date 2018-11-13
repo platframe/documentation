@@ -1,0 +1,118 @@
+section(class="component" id="2")
+
+    header
+
+        h3: span 2
+        dl.inline
+            div
+                dt Type
+                dd menu
+            div.comma
+                dt Tags
+                dd secondary
+                dd menu
+                dd fixed
+
+    h4 Preview
+
+    +iframe("navigation/2", 222)
+
+    h4 Implementation
+
+    section.implement
+
+        .explain
+
+            .routine
+
+                h5 Markup
+
+                table
+                    caption.signature
+                        | nav-2(
+                        i anchors
+                        |,&nbsp;
+                        i [hook]
+                        |)
+
+                    thead
+                        tr
+                            th Parameter
+                            th Definition
+                            th Description
+                            th Type
+                    tbody
+                        tr
+                            td.parameter anchors
+                            td.definition URL: set
+                            td.description navigation links
+                            td.type array, hash
+                        tr
+                            td.parameter hook
+                            td.definition attribute: class
+                            td.description arbitrary style hook
+                            td.type string
+
+            .brief
+
+                h5 Brief
+                p.
+                    A fixed-menu component for use on the right edge of a page.
+
+        .explain
+
+            .paths
+
+                h5 Paths
+
+                ul
+                    li location:&nbsp; #[code components/navigation/2]
+                    li activate:&nbsp; #[code templates/_/mixins.pug]
+
+            .dependencies
+
+                h5 Dependencies
+
+                ul
+                    li.pug
+                        svg: use(xlink:href="/assets/images/_sprites/symbols.svg#html")
+                        span _.pug
+                    li.styl
+                        svg: use(xlink:href="/assets/images/_sprites/symbols.svg#css")
+                        span index.styl
+
+        h5 Examples
+
+        .explain.code
+
+            .pug
+
+                pre
+                    code.language-pug.
+
+                        .content
+
+                            +nav-2([
+                                {
+                                    href: "/lorem/",
+                                    name: "Lorem"
+                                },
+                                {
+                                    href: "/ipsum/",
+                                    name: "Ipsum"
+                                }
+                            ])
+
+                aside .pug
+
+        .explain.code
+
+            .styl
+
+                pre
+
+                    code.language-stylus.
+
+                        nav-2()
+
+                aside .styl

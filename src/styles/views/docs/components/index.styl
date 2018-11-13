@@ -1,0 +1,165 @@
+// docs theme continued: component section styles
+&.components
+    &.index // exclusively target component home page
+        +nav-2()
+            +min(2)
+                top: 100px
+                li:nth-of-type(3)::after
+                    content: ''
+                    display: block
+                    width: rem(190px)
+                    margin-bottom: rem(16px)
+                    padding-bottom: rem(16px)
+                    border-bottom: 1px solid scheme.border
+            +min(3)
+                position: sticky
+                top: rem(103px)
+                width: auto
+                order: 0
+                ul
+                    position: sticky
+                    top: rem(125px)
+                    height: 86vh
+    &.category // exclusively target component category pages
+        component_category_main_width_b3 = 72% // provision more space for component examples
+        +header-2()
+            position: static
+            +min(2)
+                position: fixed
+            .core
+                +min(3)
+                    width: component_category_main_width_b3
+                    min-width: docs_c_x_b3_min
+        +nav-2()
+            +min(2)
+                top: 100px
+            +min(3)
+                position: sticky
+                top: rem(103px)
+                width: auto
+                order: 0
+                ul
+                    position: sticky
+                    top: rem(125px)
+                    height: 86vh
+        main
+            +min(2)
+                width: component_category_main_width_b3
+            .content
+                padding-top: rem(42px)
+                +min(3)
+                    width: 83%
+            .component // has unique component id
+                width: 100%
+                margin: auto
+                margin-bottom: rem(45px)
+                &:last-of-type
+                    margin-bottom: rem(100px)
+                > header
+                    display: flex
+                    width: 100%
+                    align-items: center
+                    justify-content: flex-start
+                    h3 // TODO: refactor to expand dynamically for more than 1 digit
+                        margin: 0
+                        padding: 0
+                        font-size: 2.2rem
+                        span
+                            display: flex
+                            justify-content: center
+                            align-items: center
+                            size(rem(50px))
+                            background: _90
+                    dl
+                        padding-left: 1.5rem
+                .preview // iframe
+                    border-width: 1px
+                    border-style: solid
+                    border-color: _border
+                .implement
+                    h5
+                        margin-top: 0
+                        font-size: 1.2rem
+                        font-weight: 600
+                    ol, ul
+                        margin: 0
+                        padding: 0
+                        list-style: none
+                    .explain // 1 row, 2 faux columns
+                        display: flex
+                        flex-flow: row wrap
+                        margin-bottom: rem(10px)
+                        +min(1)
+                            margin: rem(22px) 0
+                        &:nth-of-type(2)
+                            +min(1)
+                                margin-top: rem(30px)
+                        .routine
+                            width: 100%
+                            margin-top: rem(8px)
+                            margin-bottom: rem(28px)
+                            +min(1)
+                                width: 65%
+                                margin-top: 0
+                                margin-bottom: 0
+                                padding-right: rem(25px)
+                            table
+                                width: 100%
+                                border-collapse: collapse
+                                caption
+                                    font-family: $monospace
+                                    font-weight: normal
+                                    background: _90
+                                    i
+                                        font-style: normal
+                                thead th
+                                    padding-top: rem(20px)
+                                    text-align: left
+                                tbody
+                                    tr
+                                        &:nth-of-type(odd)
+                                            background: _90
+                                        td
+                                            color: _45
+                                            padding: rem(8px) 0 rem(8px) rem(7px)
+                                            &.parameter
+                                                color: _20
+                                                font-family: $monospace
+                                            &.type
+                                                font-style: italic
+                        .paths
+                            width: 100%
+                            margin-bottom: rem(20px)
+                            +min(1)
+                                width: 65%
+                                margin-bottom: 0
+                            li
+                                margin: .2rem 0
+                        .dependencies
+                            margin-bottom: rem(20px)
+                            +min(1)
+                                margin-bottom: 0
+                            li
+                                align-items: center
+                                margin: .2rem 0
+                                padding-right: 10px
+                                svg
+                                    padding-right: 4px
+                                    width: rem(16px)
+                                    height: rem(16px)
+                                    margin-bottom: -3px
+                                span::before
+                                    content: '\00A0'
+                                &.pug svg  { fill: _markup }
+                                &.styl svg { fill: _styles }
+                                &.svg svg  { fill: _images }
+                                &.js svg   { fill: _logic  }
+                        .brief
+
+                            p:first-of-type
+                                margin-top: -(rem(3px)) // account for line-height
+                        div:nth-of-type(2) // 2nd "column" fills available space
+                            +min(1)
+                                flex: 1
+                                padding-left: rem(25px)
+                                border-left: 1px solid scheme.border

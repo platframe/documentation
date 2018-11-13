@@ -34,13 +34,13 @@ block main
 
                 p.
                     A component is a collection of related modules that provides specific
-                    functionality. Located in #[span.dir components], they are grouped by category
+                    functionality. Located in #[code.folder components], they are grouped by category
                     and indexed numerically. Once a new component package is placed in its
                     respective parent category, all that remains is plugging it into your project.
 
                 p.
                     Components are deployed by implementing its constituent modules. We'll start by
-                    covering #[em markup] as it's a core module essential to all components.
+                    covering #[em markup] as it's a core module and essential to all components.
 
                 h4#deploy-markup Markup
 
@@ -57,8 +57,8 @@ block main
 
                 p.
                     The #[em Pug] portion of the component is provisioned for project-wide use by
-                    including it in #[span.file mixins.pug], the global partials file of
-                    #[span.dir templates] (Fig. 8.1).
+                    including it in #[code.file mixins.pug], the global partials file of
+                    #[code.folder templates] (Fig. 8.1).
 
                 .explain.code
 
@@ -96,12 +96,12 @@ block main
                         li.
                             In some cases the component's markup may not be wrapped in a mixin, in
                             which case you'll have to reference it directly from its home in
-                            #[span.dir components]. Refer to its documentation.
+                            #[code.folder components]. Refer to its documentation.
 
                 h4#deploy-style Style
 
                 p.
-                    Style files within #[span.dir components] will be picked up by the #[em Stylus]
+                    Style files within #[code.folder components] will be picked up by the #[em Stylus]
                     interpreter and available for use throughout the project's core styles.
 
                 .explain.code
@@ -167,7 +167,7 @@ block main
 
                 p.
                     To activate a component's logic, import its script module into
-                    #[span.file root.js], located in #[code src/logic/js]. Be sure to initiate any
+                    #[code.file root.js], located in #[code src/logic/js]. Be sure to initiate any
                     DOM-dependant packages appropriately (fig. 8.3).
 
             section(id="create")
@@ -325,7 +325,7 @@ block main
 
                 p.
                     If your component will make use of image assets, it should be bundled with the
-                    distributable package, specifically in its #[span.dir images] directory. You'll
+                    distributable package, specifically in its #[code.folder images] directory. You'll
                     need to decide on the most appropriate form of implementation, a decision that
                     will largely depend on the nature of your componemt, i.e. whether it will be
                     used across the application or be confined to one particular location and so
@@ -335,12 +335,12 @@ block main
                     these techniques.
                 p.
                     SVG assets that should be included in a project's SVG sprite sheet(s), must be
-                    contained in either a #[span.dir view] or #[span.dir symbols] folder that is
-                    housed within the #[span.dir sprite] folder in #[span.dir images] (refer to
+                    contained in either a #[code.folder view] or #[code.folder symbols] folder that is
+                    housed within the #[code.folder sprite] folder in #[code.folder images] (refer to
                     figure 8.3). This allows the build system to determine which SVG's are destined
                     for which type of sprite sheet and produce it accordingly.
                 p.
-                    Embedded images should be placed in a directory named #[span.dir inline]. To
+                    Embedded images should be placed in a directory named #[code.folder inline]. To
                     prepare assets for embedding, the build system will produce minified versions of
                     SVG's while rasters will be encoded as #[i base64] during a development build.
 
@@ -367,7 +367,7 @@ block main
                                 // use preferred indent. in root.js
                                 import allthethings from 'category/1/_';
 
-                        aside #[span._js_dark _.js] &nbsp; &#10564; &nbsp; #[span._js_dark root.js] #[b 8.4]
+                        aside _.js &nbsp; &#10564; &nbsp; root.js #[b 8.4]
 
                 p.
                     Functionality should be written exclusively for the component by only addressing
@@ -401,17 +401,16 @@ block main
                                 #[i.i-emoji-folder] headers ─┐
                                             ├─ #[i.i-emoji-folder] 1 ─┐
                                             |        ├─ #[i.i-emoji-folder] images ─┐
-                                            |        |             #[i.i-emoji-folder] sprite ─┐
-                                            |        |                        #[i.i-emoji-folder] symbols
-                                            |        ├─ #[i.i-emoji-file] _.js                |
-                                            |        ├─ #[i.i-emoji-file] _.pug               ├─ #[i.i-emoji-picture] header-1-logo.svg
-                                            |        └─ #[i.i-emoji-file] index.styl          └─ #[i.i-emoji-picture] header-1-mobile.svg
+                                            |        |             └──── #[i.i-emoji-folder] _symbols
+                                            |        ├─ #[i.i-emoji-file] _.js           |
+                                            |        ├─ #[i.i-emoji-file] _.pug          ├─ #[i.i-emoji-picture] header-1-logo.svg
+                                            |        └─ #[i.i-emoji-file] index.styl     └─ #[i.i-emoji-picture] header-1-mobile.svg
                                             |
                                             ├─ #[i.i-emoji-folder] 2
                                             ├─ #[i.i-emoji-folder] 3
                                             ┆
 
-                        aside #[span._map #[span._js_dark component structure]] #[b 8.5]
+                        aside #[span component structure] #[b 8.5]
 
                 p.
                     Component directory structure follows a predictable pattern. As an example,
@@ -433,7 +432,7 @@ block main
                     incrementing only the component number with each new addition.
                 p.
                     JavaScript and #[i Pug] files should be named with a single underscore (fig. 8.3
-                    ). Name your main stylesheet #[span.file index.styl] to allow #[i Stylus] to
+                    ). Name your main stylesheet #[code.file index.styl] to allow #[i Stylus] to
                     find and process it. Image files should be arranged as explained above in the
                     #[a(href="#create-images") section on images].
 
@@ -481,7 +480,7 @@ block main
                     Once tested and documented, you'll need to submit 2 pull requests. For the
                     documentation, submit a PR the the
                     #[a(href="https://github.com/platframe/docs") documentation] repository. For the
-                    component, choose the appropriate category in #[span.dir components] and submit
+                    component, choose the appropriate category in #[code.folder components] and submit
                     a PR to the #[a(href="https://github.com/platframe/platframe") distribution]
                     repository.
 

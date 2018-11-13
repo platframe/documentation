@@ -2,9 +2,19 @@
 
 include ../../components/headers/1/_
 include ../../components/headers/2/_
+include ../../components/headers/3/_
 include ../../components/navigation/1/_
 include ../../components/navigation/2/_
 include ../../components/banners/1/_
 include ../../components/forms/1/_
 
 //- default
+
+mixin iframe(slug, height = 340)
+    iframe(
+        src=`/docs/components/${ slug }/index.html`
+        width="100%"
+        height=height
+        class="preview"
+        title="Platframe component preview"
+    )

@@ -1,0 +1,139 @@
+section(class="component" id="1")
+
+    header
+
+        h3: span 1
+        dl.inline
+            div
+                dt Type
+                dd body
+            div.comma
+                dt Tags
+                dd scroll
+                dd move
+                dd view
+                dd local
+
+    h4 Preview
+
+    +iframe("navigation/1")
+
+    h4 Implementation
+
+    section.implement
+
+        .explain
+
+            .routine
+
+                h5 Markup
+
+                table
+                    caption.signature
+                        | nav-1(
+                        i target
+                        |,&nbsp;
+                        i direction
+                        |,&nbsp;
+                        i [icon]
+                        |)
+
+                    thead
+                        tr
+                            th Parameter
+                            th Definition
+                            th Description
+                            th Type
+                    tbody
+                        tr
+                            td.parameter target
+                            td.definition attribute: id
+                            td.description id selector of target view
+                            td.type string
+                        tr
+                            td.parameter direction
+                            td.definition keyword
+                            td.description either "next" or "prev"
+                            td.type string
+                        tr
+                            td.parameter icon
+                            td.definition SVG: fragment
+                            td.description change default button image
+                            td.type string
+
+            .brief
+
+                h5 Brief
+                p.
+                    Button to trigger animated scrolling between sections of a page. Contains 2 global SVG symbols: #[code nav-1-fill] and #[code nav-1-stroke], the former being the default. The last argument may be used to switch between the two default icons or set your own.
+
+        .explain
+
+            .paths
+
+                h5 Paths
+
+                ul
+                    li location:&nbsp; #[code components/navigation/1]
+                    li activate:&nbsp; #[code templates/_/mixins.pug]
+
+            .dependencies
+
+                h5 Dependencies
+
+                ul
+                    li.pug
+                        svg: use(xlink:href="/assets/images/_sprites/symbols.svg#html")
+                        span _.pug
+                    li.styl
+                        svg: use(xlink:href="/assets/images/_sprites/symbols.svg#css")
+                        span index.styl
+                    li.svg
+                        svg: use(xlink:href="/assets/images/_sprites/symbols.svg#svg")
+                        span *.svg
+                    li.js
+                        svg: use(xlink:href="/assets/images/_sprites/symbols.svg#js")
+                        span _.js
+
+        h5 Examples
+
+        .explain.code
+
+            .pug
+
+                pre
+                    code.language-pug.
+
+                        #home
+                            // content...
+                            +nav-1("next")
+
+                        #next
+                            // content...
+                            +nav-1("home", "prev", "nav-1-stroke")
+
+                aside .pug
+
+        .explain.code
+
+            .styl
+
+                pre
+
+                    code.language-stylus.
+
+                        nav-1()
+
+                aside .styl
+
+        .explain.code
+
+            .js
+
+                pre
+
+                    code.language-javascript.
+
+                        import nav from 'navigation/1/_';
+
+                aside root.js
