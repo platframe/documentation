@@ -1,4 +1,7 @@
 .front
+    +min(1)
+        min-height: 100vh
+        align-content: center
     .content
         flex-flow: row wrap
         align-content: center
@@ -7,26 +10,29 @@
             margin-top: -20px
             justify-content: initial
         h2
+            display: none
             position: relative
             font-size: 3.6rem
             font-weight: 600
-            letter-spacing: -3px
-            margin-bottom: 0
+            letter-spacing: -2px
+            margin: rem(15px) 0 0
             text-align: center
             line-height: 1.1
             +min(1)
+                display: block
                 font-size: 5.5rem
                 line-height: inherit
                 margin: 0 0 1vw
             +min(2)
                 text-align: initial
                 font-size: 7rem
+                letter-spacing: -3px
                 margin: 0 0 0.2vw -0.4rem
             +min(3)
                 width: 100%
                 font-size: 7.5rem
         .call
-            width: 100%
+            width: 82%
             text-align: center
             font-weight: 400
             +min(1)
@@ -38,27 +44,32 @@
                 width: 70%
             h3
                 font-size: 1.6rem
-                font-weight: inherit
+                font-weight: 600
                 text-align: inherit
+                line-height: 1.4
                 +min(1)
                     font-size: 2rem
+                    font-weight: inherit
                 +min(2)
                     font-size: 2.2rem
+                    line-height: 1.35
                 +min(3)
                     font-size: 2.5rem
             h4
-                font-size: 1.2rem
+                font-size: 1.1rem
                 font-weight: inherit
                 text-align: inherit
-                margin: 2rem 0
-                padding-top: 2.2rem
-                border-top: 2px solid _platframe
+                line-height: 1.7
+                margin: 1.7rem 0 2rem
+                padding-top: 1.4rem
+                border-top: 1px solid _platframe
                 +min(1)
                     font-size: 1.3rem
                     margin: 3rem 0 4rem
                     padding-top: 2.5rem
+                    border-top-width: 2px
                 +min(2)
-                    margin: 2.5rem 0 3.5rem
+                    margin: 2.5rem 0 4rem
                     padding-top: 2.5rem
                 +min(3)
                     font-size: 1.4rem
@@ -68,25 +79,31 @@
                         color: _50
         .action
             display: flex
-            flex-flow: column wrap
+            flex-flow: row wrap
             align-items: center
             width: 100%
             justify-content: center
+            margin: .2rem 0 3.6rem
             +min(1)
-                flex-flow: row wrap
+                margin: inherit
             +min(2)
                 justify-content: initial
             a
-                font-size: 1.25rem
-                font-weight: 600
+                font-size: 1.1rem
                 padding: padding or rem(16px) rem(28px)
-                padding: rem(17px) rem(27px)
+                padding: rem(15px) rem(24px)
                 text-align: center
-                border-width: 2px
+                border-width: 1px
                 border-style: solid
+                +min(1)
+                    font-size: 1.25rem
+                    font-weight: 600
+                    border-width: 2px
+                    padding: rem(17px) rem(27px)
                 &:first-of-type
                     color: _platframe
                     border-color: @color
+                    margin-right: rem(14px)
                     &:hover
                         background: @border-color
                 &:last-of-type
@@ -97,18 +114,11 @@
                 &:hover
                     color: _100
                     cursor: pointer
-                +max(1)
-                    &:last-of-type
-                        margin-top: rem(15px)
                 +min(1)
                     font-size: 1.2rem
-                    &:first-of-type
-                        margin-right: rem(12px)
                 +min(2)
                     font-size: 1.25rem
                     padding: rem(18px) rem(42px)
-                    &:first-of-type
-                        margin-right: rem(14px)
                 +min(3)
                     font-size: 1.32rem
                     padding: rem(18px) rem(32px)
