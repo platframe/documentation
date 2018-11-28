@@ -33,12 +33,12 @@ section(id="logic" class="logic")
     p.
         Scripted functionality is contained in #[code.folder logic]. While it is set up for JavaScript development by default, it may also be used to house logic from other languages (Fig. 5.1).
 
-    h3 JavaScript
+    h3#logic-js JavaScript
 
     p.
         Your project's JavaScript is managed from the #[code.folder js] directory. Its immediate children are #[code.file root.js], #[code.folder libs] and #[code.folder modules].
 
-    h4 Root
+    h4#logic-js-root Root
 
     .explain.code
 
@@ -74,7 +74,7 @@ section(id="logic" class="logic")
             li.
                 #[i Rollup] bundles #[code.file root.js] as an #[abbr(title="immediately-invoked function expression") IIFE] into a single client-side dependency. It is loaded via a #[i defer] directive in #[code.file head.pug] but could be moved to the #[a(href="#templates-body") footer] block in #[code.file body.pug] if needed.
 
-    h4 Libs
+    h4#logic-js-libraries Libs
 
     p.
         The #[code.folder libs] folder is a direct child of the parent language directory and contain the respective native (#[code.folder int]) and 3#[sup rd] party libraries (#[code.folder ext]) that your app consumes.
@@ -85,17 +85,17 @@ section(id="logic" class="logic")
             li.
                 The platform does not rely on or include any external #[em client-side] libraries. Consider them with respect to your project.
 
-    h5 Internal
+    h5#logic-js-internal Internal
 
     p.
         The native library is made up by a collection of utility modules contained in #[code.folder int] (fig. 5.1). They are separated by type and consist of low-level, "atomic" functionality that essentially derives its usefulness from being part of larger compilations. They serve to make your code #[abbr(title="Don't Repeat Yourself") DRY] by being shared between higher level functionality in #[code.folder modules] and #[code.folder components]. Utilities may also be interdependant.
 
-    h5 External
+    h5#logic-js-external External
 
     p.
         #[code.folder ext] contains your project's external (3#[sup rd] party), client-side libraries that are not provisioned with a package manager like #[abbr(title="Node Package Manager") NPM].
 
-    h4 Modules
+    h4#logic-js-modules Modules
 
     p.
         Logic that are neither part of a component nor qualify as a simple utility should be placed in #[code.folder modules]. You decide how modules are structured as it may depend on factors beyond the framework's reach, such as the development pattern in use and the scale of your project.

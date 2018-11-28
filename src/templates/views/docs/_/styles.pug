@@ -27,12 +27,12 @@ section(id="styles" class="styles")
             li.
                 Only unique media queries remain after a build. Queries are combined by platform (target value) with their associated styles and then stacked in a mobile-first order. As there is no additional impact on performance, you can use the media #[a(href="#style-mixins") mixins] liberally for granular control.
 
-    h3 Global
+    h3#styles-global Global
 
     p.
         General styles that have a site-wide impact are grouped according to type and referred to as being #[em global]. These are #[code.file root.styl] and those contained in #[code.folder _] (the partials folder), which are #[code.folder modules], #[code.folder plugins] and #[code.folder elements].
 
-    h5 Root
+    h5#styles-root Root
 
     .explain.code
 
@@ -52,12 +52,12 @@ section(id="styles" class="styles")
     p.
         As the name suggests, #[code.file root.styl] serves to unify the integral parts of our styles. To ensure all dependencies are met at build time, we first load the partials from #[code.folder _] after which we process the individual view styles.
 
-    h5 Partials
+    h5#styles-partials Partials
 
     p.
         #[code.folder _] is a direct child of #[code.folder styles] and houses the global partials. #[code.file root.styl] is responsible for including these partials in a dependency-sensitive manner. We first pull in #[code.folder modules], containing our base styles. We then fetch #[code.folder plugins] which in turn makes all component styles available for use. Up next is #[code.folder elements] from where we manage the styles of features that are common to all views.
 
-    h4 Modules
+    h4#styles-modules Modules
 
     .explain.code
 
@@ -125,17 +125,17 @@ section(id="styles" class="styles")
     p.
         The #[code.folder modules] directory group together all the generic, foundational styles. Use #[code.file index.styl] for both activating existing modules and adding new ones. Figure 4.3 presents a terse summary of each module's function. While most modules are self-explanatory, we'll cover the more involved ones next.
 
-    h5(id="style-color") Color
+    h5#styles-color Color
 
     p.
         Colors are managed centrally from within the #[code.folder color] module. Platframe has a unique color system that combines the characteristics of schemes and scopes with the cascade. This enables rapid, consistent and precise color modification.
 
-    h6 Palette
+    h6#styles-color-palette Palette
 
     p.
         Default colors that do not belong to a scheme package are managed from the top-level #[code.file palette.styl]. This may include colors that belong to a custom theme, gradients and sundry color classes.
 
-    h6 Schemes
+    h6#styles-color-schemes Schemes
 
     p.
         A color scheme is comprised of a package consisting of 3 files. Schemes are self-contained and thus good for sharing between disparate Platframe projects.
@@ -178,7 +178,7 @@ section(id="styles" class="styles")
     p.
         Dictionaries are multi-dimensional to allow for more precision through the use of "scopes". Scopes are special name-spaced sections defined in palettes and their related dictionaries to target specific areas of the interface. For example, areas like #[code nav], #[code header] and #[code footer] make a good case for scope creation as they often require some degree of deviation from the basic scheme. Figure 4.5 samples a #[i header] scope in action.
 
-    h6 Keys
+    h6#styles-color-keys Keys
 
     p.
         #[code.file keys.styl] contains shorthand references to the hierarchical color relationships of the active scheme.
@@ -204,12 +204,12 @@ section(id="styles" class="styles")
 
             aside .styl #[b 4.6]
 
-    h5(id="style-mixins") Mixins
+    h5#styles-mixins Mixins
 
     p.
         The style module ships with a number of convenience methods to speed up development. They are categorized according to their functionality and grouped within sub-modules contained in #[code.folder mixins].
 
-    h6 Color
+    h6#styles-mixins-color Color
 
     p.mixin: code schemer(scheme)
 
@@ -261,7 +261,7 @@ section(id="styles" class="styles")
 
             aside .styl #[b 4.9]
 
-    h6 Conversion
+    h6#styles-mixins-conversion Conversion
 
     p.mixin: code rem(32px)
 
@@ -279,7 +279,7 @@ section(id="styles" class="styles")
 
             aside .styl #[b 4.10]
 
-    h6 Platform
+    h6#styles-mixins-platform Platform
     p: i — Dimensions
 
     p.mixin
@@ -346,7 +346,7 @@ section(id="styles" class="styles")
             li.
                 The dimensional media query mixins may be used liberally for fine control in a responsive design. While the impact on performance may be negligible, duplicate media queries are still factored out during a build, leaving only unique combinations with their associated rules to make it through to the production stylesheet.
 
-    h6 Grid
+    h6#styles-mixins-grid Grid
 
     p.mixin: code grid(width)
 
@@ -384,7 +384,7 @@ section(id="styles" class="styles")
             li.
                 Flexbox is used by default for document layout. You can complement or replace this approach by using the #[a(href="#style-mixins") grid mixin] for responsive, grid-based development. Both useful for supporting older UA's and as an alternative layout mode until native CSS grids enjoy sufficient support.
 
-    h4 Plugins
+    h4#styles-plugins Plugins
 
     .explain.code
 
@@ -403,7 +403,7 @@ section(id="styles" class="styles")
     p.
         External style resources can be used by linking to it from #[code.file index.styl] in #[code.folder plugins]. Since Platframe's native components are essentially plugins too, their styles are made available for use throughout our primary sheets by linking to them from here.
 
-    h4 Elements
+    h4#styles-elements Elements
 
     .explain.code
 
@@ -422,12 +422,12 @@ section(id="styles" class="styles")
     p.
         The styling of features that are commonly shared among views can be defined in #[code.folder elements]. Figure 4.14 illustrates how the style rules for the #[code &lt;header&gt;] and #[code &lt;footer&gt;] elements are segregated by default. We take specificity into account by deploying these features only as direct children of the #[code &lt;body&gt;] element, allowing for easier overriding in scenarios where the default needs adaptation or replacement.
 
-    h3 Local
+    h3#styles-local Local
 
     p.
         Style files with local, page-level scope are confined to the #[code.folder views] directory.
 
-    h4 Views
+    h4#styles-views Views
 
     .explain.code
 
@@ -459,7 +459,7 @@ section(id="styles" class="styles")
     p.
         You may notice parity in how our #[em style views] are structured in relation to their counterpart #[em markup views] within #[code.folder templates]. Keeping with this pattern leads to a more intuitive file system.
 
-    h5 View Partials
+    h5#styles-views-partials View Partials
 
     p.
         Similar to templates, we deal with 2 types of partials in styles: #[i global] and #[i local]. Having covered global partials in the beginning of this section, let's focus on partials as they're used in views.

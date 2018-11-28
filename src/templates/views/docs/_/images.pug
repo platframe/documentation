@@ -34,7 +34,7 @@ section(id="images" class="images")
                                             ┆
             aside structure #[b 6.1]
 
-    h3 Subjects
+    h3#images-subjects Subjects
 
     p.
         #[em Subject] directories do not begin with an underscore and should
@@ -49,7 +49,7 @@ section(id="images" class="images")
         groups. These “offspring” subjects can be used as necessary for added
         clarification.
 
-    h3 Implementations
+    h3#images-implementations Implementations
 
     p.
         The build system determines the appropriate image processing steps by
@@ -65,7 +65,7 @@ section(id="images" class="images")
         well as #[code.folder _symbols] and #[code.folder _views] for vector sprites.
         We'll explore each of them in the next sections.
 
-    h4 Inline
+    h4#images-inline Inline
 
     p.
         To designate images for inlining into either markup or styles, place them in a folder named #[code.folder _inline] within #[code.folder images]. A #[em relative path] to #[code.folder src] is required when referencing these assets. Additionally, to inline an image in your markup you'll need to add #[code inline] as an attribute of the element in question.
@@ -128,7 +128,7 @@ section(id="images" class="images")
             li.
                 Only bitmaps will be converted to #[i base64].
 
-    h4 Link
+    h4#images-link Link
 
     p.
         Earmark discrete graphics that are linked to from within the source by
@@ -142,7 +142,7 @@ section(id="images" class="images")
                 #[code .png] and #[code .jpg] files will be minified the during
                 the build phase.
 
-    h4 Sprites
+    h4#images-sprites Sprites
 
     p.
         Vector sprites are supported through both its #[code view] and
@@ -202,7 +202,7 @@ section(id="images" class="images")
             li.
                 Sprites reduce HTTP lookups and are cacheable.
 
-    h5 Rasters
+    h5#images-rasters Rasters
 
     p.
         Platframe does not support traditional raster sprites. If your project

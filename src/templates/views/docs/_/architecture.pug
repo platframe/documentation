@@ -9,22 +9,22 @@ section(id="architecture" class="architecture")
         figcaption architecture #[strong 2.1]
         img(src="images/docs/_inline/architecture.svg" alt="Diagram of Platframe's frontend architecture" inline)
 
-    h4 root
+    h4#root root
 
     p.
         The #[code.folder root] directory contains your project. It is the parent of the #[code.folder src], #[code.folder dev] and #[code.folder prd] directories (explained below). It also contains files not present on the above schematic, such as configuration, tooling and metadata. Be sure to change "root" to something more descriptive, as you see fit for your project.
 
-    h4 src
+    h4#src src
 
     p.
         The source directory is home to the project's source code. Descending one level down the tree reveals 6 sub-directories that separates the different asset groups.
 
-    h4 dev
+    h4#dev dev
 
     p.
         This is where the build system deploys and serves the project during development. Where applicable, assets are optimized for developmental purposes.
 
-    h4 prd
+    h4#prd prd
 
     p.
         The production build is located here. As illustrated by the schematic, directory layout is similar to the #[code.folder dev] folder (fig. 2.1).

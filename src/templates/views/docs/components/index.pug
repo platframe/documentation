@@ -98,7 +98,7 @@ block main
                             which case you'll have to reference it directly from its home in
                             #[code.folder components]. Refer to its documentation.
 
-                h4#deploy-style Style
+                h4#deploy-styles Styles
 
                 p.
                     Style files within #[code.folder components] will be picked up by the #[em Stylus]
@@ -212,7 +212,7 @@ block main
                     usage. Only stylistic changes should be necessary as the component is likely to
                     be thematically adapted to be consistent with the host project's appearance.
 
-                h5 Naming
+                h5#create-naming Naming
 
                 p.
                     Component names should conform to the #[code type-{num}] format. The number part
@@ -228,7 +228,7 @@ block main
                     into a mixin and it's also the ideal way for wrapping the structural (HTML) part
                     as it facilitates reuse and hide unnecessary detail.
 
-                h5 Mixin
+                h5#create-markup-mixin Mixin
 
                 p.
                     While there's no restriction on the amount of arguments your component's #[i Pug]
@@ -237,7 +237,7 @@ block main
                     the #[code hook] parameter that allow users to add an additional style hook in
                     the form of a CSS class, should they require additional specificity.
 
-                h5 Attributes
+                h5#create-markup-attributes Attributes
 
                 p.
                     The only required attribute on components is the default CSS class that is a
@@ -276,14 +276,14 @@ block main
 
                         aside _.pug #[b 8.5]
 
-                h4#create-style Style
+                h4#create-styles Styles
 
                 p.
                     Components should be styled in a responsive manner as all platforms should be
                     treated as 1#[sup st] class citizens in relation to the user's experience and
                     the app's appearance.
 
-                h5 Mixin
+                h5#create-styles-mixin Mixin
 
                 p.
                     Encapsulate styles within a
@@ -295,14 +295,14 @@ block main
                     either inherit the global scheme or receive an arbitrary one, it should have at
                     least a #[code scheme] parameter that defaults to the project's primary scheme.
 
-                h5 Rule
+                h5#create-styles-selectors Selectors
 
                 p.
-                    Attach the styling to a class selector with the same name as the component it
+                    Attach the styling to a class-selector with the same name as the component it
                     belongs to. This ensures that it gets associated with its sibling markup. Avoid
                     hard coding color values into your component as it lessens interoperability. In
                     stead, assign color by referencing the scoped identities from the framework's
-                    #[a(href="/docs/#style-color") scheme hash] format. This allows your component
+                    #[a(href="/docs/#styles-color") scheme hash] format. This allows your component
                     to receive the appropriate paint from the context of the active scheme.
 
                 .explain.code
@@ -436,7 +436,7 @@ block main
                     find and process it. Image files should be arranged as explained above in the
                     #[a(href="#create-images") section on images].
 
-            section(id="share")
+            section#share
 
                 h3 Sharing
 

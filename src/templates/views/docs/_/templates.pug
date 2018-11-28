@@ -14,7 +14,7 @@ section(id="templates" class="templates")
         The #[code.folder views] folder is home to all #[em local] markup and splits into
         #[code.file index.pug] and any amount of sections that the project could be comprised of.
 
-    h3 Global
+    h3#templates-global Global
 
     p.
         The purpose of global markup is to supply the project's #[em view] files with the resources
@@ -236,7 +236,7 @@ section(id="templates" class="templates")
         instance, #[code index.pug] becomes #[code index.html] and #[code hello.pug] becomes
         #[code hello.html].
 
-    h3 Nesting
+    h3#templates-nesting Nesting
 
     .explain.code
 
@@ -274,7 +274,7 @@ section(id="templates" class="templates")
         that particular section (level) of the parent category. Again, when a sub-category has to
         divide into one or more child (offspring) categories, the pattern repeats.
 
-    h3 Partials
+    h3#templates-partials Partials
 
     p.
         Depending on how they are used, partials can be beneficial in a variety of ways. For example,
@@ -288,7 +288,7 @@ section(id="templates" class="templates")
         method, while figure 3.7 shows the latter. It is recommended to only use the prefix method
         (figure 3.7) when dealing with #[em content] partials.
 
-    h4#templates-global Global
+    h4#templates-partials-global Global
 
     .explain.code
 
@@ -311,7 +311,7 @@ section(id="templates" class="templates")
         Figure 3.6 illustrates the global partials in #[code.folder _]: #[code.file mixins.pug],
         #[code.file head.pug] and #[code.file body.pug].
 
-    h4#templates-local Local
+    h4#templates-partials-local Local
 
     p.
         Partials that relate only to a specific section or view are referred to as being #[em local].
@@ -326,7 +326,7 @@ section(id="templates" class="templates")
         partial directory (#[code.folder _]) in the "menu" section. Being restricted to the menu
         section indicates that it should only be consumed by views in that section.
 
-    h5 Content
+    h5#templates-content Content
 
     .explain.code
 
