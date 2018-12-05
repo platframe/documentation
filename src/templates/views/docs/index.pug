@@ -10,18 +10,19 @@ block context
 //- header
 block header
 
+    //- modified for internal use: Algolia search
     +header-2('/#front', 'logo', 'Platframe', 'Documentation', [
         {
             href: "/",
             name: "Home"
         }
-    ], false, "themed")
+    ], false, "themed", true)
 
 //- body
 block main
 
     main(role="main")
-        
+
         div(class="content")
 
             include _/start
@@ -33,5 +34,5 @@ block main
             include _/fonts
             //- component docs @ /components/
             include _/contribute
-                
+
         include _/nav-2

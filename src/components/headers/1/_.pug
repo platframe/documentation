@@ -2,21 +2,26 @@
     In the event that a gradient is present in the SVG, the icon parameter would currently require a
     fragment from a view-based sprite, referenced from an img tag if it is to be rendered correctly.
 
-mixin header-1(url, icon, h1, navigation, hook)
+mixin header-1(url, icon, h1, navigation, hook, for_internal_use)
     header(class=hook ? "header-1 " + hook :  "header-1")
 
-        div
+        .core
             h1
                 a(href=url)
                     svg: use(xlink:href="/assets/images/_sprites/symbols.svg#" + icon)
                     =h1
 
-            nav(id="navigation" role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement")
+            if for_internal_use
+                form#find
+                    input(type="search" id="search" placeholder="Search")
+
+            nav(id="navigation" class="navigation" role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement")
 
                 button
                     svg: use(xlink:href="/assets/images/_sprites/symbols.svg#header-1-nav-button")
 
                 ul
+
                     for anchor in navigation
 
                         li

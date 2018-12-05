@@ -1,0 +1,63 @@
+#find // form
+    display: none
+    +min(2)
+        display: inherit
+    position: relative
+    top: auto
+    right: auto
+    margin-right: rem(15px)
+    padding-left: rem(8px)
+    &::before
+        content: ''
+        size(12px)
+        top: 45%
+        left: 15px
+        display: block
+        position: absolute
+        border: 2px solid _65
+        border-radius: 50%
+        transform: translateY(-50%)
+        z-index: 1
+    &::after
+        content: ''
+        width: 2px
+        height: 7px
+        top: 56%
+        left: 26px
+        position: absolute
+        transform: rotate(-45deg)
+        background: _65
+        z-index: 1
+    .header-1 &
+        margin-left: auto
+    .header-2 &
+        &::before
+            border-color: _60
+        &::after
+            background: _60
+    .algolia-autocomplete
+        font-family: Arial, Helvetica, sans-serif
+    #search // input
+        width: rem(180px)
+        position: relative
+        outline: 0
+        font-size: 1rem
+        padding: rem(3px) 0 rem(3px) rem(28px)
+        border: none
+        background: _90
+        transition: width .5s ease
+        &::placeholder
+            color: _55
+        &:focus
+        &:active
+            width: rem(230px)
+        .header-2 &
+            width: rem(250px)
+            border: 1px solid _border
+            background: scheme.header.background
+            transition: border-color .3s ease
+            &:focus
+            &:active
+                border-color: _60
+            +min(3)
+                width: rem(300px)

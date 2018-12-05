@@ -14,7 +14,7 @@ header-1(scheme = __default)
             height: header_height_b1
         +min(2)
             height: header_height_b2
-        div // inherit size from .content
+        .core // inherit size from .content
             display: flex
             flex-wrap: wrap
             width: content_width
@@ -23,6 +23,7 @@ header-1(scheme = __default)
             +min(2)
                 width: content_width_b2
                 min-width: content_width_b2_min
+                align-items: center
             +min(3)
                 width: content_width_b3
                 min-width: content_width_b3_min
@@ -44,7 +45,7 @@ header-1(scheme = __default)
                         +min(1)
                             size(rem(22px))
                             margin: 0 rem(5px) 0 0
-        #navigation
+        .navigation
             button // mobile devices
                 +max(2)
                     width: 56px
@@ -131,7 +132,7 @@ header-1(scheme = __default)
                             svg { fill: @color }
                         svg
                             margin-bottom: -1px
-                #navigation
+                .navigation
                     position: relative
                     button
                         position: relative

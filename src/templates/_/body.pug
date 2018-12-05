@@ -6,6 +6,7 @@ block body
 
         block header
 
+            //- modified for internal use: Algolia search
             +header-1("/#front", "logo", "Platframe", [
                 {
                     href: "/#gist",
@@ -23,7 +24,7 @@ block body
                     href: "/docs/",
                     name: "Docs"
                 }
-            ])
+            ], false, true)
 
         block main
 
@@ -31,8 +32,18 @@ block body
 
             include ../../components/footers/1/_
 
-        //- end-of-body script insertion
+        //- document-level end-of-body script insertion
         block inject
+
+        //- global end-of-body script: Algolia search
+        script(src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js")
+        script.
+            docsearch({
+                apiKey: 'fa3fa010344f4919d694124c52644186',
+                indexName: 'platframe',
+                inputSelector: '#search',
+                debug: false // inspect dropdown
+            });
 
         //- compatibility
         noscript: a(href="https://browsersmart.com") Please use a compatible browser and enable JavaScript

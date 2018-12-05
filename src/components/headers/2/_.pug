@@ -1,4 +1,4 @@
-mixin header-2(url, icon, h1, h2, breadcrumbs, navigation, hook)
+mixin header-2(url, icon, h1, h2, breadcrumbs, navigation, hook, for_internal_use)
     header(class=hook ? "header-2 " + hook :  "header-2")
 
         .core
@@ -9,9 +9,13 @@ mixin header-2(url, icon, h1, h2, breadcrumbs, navigation, hook)
                         use(xlink:href="/assets/images/_sprites/symbols.svg#" + icon)
                     =h1
 
+            if for_internal_use
+                form#find
+                    input(type="search" id="search" placeholder="Search")
+
             if breadcrumbs
 
-                div
+                .breadcrumbs
 
                     nav(role="navigation")
 
