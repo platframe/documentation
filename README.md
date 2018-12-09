@@ -12,6 +12,9 @@
 </p>
 
 ## Deploying
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/7121342e3b4e4a009f10f124df5a1574)](https://app.codacy.com/app/platframe/documentation?utm_source=github.com&utm_medium=referral&utm_content=platframe/documentation&utm_campaign=Badge_Grade_Settings)
+
 Instructions for hosting the documentation locally:
 ```bash
 mkdir manual && cd $_
