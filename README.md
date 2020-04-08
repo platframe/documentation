@@ -8,7 +8,7 @@
     <a href="https://travis-ci.org/platframe/documentation"><img src="https://travis-ci.org/platframe/documentation.svg?branch=master"></a>
     <a class="badge-align" href="https://www.codacy.com/app/platframe/documentation?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=platframe/documentation&amp;utm_campaign=Badge_Grade"><img src="https://api.codacy.com/project/badge/Grade/d0144aec63154afdacc926eb3322a65d"/></a>
     <a href="https://david-dm.org/platframe/documentation?type=dev"><img src="https://david-dm.org/platframe/documentation/dev-status.svg"></a>
-    <a href="http://t.me/platframe"><img src="https://img.shields.io/badge/telegram-chat-30A7DE.svg"></a>
+    <!-- <a href="http://t.me/platframe"><img src="https://img.shields.io/badge/telegram-chat-30A7DE.svg"></a> -->
 </p>
 
 ## Deploying
