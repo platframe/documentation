@@ -1,7 +1,7 @@
 {
   "name": "platframe-docs",
   "description": "Website and documentation for Platframe.",
-  "version": "2.3.3",
+  "version": "2.4.0",
   "version_platframe": "2.2.1",
   "scripts": {
     "start": "NODE_ENV=development gulp",
