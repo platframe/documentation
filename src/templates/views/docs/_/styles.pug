@@ -42,6 +42,7 @@ section(id="styles" class="styles")
                 code.language-stylus.
 
                     @require '_/modules'
+                    @require '_/utilities'
                     @require '_/plugins'
                     @require '_/elements'
 
@@ -55,7 +56,7 @@ section(id="styles" class="styles")
     h5#styles-partials Partials
 
     p.
-        #[code.folder _] is a direct child of #[code.folder styles] and houses the global partials. #[code.file root.styl] is responsible for including these partials in a dependency-sensitive manner. We first pull in #[code.folder modules], containing our base styles. We then fetch #[code.folder plugins] which in turn makes all component styles available for use. Up next is #[code.folder elements] from where we manage the styles of features that are common to all views.
+        #[code.folder _] is a direct child of #[code.folder styles] and houses the global partials. #[code.file root.styl] is responsible for including these partials in a dependency-sensitive manner. We first pull in #[code.folder modules], containing our base styles. We then fetch the utility class modules from #[code.folder utilities], comprised of high-level functional classes. Up next is #[code.folder plugins] which in turn makes all component and other external styles available for use. Finally, #[code.folder elements] is where we manage elements (or sections) of the project that are common to all views, like headers and footers.
 
     h4#styles-modules Modules
 
@@ -383,6 +384,25 @@ section(id="styles" class="styles")
         ul
             li.
                 Flexbox is used by default for document layout. You can complement or replace this approach by using the #[a(href="#style-mixins") grid mixin] for responsive, grid-based development. Both useful for supporting older UA's and as an alternative layout mode until native CSS grids enjoy sufficient support.
+
+    h4#styles-utilities Utilities
+
+    .explain.code
+
+        .styl.map
+
+            pre
+                code.
+
+                    #[i.i-emoji-folder] utilities ─┐
+                                  ├─ #[i.i-emoji-file] index.styl
+                                  ├─ #[i.i-emoji-file] button.styl
+                                  ┆
+
+            aside utilities #[b 4.14]
+
+    p.
+        Platframe has two types of utility classes: lower-level utilities like those in the #[code.folder layout] module, and the higher-level "surface" classes. Low level utilities are all contained within the bounds of #[code.folder modules]. The latter type, "surface" utilities live in the top-level #[code.folder utilities] directory as denoted by the diagram above. "Surface" utilities are so called because they tend to be more abstracted and are positioned to be consumers of the foundational code in #[code.folder modules]. Whether the occasion calls for it, or whether it is the preferred approach to styling, #[code.folder utilities] are suited for functional CSS classes with various degrees of abstraction and composition. Platframe ships with  #[code.file button.styl] which is an example of transforming the #[code button()] mixin into a set of utility classes.
 
     h4#styles-plugins Plugins
 
