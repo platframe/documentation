@@ -1,0 +1,137 @@
+section(class="component" id="1")
+
+    header
+
+        h3: span 1
+        dl.inline
+            div
+                dt Type
+                dd passive
+            div.comma
+                dt Tags
+                dd carousel
+                dd slideshow
+                dd background
+
+    h4 Preview
+
+    +iframe({ slug: "carousels/1", height: 450 })
+
+    h4 Implementation
+
+    section.implement
+
+        .explain
+
+            .routine
+
+                h5 Markup
+
+                table
+                    caption.signature
+                        | carousel-1({
+                        i &nbsp;settings&nbsp;
+                        |})
+
+                    thead
+                        tr
+                            th Parameter
+                            th Description
+                            th Type
+                    tbody
+                        tr
+                            td.parameter images
+                            td.description array of objects defining images
+                            td.type array
+                        tr
+                            td.parameter hook
+                            td.description additional CSS class attribute
+                            td.type string
+
+            .brief
+
+                h5 Brief
+                p.
+                    A minimal image carousel without navigation controls or captioning,
+                    better suited to background or landing page usage.
+
+        .explain
+
+            .paths
+
+                h5 Paths
+
+                ul
+                    li location:&nbsp; #[code components/carousels/1]
+                    li activate:&nbsp; #[code templates/_/mixins.pug]
+
+            .dependencies
+
+                h5 Dependencies
+
+                ul
+                    li.pug
+                        svg: use(xlink:href="/assets/images/_sprites/symbols.svg#html")
+                        span _.pug
+                    li.styl
+                        svg: use(xlink:href="/assets/images/_sprites/symbols.svg#css")
+                        span index.styl
+                    li.js
+                        svg: use(xlink:href="/assets/images/_sprites/symbols.svg#js")
+                        span _.js
+
+        h5 Examples
+
+        .explain.code
+
+            .pug
+
+                pre
+                    code.language-pug.
+
+                        - imagePath = '/assets/images/home/_linked/_verbatim/';
+
+                        +carousel-1({
+
+                            images: [
+                                { path: `${ imagePath }1.webp` },
+                                { path: `${ imagePath }2.webp` },
+                                { path: `${ imagePath }3.webp` },
+                                { path: `${ imagePath }4.webp` },
+                                { path: `${ imagePath }5.webp`,
+                                    // optionally, select first
+                                    active: true
+                                },
+                            ]
+
+                        })
+
+                aside .pug
+
+        .explain.code
+
+            .styl
+
+                pre
+
+                    code.language-stylus.
+
+                        // change the default width and height
+                        carousel-1(width: 1000px, height: 500px)
+
+                aside .styl
+
+        .explain.code
+
+            .js
+
+                pre
+
+                    code.language-javascript.
+
+                        import carousel1 from 'carousels/1/_';
+
+                        // default delay is 4000ms
+                        carousel1({ delay: 5000 });
+
+                aside root.js

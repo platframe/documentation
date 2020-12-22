@@ -4,12 +4,16 @@ module.exports = function(api) {
     // gets cleared on environment change
     api.cache.invalidate(() => process.env.NODE_ENV);
 
-    const presets = {
+    return {
         presets: [
             ['@babel/preset-env'],
         ],
+        plugins: [
+            [   // enable static property syntax for ES2015 classes
+                require("@babel/plugin-proposal-class-properties"),
+                { loose: false },
+            ]
+        ],
     };
-
-    return presets;
 
 };

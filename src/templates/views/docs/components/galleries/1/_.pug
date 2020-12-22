@@ -1,0 +1,179 @@
+section(class="component" id="1")
+
+    header
+
+        h3: span 1
+        dl.inline
+            div
+                dt Type
+                dd interactive
+            div.comma
+                dt Tags
+                dd grid
+                dd autoplay
+                dd navigation
+
+    h4 Preview
+
+    +iframe({ slug: "galleries/1", height: 700, border: false })
+
+    h4 Implementation
+
+    section.implement
+
+        .explain
+
+            .routine
+
+                h5 Markup
+
+                table
+                    caption.signature
+                        | gallery-1({
+                        i &nbsp;settings&nbsp;
+                        |})
+
+                    thead
+                        tr
+                            th Parameter
+                            th Description
+                            th Type
+                    tbody
+                        tr
+                            td.parameter series
+                            td.description a unique name for the gallery
+                            td.type string
+                        tr
+                            td.parameter path
+                            td.description path to the image directory
+                            td.type string
+                        tr
+                            td.parameter type
+                            td.description image type; defaults to "jpg"
+                            td.type string
+                        tr
+                            td.parameter images
+                            td.description array of objects defining image properties
+                            td.type array
+                        tr
+                            td.parameter hook
+                            td.description additional CSS class attribute
+                            td.type string
+
+            .brief
+
+                h5 Brief
+                p.
+                    A grid-based, interactive gallery that degrades gracefully
+                    in the absence of JavaScript. Features autoplay, navigation
+                    controls, captions and native lazy-loading. The gallery is
+                    designed to work with a directory of images that are
+                    numerically indexed, starting at 1. Alternatively, you can
+                    specify a different name, path and type for each image. While
+                    this gallery does not currently use separate thumbnails, consider
+                    the additional #[code http] request tradeoff if you will be serving
+                    relatively large image files.
+
+        .explain
+
+            .paths
+
+                h5 Paths
+
+                ul
+                    li location:&nbsp; #[code components/galleries/1]
+                    li activate:&nbsp; #[code templates/_/mixins.pug]
+                    li markup:&nbsp; #[code templates/views/**/*.pug]
+                    li style:&nbsp; #[code style/_/elements/galleries.styl]
+                    li logic:&nbsp; #[code logic/root.js] or #[code logic/views/**/*.js]
+
+            .dependencies
+
+                h5 Dependencies
+
+                ul
+                    li.pug
+                        svg: use(xlink:href="/assets/images/_sprites/symbols.svg#html")
+                        span _.pug
+                    li.styl
+                        svg: use(xlink:href="/assets/images/_sprites/symbols.svg#css")
+                        span index.styl
+                    li.js
+                        svg: use(xlink:href="/assets/images/_sprites/symbols.svg#js")
+                        span index.js
+
+        h5 Examples
+
+        .explain.code
+
+            .pug
+
+                pre
+                    code.language-pug.
+
+                            // the basic implementation
+                            // images should be named as 1.jpg, 2.jpg, 3.jpg...
+                            +gallery-1({
+                                series: "about",
+                                path: "/assets/images/about/gallery/_linked/",
+                                images: [
+                                    { caption: 'This is the 1st image's caption' },
+                                    { caption: 'This is the 2nd image's caption' },
+                                    { caption: 'This is the 3rd image's caption' },
+                                    // the 4th image won't have a caption
+                                    { caption: '' },
+                                    // ...
+                                ]
+                            })
+
+                            // a more custom implementation
+                            // images should also be numerically named unless configured like the 3rd image
+                            +gallery-1({
+                                series: "about",
+                                path: "/assets/images/about/gallery/_linked/",
+                                type: "webp",
+                                images: [
+                                    { caption: 'Lorem ipsum dolor sit amet' },
+                                    { caption: 'Consectetur adipiscing elit' },
+                                    {
+                                        type: "png",
+                                        name: "hello",
+                                        path: "https://example.com/images/",
+                                        caption: 'A caption for this image',
+                                    },
+                                    // ...
+                                ]
+                            })
+
+                aside .pug
+
+        .explain.code
+
+            .styl
+
+                pre
+
+                    code.language-stylus.
+
+                        gallery-1()
+
+                aside .styl
+
+        .explain.code
+
+            .js
+
+                pre
+
+                    code.language-javascript.
+
+                        import gallery1 from 'galleries/1/logic/';
+
+                        // default delay is 3500ms
+                        gallery1({
+                            delay: 4000,
+                            autoplay: true,
+                            navigation: true,
+                        });
+
+                aside root.js

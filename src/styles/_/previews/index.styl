@@ -2,3 +2,9 @@
     overflow-y: auto
     user-select: none
     @require '*'
+
+/* The following components use component-level parent references
+ * and therefore needs to called without a new parent reference.*/
++gallery-1()
+    &__modal-close::after
+        align-items: initial // weird positioning bug in iframe

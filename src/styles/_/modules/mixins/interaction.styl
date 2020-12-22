@@ -1,35 +1,43 @@
 /*━━━━━━━━━━━━━━━━━━━━━━━━━━━━  BUTTONS  ━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 
-button(size = '', type = '', color = _default, fontsize = 1.1rem, rounded = false, padding = rem(15px) rem(25px))
-    // The default button style is square, medium-sized, filled and borderless.
+button(
+    size = '',
+    type = '',
+    color = _default,
+    rounded = false,
+    font-size = 1.1rem,
+    padding = rem(15px) rem(25px),
+    border-width = 2px)
+
+    // common styles
     color: white
-    font-size: fontsize
+    font-size: font-size
     text-align: center
     padding: padding
     background: color
     border-radius: rounded ? 5px : 0
-    transition: background-color 150ms linear
+    transition: background-color 150ms ease
     &:hover
         cursor: pointer
         background: lighten(color, 7%)
 
     if size is 'small'
-        font-size: 1rem
+        font-size: (font-size is 1.1rem) ? 1rem : font-size
         padding: rem(6px) rem(12px)
 
     else if size is 'large'
-        font-size: 1.25rem
+        font-size: (font-size is 1.1rem) ? 1.25rem : font-size
         padding: rem(16px) rem(28px)
 
     else if size is 'full'
         width: 100%
-        font-size: fontsize
+        font-size: (font-size is 1.1rem) ? 1.25rem : font-size
         padding: rem(14px) rem(20px)
 
     if type is 'border'
         color: color
         background: white
-        border: 2px solid color
+        border: border-width solid color
         &:hover
             color: white
             background: color
@@ -37,34 +45,43 @@ button(size = '', type = '', color = _default, fontsize = 1.1rem, rounded = fals
 // EXAMPLE
 // button, a { button(size: small, type: border, rounded: true) }
 
-button-3d(type, color, size, weight, radius, padding...)
-    // args: (light, rgba(200,200,200,0.7), 0.9em, normal, 5px, 10px 30px) - (light)
-    // args: (dark, rgba(76,76,76,0.7), 0.9em, normal, 5px, 8px 18px) - (dark)
-    // The aim is to reduce the color-specific margin of error in future revisions.
-    // 'type' is predefined and should be either 'light' or 'dark'.
-    // 'padding' supports both short & long notation, '10px 20px' || '10px 20px 10px 20px'
+button-3d(
+    type = 'light',
+    color = 'default',
+    font-size = 1.1rem,
+    font-weight = normal,
+    border-radius = 4px,
+    padding = 1rem 2rem)
 
+    // if no color argument given, set
+    // it to a default based on type
+    if color is 'default'
+        if type is 'dark'
+            color = rgba(76, 76, 76, 0.7)
+        else
+            color = rgba(190, 190, 190, 0.7)
+
+    // common styles
     display: inline-block
     margin: 0 auto
     padding: padding
-    font-size: size
+    font-size: font-size
     font-weight: weight
     text-align: center
-    border-radius: radius
-    transition(all 200ms ease-out)
+    border-radius: border-radius
+    transition: all 180ms ease-out
 
-    if type is light
+    if type is 'light'
 
         color: darken(rgb(color), 63%)
         border 1px solid lighten(color, 30%)
         text-shadow: 1px 1px 0 lighten(color, 100%)
+        background: linear-gradient(to bottom, lighten(color, 75%), color)
         box-shadow: \
                 inset 0 1px 1px lighten(color, 80%),      // top light
                 inset 1px 0 0 lighten(color, 40%),        // left light
                 inset -1px 0 0 color,                     // right dark
                 0 1px 0 darken(color, 10%)                // bottom dark
-
-        gradient_linear(top, lighten(color, 75%), color)
 
         &:hover
             cursor: pointer
@@ -78,10 +95,11 @@ button-3d(type, color, size, weight, radius, padding...)
                     inset -1px 0 0 color,                 // L (right)
                     0 1px 0 darken(color, 30%)            // D (bottom)
 
-    else if type is dark
+    else if type is 'dark'
         color: lighten(color, 77%)
         border: none
         text-shadow: -1px -1px 0 darken(color, 55%)
+        background: linear-gradient(to bottom, color, darken(color, 33%))
         box-shadow: \
                 0 0 5px darken(color, 55%),               // D (perimeter)
                 inset 0 1px 1px lighten(color, 15%),      // L (top)
@@ -89,8 +107,6 @@ button-3d(type, color, size, weight, radius, padding...)
                 inset -1px 0 0 darken(color, 60%),        // D (right)
                 0 -1px 0 darken(color, 50%),              // D (top)
                 0 1px 0 darken(color, 55%)                // D (bottom)
-
-        gradient_linear(top, color, darken(color, 33%))
 
         &:hover
             cursor: pointer
@@ -108,3 +124,6 @@ button-3d(type, color, size, weight, radius, padding...)
     &:active
         position: relative
         top: 1px
+
+// EXAMPLE
+// button, a { button-3d('light', rgba(200,200,200,0.7), 1.2rem, normal, 5px, .9rem 2.1rem) }

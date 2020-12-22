@@ -1,6 +1,8 @@
 doctype html
 
-include mixins
+include mixins/index
+
+block context
 
 html(id="preview")
 
@@ -13,6 +15,6 @@ html(id="preview")
             link(rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web:300,400,400i,600,700")
         link(rel="stylesheet" href=`/assets/styles/root.css?v=${ TIME }`)
 
-        script(defer src=`/assets/logic/js/root.js?v=${ TIME }`)
+        script(defer src=`/assets/logic/root.js?v=${ TIME }`)
 
     block body

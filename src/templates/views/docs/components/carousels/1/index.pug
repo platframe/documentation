@@ -1,0 +1,21 @@
+extends ../../../../../_/preview
+
+//- variables
+block context
+    - imagePath = 'https://picsum.photos/1000/500';
+
+block body
+
+    body.center
+
+        +carousel-1({
+
+            images: [
+                { path: `${ imagePath }.webp`, active: true },
+                { path: `${ imagePath }.webp` },
+                { path: `${ imagePath }.webp` },
+                { path: `${ imagePath }.webp` },
+                { path: `${ imagePath }.webp` },
+            ]
+
+        })

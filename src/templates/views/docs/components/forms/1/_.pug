@@ -16,7 +16,7 @@ section(class="component" id="1")
 
     h4 Preview
 
-    +iframe("forms/1", 440)
+    +iframe({ slug: "forms/1", height: 580 })
 
     h4 Implementation
 
@@ -30,19 +30,9 @@ section(class="component" id="1")
 
                 table
                     caption.signature
-                        | form-1(
-                        i legend
-                        |,
-                        i action
-                        |,
-                        i method
-                        |,
-                        i phone
-                        |,
-                        i spam
-                        |,
-                        i [hook]
-                        |)
+                        | form-1({
+                        i &nbsp;settings&nbsp;
+                        |})
 
                     thead
                         tr
@@ -53,7 +43,7 @@ section(class="component" id="1")
                         tr
                             td.parameter legend
                             td.description form caption (core fieldset)
-                            td.type string
+                            td.type object
                         tr
                             td.parameter action
                             td.description URL for the form processing logic
@@ -67,8 +57,12 @@ section(class="component" id="1")
                             td.description toggle the phone number field
                             td.type boolean
                         tr
+                            td.parameter select
+                            td.description toggle the select box
+                            td.type object
+                        tr
                             td.parameter spam
-                            td.description toggle the spam module
+                            td.description toggle the simple spam questionnaire
                             td.type boolean
                         tr
                             td.parameter hook
@@ -79,7 +73,12 @@ section(class="component" id="1")
 
                 h5 Brief
                 p.
-                    A basic contact form relying only on HTML and CSS. Supports input validation and feedback. A simplistic anti-spam section can be enabled or replaced with a more robust solution if needed.
+                    A basic contact form relying only on HTML and CSS. Supports input validation and feedback.
+                    A simplistic anti-spam section can be enabled or replaced with a more robust solution.
+
+                p.
+                    Optionally use with the included #[a(href="/docs/#logic-modules-included-form") form] module
+                    to send form submissions and enable better spam protection.
 
         .explain
 
@@ -115,7 +114,34 @@ section(class="component" id="1")
                 pre
                     code.language-pug.
 
-                        +form-1("Contact", "assets/logic/php/process.php", "post", false, true)
+                        // minimal form that does not require any additional JavaScript
+                        +form-1({
+                            action: "assets/logic/php/process-form.php",
+                            method: "post",
+                            spam: true,
+                        })
+
+                        // this form can use Platframe's form module to take care of spam and sending
+                        +form-1({
+                            legend: {
+                                text: "Post Box",
+                                center: true,
+                            },
+                            phone: true,
+                            select: {
+                                name: "subject",
+                                label: "Subject:",
+                                options: [
+                                    {
+                                        name: "Option 1",
+                                        value: "option 1",
+                                        selected: "selected"
+                                    },
+                                    { name: "Option 2", value: "option 2" },
+                                    { name: "Option 3", value: "option 3" },
+                                ]
+                            }
+                        })
 
                 aside .pug
 
@@ -127,6 +153,10 @@ section(class="component" id="1")
 
                     code.language-stylus.
 
+                        // activate form styles with flat button
                         form-1()
+
+                        // or use alternative 3D button
+                        form-1(button-type: '3d')
 
                 aside .styl

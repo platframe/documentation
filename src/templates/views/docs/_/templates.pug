@@ -19,8 +19,8 @@ section(id="templates" class="templates")
     p.
         The purpose of global markup is to supply the project's #[em view] files with the resources
         they share in a maintainable and #[abbr(title="Don't Repeat Yourself") DRY] fashion. These
-        shared resources generally consist of foundational markup, metadata, various project assests
-        and more static elements such as headers and footers. Files with global reach are
+        shared resources generally consist of foundational markup, mixins, metadata, various project
+        assets and more static elements such as headers and footers. Files with global reach are
         #[code.file root.pug] and those in the project's root-level partials directory
         (#[code.folder _]), namely #[code.file mixins.pug], #[code.file head.pug] and
         #[code.file body.pug].
@@ -162,7 +162,7 @@ section(id="templates" class="templates")
         expose their content and alludes to the MAIN element that will be used for this purpose.
     p.
         Since a footer is not necessarily static across a project, we declare another block to allow
-        for superceding this default in specific views. Note that due to the complexity of the
+        for superseding this default in specific views. Note that due to the complexity of the
         footer included in the example above, the author of the  component decided not to
         encapsulate it within a mixin. We therefore modify and include it directly from its location
         in #[em components]. For more on "footer-1", have a look at its
@@ -230,7 +230,7 @@ section(id="templates" class="templates")
 
     p.
         Views would normally inherit its basic structure and resources from the #[em globals] we
-        covered above. Should the need arise, basic provision for overriding inhereted markup is
+        covered above. Should the need arise, basic provision for overriding inherited markup is
         already in place and can be further customized through the use of #[code block]'s. #[i Views]
         are compiled into #[abbr(title="HyperText Markup Language") HTML] files upon build. For
         instance, #[code index.pug] becomes #[code index.html] and #[code hello.pug] becomes
@@ -284,9 +284,9 @@ section(id="templates" class="templates")
         Platframe uses an underscore to denote a partial directory or file. There are two ways we
         can indicate partials in our project's file system: either by grouping several related
         partial files in a directory named "_" or by just prefixing each partial file with an
-        underscore. If grouped in a folder, the prefix is negated. Figure 3.6 illustrates the former
-        method, while figure 3.7 shows the latter. It is recommended to only use the prefix method
-        (figure 3.7) when dealing with #[em content] partials.
+        underscore. If grouped in a folder, the prefix is negated. Figure 3.5 illustrates the former
+        method, while figure 3.6 shows the latter. It is recommended to only use the prefix method
+        (figure 3.6) when dealing with #[em content] partials.
 
     h4#templates-partials-global Global
 
@@ -300,16 +300,20 @@ section(id="templates" class="templates")
                                   ├─ #[i.i-emoji-file] root.pug
                                   ├─ #[i.i-emoji-folder] views
                                   └─ #[i.i-emoji-folder] _ ─┐
-                                           ├─ #[i.i-emoji-file] mixins.pug
                                            ├─ #[i.i-emoji-file] head.pug
-                                           └─ #[i.i-emoji-file] body.pug
+                                           ├─ #[i.i-emoji-file] body.pug
+                                           └─ #[i.i-emoji-folder] mixins ─┐
+                                                         ├─ #[i.i-emoji-file] index.pug
+                                                         ├─ #[i.i-emoji-file] analytics.pug
+                                                         ┆
+
             aside global partials #[b 3.6]
 
     p.
         The files contained in the partial folder that is a direct child of the root template
         directory, #[code.folder templates], are #[em global] in that they are inherited by all views.
-        Figure 3.6 illustrates the global partials in #[code.folder _]: #[code.file mixins.pug],
-        #[code.file head.pug] and #[code.file body.pug].
+        Figure 3.6 illustrates the global partials in #[code.folder _]: #[code.file head.pug],
+        #[code.file body.pug] and #[code.folder mixins].
 
     h4#templates-partials-local Local
 
@@ -353,3 +357,35 @@ section(id="templates" class="templates")
         partial name is prefixed with an underscore (_) to signify that they are partials (figure
         3.7). In the example above, we split the content of #[code.file index.pug] from
         #[em section x] into five partials, from #[code.file _1.pug] to #[code.file _5.pug].
+
+    h4#templates-mixins Mixins
+
+    p.
+        Markup mixins live in the global partials directory under #[code.folder mixins]. Note that
+        the mixins defined here are not appended with a hyphenated numerical ID as those that form part
+        of a component.
+
+    h5#templates-mixins-data-1 Data
+
+    p.mixin: code analytics(id)
+
+    p.
+        This mixin simplifies the inclusion of the #[i Google Analytics] tracking code. You can place
+        it in the "scripts" block of #[code.file head.pug] &mdash; it takes the property's unique
+        tracking ID as its only argument. Since you typically only want it to be active in a production
+        build, you can determine inclusion with an #[code if] clause as shown below in figure 3.8.
+
+    .explain.code
+
+        .pug
+
+            pre
+                code.language-pug.
+
+                    block scripts
+
+                        - if (ENV === 'production')
+
+                            +analytics('G-7RQFC9MDHK')
+
+            aside head.pug #[b 3.8]

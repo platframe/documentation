@@ -1,0 +1,15 @@
+//- The markup for this component has been modified
+//- for the purposes of the documentation preview.
+
+mixin carousel-1({ images, hook })
+
+    div(class= hook ? "carousel-1 " + hook :  "carousel-1")
+
+        each image in images
+
+            //- keep browser's URI cache fresh for random images
+            - random = Math.ceil(Math.random() * 1000);
+
+            img(src=`${ image.path }?random=${ random }`
+                class=`image ${ image.active ? 'active' : ''}`
+                alt= image.alt)

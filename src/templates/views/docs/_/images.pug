@@ -8,7 +8,7 @@ section(id="images" class="images")
         intuitive file system. It forks into #[em subject] groups, which in turn
         are organized by #[em implementation] identifiers.
 
-    .explain.code
+    .explain.code#images-6-1
 
         .image.map
 
@@ -20,18 +20,27 @@ section(id="images" class="images")
                                |             ├─ #[i.i-emoji-folder] brand ─┐
                                |             |            #[i.i-emoji-folder] _symbols ─┐
                                |             |                         └─ #[i.i-emoji-picture] logo.svg
-                               |             └─ #[i.i-emoji-folder] _link ─┐
+                               |             └─ #[i.i-emoji-folder] _linked ─┐
                                |                            └─ #[i.i-emoji-picture] favicon.png
                                |
                                ├─ #[i.i-emoji-folder] home ─┐
-                               |           ├─ #[i.i-emoji-folder] icons ─┐
-                               |           |            #[i.i-emoji-folder] _views ─┐
-                               |           |                       ├─ #[i.i-emoji-picture] icon-1.svg
-                               |           |                       └─ #[i.i-emoji-picture] icon-2.svg
-                               |           └─ #[i.i-emoji-folder] _inline ─┐
-                               |                          └─ #[i.i-emoji-picture] background.jpg
+                               |           ├─ #[i.i-emoji-folder] icons
+                               |           |  └─ #[i.i-emoji-folder] _views ─┐
+                               |           |                ├─ #[i.i-emoji-picture] icon-1.svg
+                               |           |                └─ #[i.i-emoji-picture] icon-2.svg
+                               |           ├─ #[i.i-emoji-folder] _inline ─┐
+                               |           |              └─ #[i.i-emoji-picture] background.jpg
+                               |           |
+                               |           └─ #[i.i-emoji-folder] _linked ─┐
+                               |                          └─ #[i.i-emoji-picture] image.webp
                                └─ #[i.i-emoji-folder] about ─┐
-                                            ┆
+                                            #[i.i-emoji-folder] people
+                                            └─ #[i.i-emoji-folder] _linked
+                                               └─ #[i.i-emoji-folder] _verbatim ─┐
+                                                                ├─ #[i.i-emoji-picture] person-1.webp
+                                                                ├─ #[i.i-emoji-picture] person-2.webp
+                                                                └─ #[i.i-emoji-picture] person-3.webp
+
             aside structure #[b 6.1]
 
     h3#images-subjects Subjects
@@ -61,7 +70,7 @@ section(id="images" class="images")
     p.
         There are currently four implementation types under which image assets
         that share a particular type may be grouped. These are
-        #[code.folder _inline] and #[code.folder _link] for discrete graphics, as
+        #[code.folder _inline] and #[code.folder _linked] for discrete graphics, as
         well as #[code.folder _symbols] and #[code.folder _views] for vector sprites.
         We'll explore each of them in the next sections.
 
@@ -128,19 +137,27 @@ section(id="images" class="images")
             li.
                 Only bitmaps will be converted to #[i base64].
 
-    h4#images-link Link
+    h4#images-linked Linked
 
     p.
         Earmark discrete graphics that are linked to from within the source by
-        grouping them in a #[code.folder _link] directory (fig. 6.1).
+        grouping them in a #[code.folder _linked] directory (fig. 6.1).
 
     aside
         h6.i-emoji-gear Build notes
         ul
             li.
-                If additional optimization is possible, linked #[code .svg],
-                #[code .png] and #[code .jpg] files will be minified the during
-                the build phase.
+                If additional optimization is possible, linked #[code .svg], #[code .webp],
+                #[code .png] and #[code .jpg] files will be minified the during the build phase.
+
+    h4#images-verbatim Verbatim
+
+    p.
+        Sometimes you might choose to hand-optimize critical images, and ideally prevent them from
+        being touched by the build system's automated minification process. You can achieve this in
+        Platframe by placing these images in a #[code.folder _verbatim] directory. Refer to the "about"
+        folder in #[a(href="#images-6-1") figure 6.1] for an example.
+
 
     h4#images-sprites Sprites
 
@@ -207,5 +224,5 @@ section(id="images" class="images")
     p.
         Platframe does not support traditional raster sprites. If your project
         require such a sprite sheet format, you may either extend the existing
-        tooling or produce it manually and place it in a #[code.folder _link]
+        tooling or produce it manually and place it in a #[code.folder _linked]
         folder from where you can source it.

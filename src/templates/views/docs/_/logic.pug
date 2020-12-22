@@ -10,35 +10,31 @@ section(id="logic" class="logic")
                 code.
 
                     #[i.i-emoji-folder] logic ─┐
-                              ├─ #[i.i-emoji-folder] js ─┐
-                              |         ├─ #[i.i-emoji-file] root.js
-                              |         ├─ #[i.i-emoji-folder] libs ─┐
-                              |         |           ├─ #[i.i-emoji-folder] int ─┐
-                              |         |           |          ├─ #[i.i-emoji-file] animation.js
-                              |         |           |          ├─ #[i.i-emoji-file] math.js
-                              |         |           |          ┆
-                              |         |           |
-                              |         |           └─ #[i.i-emoji-folder] ext ─┐
-                              |         |                      └─ #[i.i-emoji-folder] lib-a ─┐
-                              |         |                                   ├─ #[i.i-emoji-file] x.x.x.js
-                              |         |                                   └─ #[i.i-emoji-file] x.x.x.min.js
-                              |         └─ #[i.i-emoji-folder] modules ─┐
-                              |                        ├─ #[i.i-emoji-file] module.js
-                              |                        ┆
-                              ├─ #[i.i-emoji-folder] lang-x
-                              ┆
+                              ├─ #[i.i-emoji-file] root.js
+                              ├─ #[i.i-emoji-folder] libs ─┐
+                              |           ├─ #[i.i-emoji-file] math.js
+                              |           ├─ #[i.i-emoji-file] types.js
+                              |           ├─ #[i.i-emoji-file] animation.js
+                              |           └─ #[i.i-emoji-folder] external ─┐
+                              |                           └─ #[i.i-emoji-folder] lib-a ─┐
+                              |                                        ├─ #[i.i-emoji-file] x.x.x.js
+                              |                                        └─ #[i.i-emoji-file] x.x.x.min.js
+                              └─ #[i.i-emoji-folder] modules ─┐
+                                             ├─ #[i.i-emoji-file] form.js
+                                             ├─ #[i.i-emoji-file] scroll.js
+                                             ┆
 
             aside structure #[b 5.1]
 
     p.
         Scripted functionality is contained in #[code.folder logic]. While it is set up for JavaScript development by default, it may also be used to house logic from other languages (Fig. 5.1).
 
-    h3#logic-js JavaScript
+    h3#javascript JavaScript
 
     p.
-        Your project's JavaScript is managed from the #[code.folder js] directory. Its immediate children are #[code.file root.js], #[code.folder libs] and #[code.folder modules].
+        Your project's JavaScript is managed from the #[code.folder logic] directory. Its immediate children are #[code.file root.js], #[code.folder libs] and #[code.folder modules].
 
-    h4#logic-js-root Root
+    h4#logic-root Root
 
     .explain.code
 
@@ -51,14 +47,14 @@ section(id="logic" class="logic")
                     import { routine } from 'modules/module';
 
                     // component logic
-                    import header from 'headers/1/_';
+                    import header1 from 'headers/1/_';
 
                     // external package from node_modules
                     import 'fancylib';
 
                     // manage execution
                     document.addEventListener('DOMContentLoaded', () => {
-                        header();
+                        header1();
                     });
 
             aside root.js #[b 5.2]
@@ -74,28 +70,23 @@ section(id="logic" class="logic")
             li.
                 #[i Rollup] bundles #[code.file root.js] as an #[abbr(title="immediately-invoked function expression") IIFE] into a single client-side dependency. It is loaded via a #[i defer] directive in #[code.file head.pug] but could be moved to the #[a(href="#templates-body") footer] block in #[code.file body.pug] if needed.
 
-    h4#logic-js-libraries Libs
+    h4#logic-libraries Libs
 
     p.
-        The #[code.folder libs] folder is a direct child of the parent language directory and contain the respective native (#[code.folder int]) and 3#[sup rd] party libraries (#[code.folder ext]) that your app consumes.
+        The #[code.folder libs] folder contains the respective native and 3#[sup rd] party libraries that your app consumes. It aims to be a collection of utility modules such as #[code.file math.js] and #[code.file types.js] (fig. 5.1). They are separated by type and consist of low-level, more "atomic" functionality that essentially derives its usefulness from being part of larger compilations. They serve to make your code #[abbr(title="Don't Repeat Yourself") DRY] by being shared between higher level functionality in #[code.folder modules] and #[code.folder components]. Utilities may also be interdependent. Note that any library not inside the #[code.folder external] folder are automatically treated as internal, or "native".
+
+    h5#logic-external External
+
+    p.
+        #[code.folder external] contains your project's external (3#[sup rd] party), client-side libraries that are not provisioned with a package manager like #[abbr(title="Node Package Manager") NPM].
 
     aside
         h6 &#128736; Development notes
         ul
             li.
-                The platform does not rely on or include any external #[em client-side] libraries. Consider them with respect to your project.
+                The platform does not rely on or include any external #[em client-side] libraries. Consider them with respect to your project's needs.
 
-    h5#logic-js-internal Internal
-
-    p.
-        The native library is made up by a collection of utility modules contained in #[code.folder int] (fig. 5.1). They are separated by type and consist of low-level, "atomic" functionality that essentially derives its usefulness from being part of larger compilations. They serve to make your code #[abbr(title="Don't Repeat Yourself") DRY] by being shared between higher level functionality in #[code.folder modules] and #[code.folder components]. Utilities may also be interdependant.
-
-    h5#logic-js-external External
-
-    p.
-        #[code.folder ext] contains your project's external (3#[sup rd] party), client-side libraries that are not provisioned with a package manager like #[abbr(title="Node Package Manager") NPM].
-
-    h4#logic-js-modules Modules
+    h4#logic-modules Modules
 
     p.
         Logic that are neither part of a component nor qualify as a simple utility should be placed in #[code.folder modules]. You decide how modules are structured as it may depend on factors beyond the framework's reach, such as the development pattern in use and the scale of your project.
@@ -107,3 +98,73 @@ section(id="logic" class="logic")
                 One way of keeping #[code.folder modules] organized and navigable is to separate code into individual files based on their general functionality. Naturally, the smaller each file's domain, the more partitions (files) you'll have so, decide on a scope that works for you / your team. Note that this will also determine how you export your module's functionality, i.e. #[i default] for a single module or #[i named] for a collection of modules that shares type.
             li.
                 Keep in mind that scripts may at first be placed in #[code.folder modules] and then at a later stage be pulled out and refactored as part of a new component.
+
+    h5#logic-modules-included Included modules
+
+    p.
+        Platframe ships with some built-in modules.
+
+    h6#logic-modules-included-form Form
+
+    p.
+        The #[code form] module can be used for transmitting form data to a server. It supports version 3 of Google's reCAPTCHA
+        service which is a less intrusive and more user-friendly method of spam prevention.
+
+    .explain.code
+
+        .js
+
+            pre
+                code.language-javascript.
+
+                    import Form from 'modules/form';
+
+                    document.addEventListener('DOMContentLoaded', () => {
+
+                        // instance that handles the contact page form
+                        new Form({
+                            id: 'contact_1', // optional
+                            form: '.form-contact', // optional: target a form
+                            carrier: 'xhr', // optional: uses fetch() by default
+                            success: '/contact/success.html', // optional: path or function
+                            failure: '/contact/failure.html', // optional: path or function
+                            progress: doWhileSending, // optional: function
+                            destination: 'https://some-forms-api.com', // FQDN of server
+                            recaptcha: '7LcLfEZA8AKfJRnz2BTrSmLK_pK53', // optional: reCAPTCHA v3
+                        });
+
+
+                    });
+
+            aside root.js #[b 5.3]
+
+    p.
+        While the #[code id] key is optional, it serves two purposes: it identifies as the
+        #[a(href="https://developers.google.com/recaptcha/docs/v3#actions") action] for Google's reCAPTCHA
+        service, and can also be used to identify the particular form on your server. If you only have a single
+        form on the site you may leave the #[code form] key out as that form will automatically be selected. For
+        sites with more than one form, be sure to assign a different selector to each instance of #[code Form].
+        To activate the built-in Google&trade; reCAPTCHA v3 support, make sure to assign their "site" API key to
+        #[code recaptcha].
+
+    h6#logic-modules-included-scroll Scroll
+
+    p.
+        The scroll module currently only enables smooth scrolling for in-page anchors.
+
+    .explain.code
+
+        .js
+
+            pre
+                code.language-javascript.
+
+                    import { smooth } from 'modules/scroll';
+
+                    document.addEventListener('DOMContentLoaded', () => {
+
+                        smooth();
+
+                    });
+
+            aside root.js #[b 5.4]

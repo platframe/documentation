@@ -4,4 +4,20 @@ block body
 
     body.center
 
-        +form-1("", "/", "get", true, true)
+        +form-1({
+            spam: true,
+            phone: true,
+            select: {
+                name: "subject",
+                label: "Subject:",
+                options: [
+                    {
+                        name: "Option 1",
+                        value: "option 1",
+                        selected: "selected"
+                    },
+                    { name: "Option 2", value: "option 2" },
+                    { name: "Option 3", value: "option 3" },
+                ]
+            }
+        })

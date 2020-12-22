@@ -16,7 +16,7 @@ section(class="component" id="1")
 
     h4 Preview
 
-    +iframe("headers/1")
+    +iframe({ slug: "headers/1" })
 
     h4 Implementation
 
@@ -95,16 +95,16 @@ section(class="component" id="1")
 
                 ul
                     li.pug
-                        svg: use(xlink:href="/assets/images/sprite/symbols.svg#html")
+                        svg: use(xlink:href="/assets/images/_sprites/symbols.svg#html")
                         span _.pug
                     li.styl
-                        svg: use(xlink:href="/assets/images/sprite/symbols.svg#css")
+                        svg: use(xlink:href="/assets/images/_sprites/symbols.svg#css")
                         span index.styl
                     li.svg
-                        svg: use(xlink:href="/assets/images/sprite/symbols.svg#svg")
+                        svg: use(xlink:href="/assets/images/_sprites/symbols.svg#svg")
                         span *.svg
                     li.js
-                        svg: use(xlink:href="/assets/images/sprite/symbols.svg#js")
+                        svg: use(xlink:href="/assets/images/_sprites/symbols.svg#js")
                         span _.js
 
         h5 Examples

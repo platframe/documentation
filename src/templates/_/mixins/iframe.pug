@@ -1,0 +1,9 @@
+mixin iframe({ slug, height = 340, border = true })
+    iframe(
+        src=`/docs/components/${ slug }/index.html`
+        width="100%"
+        height=height
+        class="preview"
+        style=`${ border ? '' : 'border: 0;' }`
+        title="Platframe component preview"
+    )

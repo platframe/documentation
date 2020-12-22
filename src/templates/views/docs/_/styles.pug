@@ -25,7 +25,7 @@ section(id="styles" class="styles")
             li.
                 #[i Autoprefixer] will apply vendor prefixes according to the configuration in #[code.file .browserslistrc].
             li.
-                Only unique media queries remain after a build. Queries are combined by platform (target value) with their associated styles and then stacked in a mobile-first order. As there is no additional impact on performance, you can use the media #[a(href="#style-mixins") mixins] liberally for granular control.
+                Only unique media queries remain after a build. Queries are combined by platform (target value) with their associated styles and then stacked in a mobile-first order. As there is no additional impact on performance, you can use the media #[a(href="#styles-mixins") mixins] liberally for granular control.
 
     h3#styles-global Global
 
@@ -215,7 +215,7 @@ section(id="styles" class="styles")
     p.mixin: code schemer(scheme)
 
     p.
-        Provides the ability to supercede the active global scheme on a local (view) level. Useful in scenarios where a sub-section is themed differently from the rest of the project. Call this mixin at the root level of the parent selector common to the target section(s) and pass it a valid scheme name from a package in #[code.folder schemes]. Also affects nested components.
+        Provides the ability to supersede the active global scheme on a local (view) level. Useful in scenarios where a sub-section is themed differently from the rest of the project. Call this mixin at the root level of the parent selector common to the target section(s) and pass it a valid scheme name from a package in #[code.folder schemes]. Also affects nested components.
 
     .explain.code
 
@@ -383,7 +383,7 @@ section(id="styles" class="styles")
         h6 &#128736; Development notes
         ul
             li.
-                Flexbox is used by default for document layout. You can complement or replace this approach by using the #[a(href="#style-mixins") grid mixin] for responsive, grid-based development. Both useful for supporting older UA's and as an alternative layout mode until native CSS grids enjoy sufficient support.
+                Flexbox is used by default for document layout. You can complement or replace this approach by using the #[a(href="#styles-mixins") grid mixin] for responsive, grid-based development. Both useful for supporting older UA's and as an alternative layout mode until native CSS grids enjoy sufficient support.
 
     h4#styles-utilities Utilities
 
@@ -459,10 +459,10 @@ section(id="styles" class="styles")
                     #[i.i-emoji-folder] views ─┐
                               ├─ #[i.i-emoji-file] index.styl
                               ├─ #[i.i-emoji-folder] home ─────┐
-                              |                ├─ #[i.i-emoji-file] _hello.styl
-                              |                ├─ #[i.i-emoji-file] _story.styl
-                              |                ├─ #[i.i-emoji-file] _convert.styl
-                              |                └─ #[i.i-emoji-file] index.styl
+                              |               ├─ #[i.i-emoji-file] _hello.styl
+                              |               ├─ #[i.i-emoji-file] _story.styl
+                              |               ├─ #[i.i-emoji-file] _convert.styl
+                              |               └─ #[i.i-emoji-file] index.styl
                               |
                               ├─ #[i.i-emoji-folder] category-1 ─ #[i.i-emoji-file] index.styl
                               ├─ #[i.i-emoji-folder] category-2 ─ #[i.i-emoji-file] index.styl

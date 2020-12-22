@@ -80,6 +80,10 @@
             +min(3)
                 width: 74%
                 min-width: initial
+            [id] // account for fixed header to ensure sections are fully visible when scrolled to
+                scroll-margin-top: rem(85px)
+            [id*="-"] // sub-sections are hyphenated and require more room
+                scroll-margin-top: rem(120px)
             section
                 &.start
                     .requirements

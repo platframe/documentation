@@ -1,4 +1,4 @@
-import { scroll } from 'libs/internal/animation';
+import { scroll } from 'libs/animation';
 
 export default function() {
 
