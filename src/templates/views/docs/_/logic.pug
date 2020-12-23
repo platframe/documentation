@@ -107,8 +107,9 @@ section(id="logic" class="logic")
     h6#logic-modules-included-form Form
 
     p.
-        The #[code form] module can be used for transmitting form data to a server. It supports version 3 of Google's reCAPTCHA
-        service which is a less intrusive and more user-friendly method of spam prevention.
+        The #[code form] module can be used for transmitting form data to a server.
+        It supports version 3 of Google's reCAPTCHA service which is a less intrusive
+        and more user-friendly method of spam prevention.
 
     .explain.code
 
@@ -130,7 +131,7 @@ section(id="logic" class="logic")
                             failure: '/contact/failure.html', // optional: path or function
                             progress: doWhileSending, // optional: function
                             destination: 'https://some-forms-api.com', // FQDN of server
-                            recaptcha: '7LcLfEZA8AKfJRnz2BTrSmLK_pK53', // optional: reCAPTCHA v3
+                            recaptcha: 'site API key for reCAPTCHA v3', // optional
                         });
 
 
@@ -141,11 +142,21 @@ section(id="logic" class="logic")
     p.
         While the #[code id] key is optional, it serves two purposes: it identifies as the
         #[a(href="https://developers.google.com/recaptcha/docs/v3#actions") action] for Google's reCAPTCHA
-        service, and can also be used to identify the particular form on your server. If you only have a single
-        form on the site you may leave the #[code form] key out as that form will automatically be selected. For
-        sites with more than one form, be sure to assign a different selector to each instance of #[code Form].
-        To activate the built-in Google&trade; reCAPTCHA v3 support, make sure to assign their "site" API key to
-        #[code recaptcha].
+        service, and can also be used to identify the particular form on your server. Since #[code id] is also used
+        by reCAPTCHA it is constrained to the characters #[code A-Za-z/_]. To activate the built-in Google&trade;
+        reCAPTCHA v3 support, set your "site" API key as the value of the #[code recaptcha] property.
+
+    p.
+        If you only have a single form on the site you may leave the #[code form] key out as that form will
+        automatically be selected. For sites with more than one form, be sure to assign a different selector to
+        each instance of #[code Form].
+
+    p.
+        #[code Form] uses the browser's #[a(href="https://developer.mozilla.org/en-US/docs/Web/API/FormData") FormData]
+        API, so ensure that your server is prepared to handle its #[code multipart/form-data] encoding. The server
+        should return a JSON object with a #[code responseCode] of #[code 0] for success, and any non-zero value if
+        sending failed. In accordance with the server's response, #[code Form] will execute either #[code success] or
+        #[code failure] on the client side.
 
     h6#logic-modules-included-scroll Scroll
 

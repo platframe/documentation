@@ -1,0 +1,26 @@
+code
+    color: #039944
+    border-radius: 3px
+    &.file // denote file refs
+        color: _default
+        padding: .15rem .35rem
+        white-space: nowrap
+        background: #eeeeee
+        &::after
+            content: '\1F4C4'
+            padding-left: .33rem
+    &.folder // denote directory refs
+        color: _default
+        padding: .15rem .35rem
+        white-space: nowrap
+        background: #e6edf2
+        &::after
+            content: '\1F4C1'
+            padding-left: .33rem
+    &.shell
+        padding-left: 0
+        background: none
+        &::before
+            content: '$'
+            color: #d1903c
+            padding-right: .4rem

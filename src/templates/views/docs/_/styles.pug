@@ -281,7 +281,6 @@ section(id="styles" class="styles")
             aside .styl #[b 4.10]
 
     h6#styles-mixins-platform Platform
-    p: i — Dimensions
 
     p.mixin
         code +min(val)
@@ -291,7 +290,7 @@ section(id="styles" class="styles")
         code +between(val, val)
 
     p.
-        Media query helpers are provided to allow granular control for a mobile-first responsive design. Acceptable arguments are literal values as well as numbers or keyword identifiers correlating to the viewport scale as specified in #[code.file media.styl] (fig. 4.11).
+        These dimensional media query helpers allow granular control in responsive design. Acceptable arguments are literal values as well as numbers or keyword identifiers correlating to the viewport scale as specified in #[code.file media.styl] (fig. 4.11).
 
 
     .explain.code
@@ -310,15 +309,13 @@ section(id="styles" class="styles")
 
             aside .styl #[b 4.11]
 
-    p: i — Resolution
-
     p.mixin
         code +min-res(val)
         span &#8192;|&#8192;
         code +max-res(val)
 
     p.
-        Target the platform's pixel density (fig. 4.12).
+        Target the platform's pixel density with resolution helpers.
 
 
     .explain.code

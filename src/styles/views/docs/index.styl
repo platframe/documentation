@@ -1,3 +1,5 @@
+docs_padding_top = 101px
+
 .docs
     // assignments
     docs_c_x_b3_min = rem(1050px)
@@ -22,18 +24,15 @@
                     content: ''
                     display: block
                     width: rem(190px)
-                    margin-bottom: rem(16px)
-                    padding-bottom: rem(16px)
+                    margin-bottom: rem(17px)
+                    padding-bottom: rem(17px)
                     border-bottom: 1px solid scheme.border
             +min(3)
                 position: sticky
-                top: rem(103px)
+                top: rem(docs_padding_top)
                 width: auto
                 order: 0
-                ul
-                    position: sticky
-                    top: rem(125px)
-                    height: 86vh
+                ul { height: 100vh }
     // footer
     +footer-1()
         > div div
@@ -59,7 +58,7 @@
             width: 69%
             margin: initial
             padding-left: rem(50px)
-            padding-top: rem(103px)
+            padding-top: rem(docs_padding_top)
         +min(3)
             margin: auto
             width: content_width_b3
@@ -84,7 +83,18 @@
                 scroll-margin-top: rem(85px)
             [id*="-"] // sub-sections are hyphenated and require more room
                 scroll-margin-top: rem(120px)
-            section
+            section:not(.components section)
+                margin-top: 2rem
+                margin-right -26%
+                padding-right 26%
+                &:not(:first-of-type)
+                    margin-top: 2.5rem
+                    padding-top: 3.3rem
+                    border-top: 1px solid scheme.border
+                aside:not(.explain.code aside)
+                    margin: 2rem 0
+                p.mixin
+                    margin-top: .5em
                 &.start
                     .requirements
                         span
@@ -121,33 +131,8 @@
                             margin: 20px 0
                             width: 100%
                             height: auto
-        code
-            padding: .2rem .5rem
-            border-radius: 4px
-            background: #eaeaea
-            &.file // denote file refs
-                padding: .15rem .35rem
-                white-space: nowrap
-                &::after
-                    content: '\1F4C4'
-                    padding-left: .33rem
-            &.folder // denote directory refs
-                padding: .15rem .35rem
-                white-space: nowrap
-                &::after
-                    content: '\1F4C1'
-                    padding-left: .33rem
-            &.shell
-                color: #039944
-                padding-left: 0
-                background: none
-                &::before
-                    content: '$'
-                    color: #d1903c
-                    padding-right: .4rem
-            &.mixin:not(.token) // denote mixin schemas; avoid conflict with prism syntax tokens
-                color: _40
-                font-size: 1.2rem
-                text-shadow: -1px -1px 0 _15
+                &.contribute
+                    width: stretch // temp compensation for insufficient content
     // partials
+    @require '_/*'
     @require 'components'

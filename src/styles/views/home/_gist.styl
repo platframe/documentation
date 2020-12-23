@@ -22,7 +22,8 @@
                 article:first-of-type
                     svg
                         float: left
-                        margin-right: rem(45px)
+                        margin-top: rem(15px)
+                        margin-right: rem(25px)
                         +min(3)
                             width: rem(140px)
                 article:last-of-type
@@ -38,10 +39,12 @@
             &.gist-right
                 article
                     h3 + div
+                        margin-bottom: rem(25px)
                         clearfloat()
                         svg
                             float: left
-                            margin-right: rem(25px)
+                            margin-top: rem(15px)
+                            margin-right: rem(15px)
                             +min(3)
                                 width: rem(140px)
                                 margin-bottom: 0
@@ -50,9 +53,8 @@
                             margin-bottom: rem(7px)
                     h4
                         clear: left
-                        font-size: rem(16px)
-                        &::first-letter
-                            font-size: rem(18px)
+                        font-size: rem(17px)
                     .explain.code
+                        margin: rem(8px) 0
                         div pre
                             min-width: inherit

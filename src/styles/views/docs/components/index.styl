@@ -13,13 +13,10 @@
                     border-bottom: 1px solid scheme.border
             +min(3)
                 position: sticky
-                top: rem(103px)
+                top: rem(docs_padding_top)
                 width: auto
                 order: 0
-                ul
-                    position: sticky
-                    top: rem(125px)
-                    height: 86vh
+                ul { height: 100vh }
     &.category // exclusively target component category pages
         component_category_main_width_b3 = 72% // provision more space for component examples
         +header-2()
@@ -35,13 +32,10 @@
                 top: 100px
             +min(3)
                 position: sticky
-                top: rem(103px)
+                top: rem(docs_padding_top)
                 width: auto
                 order: 0
-                ul
-                    position: sticky
-                    top: rem(125px)
-                    height: 86vh
+                ul { height: 100vh }
         main
             +min(2)
                 width: component_category_main_width_b3
@@ -120,10 +114,10 @@
                                         &:nth-of-type(odd)
                                             background: _90
                                         td
-                                            color: _45
+                                            color: _35
                                             padding: rem(8px) 0 rem(8px) rem(7px)
                                             &.parameter
-                                                color: _20
+                                                color: _25
                                                 font-family: $monospace
                                             &.type
                                                 font-style: italic
@@ -131,10 +125,13 @@
                         .paths
                             width: 100%
                             margin-bottom: rem(20px)
+                            code
+                                color: _30
                             +min(1)
                                 width: 65%
                                 margin-bottom: 0
                             li
+                                font-weight 600
                                 margin: .2rem 0
                         .dependencies
                             margin-bottom: rem(20px)

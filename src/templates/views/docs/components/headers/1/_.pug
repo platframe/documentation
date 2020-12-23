@@ -63,7 +63,7 @@ section(class="component" id="1")
                         tr
                             td.parameter nav
                             td.definition anchors: navigation
-                            td.type array, object
+                            td.type array
                         tr
                             td.parameter id
                             td.definition attribute: id
@@ -88,6 +88,7 @@ section(class="component" id="1")
                     li activate:&nbsp; #[code templates/_/mixins.pug]
                     li markup:&nbsp; #[code templates/_/body.pug]
                     li style:&nbsp; #[code style/_/elements/header.styl]
+                    li logic:&nbsp; #[code logic/root.js]
 
             .dependencies
 
@@ -139,7 +140,7 @@ section(class="component" id="1")
                                 block main
                                     //...
 
-                aside .pug
+                aside body.pug
 
         .explain.code
 
@@ -161,6 +162,8 @@ section(class="component" id="1")
 
                     code.language-javascript.
 
-                        import header from 'headers/1/_';
+                        import header1 from 'headers/1/_';
+
+                        header1();
 
                 aside root.js
