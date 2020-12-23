@@ -30,13 +30,9 @@ section(class="component" id="1")
 
                 table
                     caption.signature
-                        | nav-1(
-                        i target
-                        |,&nbsp;
-                        i direction
-                        |,&nbsp;
-                        i [icon]
-                        |)
+                        | nav-1({&nbsp;
+                        i settings
+                        |&nbsp;})
 
                     thead
                         tr
@@ -113,11 +109,15 @@ section(class="component" id="1")
 
                         #home
                             // content...
-                            +nav-1("next")
+                            // default is "next" (down arrow)
+                            +nav-1({ target: "section" })
 
-                        #next
+                            // choose the outlined button
+                            +nav-1({ target: "id", icon="nav-1-stroke" })
+
+                        #section
                             // content...
-                            +nav-1("home", "prev", "nav-1-stroke")
+                            +nav-1({ target: "home", direction: "prev" })
 
                 aside .pug
 
