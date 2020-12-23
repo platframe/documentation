@@ -79,9 +79,9 @@ export default class Mailbox {
                     {
                         action: this.id
                     })
-                .then(token => {
-                    resolve(token);
-                });
+                    .then(token => {
+                        resolve(token);
+                    });
             });
         });
     }
@@ -146,10 +146,10 @@ export default class Mailbox {
             if (!data.ok) throw new Error(`HTTP error: ${ response.status }`);
             return data.json();
         })
-        .then(obj => {
-            if (obj.responseCode === 0) this.done('success', obj);
-            else this.done('failure', obj);
-        });
+            .then(obj => {
+                if (obj.responseCode === 0) this.done('success', obj);
+                else this.done('failure', obj);
+            });
     }
 
     send(event) {
@@ -167,6 +167,6 @@ export default class Mailbox {
             .then(formData => {
                 if (this.carrier === 'xhr') this.xhr(formData);
                 else this.fetch(formData);
-        }).catch(error => console.error('Error:', error));
+            }).catch(error => console.error('Error:', error));
     }
 }
