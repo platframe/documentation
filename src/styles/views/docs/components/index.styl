@@ -125,14 +125,22 @@
                         .paths
                             width: 100%
                             margin-bottom: rem(20px)
+                            h5:last-of-type
+                                margin-top: 1.2rem
                             code
                                 color: _30
+                                text-transform none
                             +min(1)
                                 width: 65%
                                 margin-bottom: 0
                             li
-                                font-weight 600
                                 margin: .2rem 0
+                                font-size .85rem
+                                font-weight 600
+                                text-transform uppercase
+                                &::before
+                                    content: '\2043\00A0\00A0'
+                                    color: _platframe
                         .dependencies
                             margin-bottom: rem(20px)
                             +min(1)

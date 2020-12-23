@@ -77,6 +77,13 @@ section(class="component" id="1")
                     li location:&nbsp; #[code components/navigation/1]
                     li activate:&nbsp; #[code templates/_/mixins.pug]
 
+                h5 Placement
+
+                ul
+                    li markup:&nbsp; #[code templates/views/**/*.pug]
+                    li style:&nbsp; #[code styles/views/**/*.styl]
+                    li logic:&nbsp; #[code logic/root.js] or #[code logic/views/**/*.js]
+
             .dependencies
 
                 h5 Dependencies
@@ -134,6 +141,8 @@ section(class="component" id="1")
 
                     code.language-javascript.
 
-                        import nav from 'navigation/1/_';
+                        import nav1 from 'navigation/1/_';
+
+                        nav1();
 
                 aside root.js

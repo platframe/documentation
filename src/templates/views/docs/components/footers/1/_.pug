@@ -36,8 +36,13 @@ section(class="component" id="1")
 
                 ul
                     li location:&nbsp; #[code components/footers/1]
+
+                h5 Placement
+
+                ul
                     li markup:&nbsp; #[code templates/_/body.pug]
-                    li style:&nbsp; #[code style/_/elements/footer.styl]
+                    li style:&nbsp; #[code styles/_/elements/footer.styl]
+                    li logic:&nbsp; #[code logic/root.js]
 
             .dependencies
 
@@ -104,6 +109,8 @@ section(class="component" id="1")
 
                     code.language-javascript.
 
-                        import footer from 'footers/1/_';
+                        import footer1 from 'footers/1/_';
+
+                        footer1();
 
                 aside root.js
