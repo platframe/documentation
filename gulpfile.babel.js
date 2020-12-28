@@ -1,9 +1,14 @@
+/* SET CONTEXT ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+import context from 'dotenv'; context.config();
+
 /* GULP ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 import { series, parallel } from 'gulp';
 
 /* TASKS ━━━━━━━━━━━━━━ private  ━━━━━━━━━━━━━━ */
 
+import load from './settings/gulp/load';
 import watch from './settings/gulp/watch';
 import clean from './settings/gulp/clean';
 import logic from './settings/gulp/logic';
@@ -66,5 +71,7 @@ export const deploy = series(
     build,
 );
 
-// default task
-export default develop;
+// development environment initialization
+const init = () => load({ task: 'develop', flag: '-S' });
+
+export default init;
